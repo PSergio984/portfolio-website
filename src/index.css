@@ -13,8 +13,8 @@
   --color-social-bg-brand: var(--social-bg);
   --color-code-bg-brand: var(--code-bg);
 
-  --font-sans: var(--sans);
-  --font-heading: var(--heading);
+  --font-sans: "Space Grotesk", "Outfit", ui-sans-serif, system-ui;
+  --font-heading: "Outfit", ui-sans-serif, system-ui;
   --font-mono: var(--mono);
 }
 
@@ -30,9 +30,18 @@
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: 'Space Grotesk', 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Outfit', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+
+.animate-scanline {
+  animation: scanline 2s linear infinite;
 }
 
 .dark {
