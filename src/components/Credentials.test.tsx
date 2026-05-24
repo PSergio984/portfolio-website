@@ -16,6 +16,11 @@ describe('Credentials', () => {
     expect(screen.getByText('14th IT Skills Olympics')).toBeInTheDocument()
   })
 
+  it('renders credential timestamps', () => {
+    expect(screen.getByText('[APR 2024]')).toBeInTheDocument()
+    expect(screen.getByText('[JAN 2026]')).toBeInTheDocument()
+  })
+
   it('renders View Verification buttons', () => {
     expect(screen.getAllByText(/VIEW VERIFICATION/)).toHaveLength(7)
   })
