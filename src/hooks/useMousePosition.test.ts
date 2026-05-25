@@ -1,6 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
 import { useMousePosition } from './useMousePosition';
-import { describe, it, expect } from 'vitest';
 
 describe('useMousePosition', () => {
   it('should return initial position (0, 0)', () => {

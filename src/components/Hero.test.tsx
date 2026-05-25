@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { Hero } from './Hero'
 
-// Mock the hero.png import
-vi.mock('../assets/hero.png', () => ({ default: 'hero.png' }))
+// Mock the profile.png import
+vi.mock('../assets/profile.png', () => ({ default: 'profile.png' }))
 
 describe('Hero', () => {
   beforeEach(() => {

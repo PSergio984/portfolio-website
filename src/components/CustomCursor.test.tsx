@@ -1,6 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
 import { CustomCursor } from './CustomCursor';
-import { describe, it, expect, vi } from 'vitest';
 
 // Mock useMousePosition
 vi.mock('../hooks/useMousePosition', () => ({

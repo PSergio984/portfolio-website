@@ -23,6 +23,7 @@ const projects = [
     tags: ["Fastapi", "React", "PostgreSQL", "Raspberry Pi"],
     sourceUrl: "https://github.com/PSergio984/agos-iot-flood-monitoring",
     detailsUrl: "https://agos-app.vercel.app/",
+    imageUrl: "/assets/projects/agos.png",
   },
   {
     id: "ceit-library",
@@ -32,6 +33,7 @@ const projects = [
     tags: ["Laravel", "Livewire", "Tailwind CSS", "Alpine.js"],
     sourceUrl: "https://github.com/PSergio984/CEIT-Library",
     detailsUrl: "https://ceit-library-main-cru0ty.laravel.cloud/",
+    imageUrl: "/assets/projects/ceit-lib.png",
   },
   {
     id: "survey-system",
@@ -42,6 +44,7 @@ const projects = [
     sourceUrl: "https://github.com/PSergio984/valenzuela-satisfaction-survey/",
     detailsUrl:
       "https://valenzuela-satisfaction-survey-main-plae88.laravel.cloud/",
+    imageUrl: "/assets/projects/survey.png",
   },
   {
     id: "datus",
@@ -51,6 +54,7 @@ const projects = [
     tags: ["Burp Suite", "Kali Linux", "CTF", "Wireshark"],
     sourceUrl: "https://github.com/PSergio984/datus-ctf-writeups",
     detailsUrl: "https://datus-ctf-writeups.vercel.app/",
+    imageUrl: undefined,
   },
 ];
 
@@ -70,13 +74,25 @@ function ProjectCard({
         index % 2 !== 0 ? "md:flex-row-reverse" : ""
       } ${fadeClass}`}
     >
-      {/* Image Placeholder */}
+      {/* Image Container */}
       <div className="w-full md:w-1/2 aspect-[16/9] bg-gradient-to-br from-[var(--border)] to-[var(--bg)] rounded-2xl flex items-center justify-center text-[var(--text)] border border-[var(--border)] relative overflow-hidden group-hover:border-[var(--accent-border)] transition-colors backdrop-blur-sm bg-white/5">
+        {project.imageUrl ? (
+          <img
+            src={project.imageUrl}
+            alt={`${project.title} screenshot`}
+            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+          />
+        ) : (
+          <div className="flex flex-col items-center justify-center p-6 text-center h-full w-full bg-gradient-to-tr from-[var(--accent-bg)] to-transparent select-none">
+            <span className="text-[var(--accent)] font-mono text-xs mb-2 tracking-widest">[ SECURITY LAB ]</span>
+            <span className="text-[var(--text-h)] font-bold text-lg mb-1">{project.title}</span>
+            <span className="opacity-40 font-mono text-[10px]">No image preview available</span>
+          </div>
+        )}
         {/* Scanline Effect */}
         <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity">
           <div className="w-full h-[2px] bg-[var(--accent)] animate-scanline shadow-[0_0_15px_var(--accent)]" />
         </div>
-        <span className="opacity-50 font-mono text-sm">Image Placeholder</span>
       </div>
 
       {/* Content */}

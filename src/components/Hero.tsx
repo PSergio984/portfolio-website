@@ -1,33 +1,52 @@
-import heroImg from '../assets/hero.png'
-import { useFadeIn } from '../hooks/useFadeIn'
+import heroImg from "../assets/profile.png";
+import { useFadeIn } from "../hooks/useFadeIn";
 
 const awards = [
-  { id: 'award-htb', label: '69th Place (Team) — HackTheBox Global Event 2026' },
-  { id: 'award-uga', label: '25th Place — UGA GoldRush Gauntlet CTF' },
   {
-    id: 'award-itlympics',
-    label: 'UMak ITlympics Representative (1st Place IT Quiz Bee - Security Theme)',
+    id: "award-htb",
+    label: "69th Place (Team) — HackTheBox Global Event 2026",
   },
-  { id: 'award-local-quiz', label: '1st Place — Local School General IT Quiz Bee' },
-  { id: 'award-local-ctf', label: '2nd Place — Local School CTF Competition' },
-  { id: 'award-game-dev', label: 'Multiple Awards — Game Development Project' },
-  { id: 'award-dean', label: "Dean's Lister & Magna Cum Laude Candidate" },
-]
+  { id: "award-uga", label: "25th Place — UGA GoldRush Gauntlet CTF" },
+  {
+    id: "award-itlympics",
+    label: "UMak National ITlympics Representative",
+  },
+  {
+    id: "award-local-quiz",
+    label: "1st Place — Pamantasan ng Lungsod ng Valenzuela IT Quiz Bee",
+  },
+  {
+    id: "award-local-ctf",
+    label: "2nd Place — Pamantasan ng Lungsod ng Valenzuela CTF Competition",
+  },
+  { id: "award-game-dev", label: "Multiple Awards — Game Development Project" },
+  { id: "award-dean", label: "Dean's Lister & Magna Cum Laude Candidate" },
+];
 
 const certifications = [
-  { id: 'cert-google', label: 'Google Cybersecurity Professional Certificate' },
-  { id: 'cert-tesda', label: 'TESDA NC3 Visual Graphics Design (UI/UX Foundation)' },
-]
+  { id: "cert-google", label: "Google Cybersecurity Professional Certificate" },
+  {
+    id: "cert-tesda",
+    label: "TESDA NC3 Visual Graphics Design (UI/UX Foundation)",
+  },
+];
 
 export function Hero() {
-  const { ref: textRef, fadeClass: textFade } = useFadeIn(0.1)
-  const { ref: imgRef, fadeClass: imgFade } = useFadeIn(0.1)
+  const { ref: textRef, fadeClass: textFade } = useFadeIn(0.1);
+  const { ref: imgRef, fadeClass: imgFade } = useFadeIn(0.1);
 
   return (
-    <section id="about" aria-label="About Eric Gabriel Manabat" className="py-16 md:py-24 overflow-hidden">
+    <section
+      id="about"
+      aria-label="About Eric Gabriel Manabat"
+      className="py-16 md:py-24 overflow-hidden"
+    >
       <div className="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
         {/* Text side */}
-        <div ref={textRef} className={`flex-1 order-2 md:order-1 text-center md:text-left ${textFade}`}>
+        <div
+          ref={textRef}
+          className={`flex-1 order-2 md:order-1 text-center md:text-left ${textFade}`}
+        >
           <p className="text-sm font-mono text-[var(--accent)] mb-3 tracking-widest uppercase">
             Hello, world 👋
           </p>
@@ -38,9 +57,9 @@ export function Hero() {
             Backend Developer · Cybersecurity Enthusiast · Full-Stack Builder
           </h2>
           <p className="text-[var(--text)] leading-relaxed mb-8 max-w-xl mx-auto md:mx-0">
-            I build robust backend systems and hunt vulnerabilities by night. Specialising in
-            Python, PHP, and .NET, with hands-on CTF experience and a Google
-            Cybersecurity certification to back it up.
+            I build robust backend systems and hunt vulnerabilities by night.
+            Specialising in Python, PHP, and .NET, with hands-on CTF experience
+            and a Google Cybersecurity certification to back it up.
           </p>
 
           {/* CTA buttons */}
@@ -67,7 +86,10 @@ export function Hero() {
               </h3>
               <ul className="space-y-1.5">
                 {awards.map((award) => (
-                  <li key={award.id} className="text-sm text-[var(--text)] leading-relaxed">
+                  <li
+                    key={award.id}
+                    className="text-sm text-[var(--text)] leading-relaxed"
+                  >
                     {award.label}
                   </li>
                 ))}
@@ -79,7 +101,10 @@ export function Hero() {
               </h3>
               <ul className="space-y-1.5">
                 {certifications.map((cert) => (
-                  <li key={cert.id} className="text-sm text-[var(--text)] leading-relaxed">
+                  <li
+                    key={cert.id}
+                    className="text-sm text-[var(--text)] leading-relaxed"
+                  >
                     {cert.label}
                   </li>
                 ))}
@@ -89,7 +114,10 @@ export function Hero() {
         </div>
 
         {/* Image side */}
-        <div ref={imgRef} className={`order-1 md:order-2 flex-shrink-0 ${imgFade}`}>
+        <div
+          ref={imgRef}
+          className={`order-1 md:order-2 flex-shrink-0 ${imgFade}`}
+        >
           <div className="relative">
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-border)] opacity-30 blur-lg" />
             <img
@@ -103,5 +131,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

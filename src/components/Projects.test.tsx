@@ -11,10 +11,10 @@ describe('Projects', () => {
   })
 
   it('renders all four project cards', () => {
-    expect(screen.getByText('Agos')).toBeInTheDocument()
-    expect(screen.getByText('PLV CEIT Library')).toBeInTheDocument()
-    expect(screen.getByText('Survey System')).toBeInTheDocument()
-    expect(screen.getByText('Datus-Ctf-Writeups')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: 'Agos' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: 'PLV CEIT Library' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: 'Survey System' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: 'Datus-Ctf-Writeups' })).toBeInTheDocument()
   })
 
   it('renders View Details links', () => {

@@ -12,7 +12,8 @@ describe('Skills', () => {
 
   it('renders all skill categories', () => {
     expect(screen.getByText('Languages')).toBeInTheDocument()
-    expect(screen.getByText('Backend & Security')).toBeInTheDocument()
+    expect(screen.getByText('Backend')).toBeInTheDocument()
+    expect(screen.getByText('Cybersecurity')).toBeInTheDocument()
     expect(screen.getByText('Frontend & UI/UX')).toBeInTheDocument()
     expect(screen.getByText('Database')).toBeInTheDocument()
     expect(screen.getByText('DevOps & Cloud')).toBeInTheDocument()
