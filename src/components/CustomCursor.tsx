@@ -9,7 +9,7 @@ export function CustomCursor() {
   useEffect(() => {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest('a, button, input, [role="button"]')) {
+      if (target && typeof target.closest === 'function' && target.closest('a, button, input, [role="button"]')) {
         setIsHovering(true);
       } else {
         setIsHovering(false);
@@ -30,21 +30,21 @@ export function CustomCursor() {
     };
   }, []);
 
-  if (!isVisible && typeof process !== 'undefined' && process.env.NODE_ENV !== 'test') return null;
+  if (!isVisible) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden hidden md:block">
       {/* Dot */}
       <div
-        className="cursor-dot fixed w-1.5 h-1.5 bg-[var(--accent)] rounded-full -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 ease-out"
-        style={{ left: `${x}px`, top: `${y}px` }}
+        className="cursor-dot fixed w-1.5 h-1.5 bg-[var(--accent)] rounded-full transition-transform duration-75 ease-out"
+        style={{ transform: `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)` }}
       />
       {/* Ring */}
       <div
-        className={`cursor-ring fixed rounded-full border border-[var(--accent)] -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out ${
+        className={`cursor-ring fixed rounded-full border border-[var(--accent)] transition-all duration-300 ease-out ${
           isHovering ? 'w-12 h-12 opacity-50' : 'w-8 h-8 opacity-30'
         }`}
-        style={{ left: `${x}px`, top: `${y}px` }}
+        style={{ transform: `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)` }}
       />
     </div>
   );

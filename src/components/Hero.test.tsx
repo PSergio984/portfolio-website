@@ -22,7 +22,7 @@ describe('Hero', () => {
   })
 
   it('displays the hero image', () => {
-    expect(screen.getByAltText(/sergio.*portrait/i)).toBeInTheDocument()
+    expect(screen.getByAltText(/eric gabriel manabat.*portrait/i)).toBeInTheDocument()
   })
 
   it('displays awards and certifications headers', () => {
@@ -31,7 +31,14 @@ describe('Hero', () => {
   })
 
   it('displays awards and certifications content', () => {
+    // Check for specific keywords in awards
     expect(screen.getByText(/HackTheBox/i)).toBeInTheDocument()
+    expect(screen.getByText(/UGA GoldRush/i)).toBeInTheDocument()
+    expect(screen.getByText(/ITlympics/i)).toBeInTheDocument()
+    expect(screen.getByText(/Magna Cum Laude/i)).toBeInTheDocument()
+
+    // Check for specific keywords in certifications
     expect(screen.getByText(/Google Cybersecurity Professional Certificate/i)).toBeInTheDocument()
+    expect(screen.getByText(/TESDA NC3/i)).toBeInTheDocument()
   })
 })

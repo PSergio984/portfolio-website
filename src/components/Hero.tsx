@@ -2,18 +2,21 @@ import heroImg from '../assets/hero.png'
 import { useFadeIn } from '../hooks/useFadeIn'
 
 const awards = [
-  '69th Place (Team) — HackTheBox Global Event 2026',
-  '25th Place — UGA GoldRush Gauntlet CTF',
-  'UMak ITlympics Representative (1st Place IT Quiz Bee - Security Theme)',
-  '1st Place — Local School General IT Quiz Bee',
-  '2nd Place — Local School CTF Competition',
-  'Multiple Awards — Game Development Project',
-  'Dean\'s Lister & Magna Cum Laude Candidate',
+  { id: 'award-htb', label: '69th Place (Team) — HackTheBox Global Event 2026' },
+  { id: 'award-uga', label: '25th Place — UGA GoldRush Gauntlet CTF' },
+  {
+    id: 'award-itlympics',
+    label: 'UMak ITlympics Representative (1st Place IT Quiz Bee - Security Theme)',
+  },
+  { id: 'award-local-quiz', label: '1st Place — Local School General IT Quiz Bee' },
+  { id: 'award-local-ctf', label: '2nd Place — Local School CTF Competition' },
+  { id: 'award-game-dev', label: 'Multiple Awards — Game Development Project' },
+  { id: 'award-dean', label: "Dean's Lister & Magna Cum Laude Candidate" },
 ]
 
 const certifications = [
-  'Google Cybersecurity Professional Certificate',
-  'TESDA NC3 Visual Graphics Design (UI/UX Foundation)',
+  { id: 'cert-google', label: 'Google Cybersecurity Professional Certificate' },
+  { id: 'cert-tesda', label: 'TESDA NC3 Visual Graphics Design (UI/UX Foundation)' },
 ]
 
 export function Hero() {
@@ -63,9 +66,9 @@ export function Hero() {
                 Awards & Honors
               </h3>
               <ul className="space-y-1.5">
-                {awards.map((a) => (
-                  <li key={a} className="text-sm text-[var(--text)] leading-relaxed">
-                    {a}
+                {awards.map((award) => (
+                  <li key={award.id} className="text-sm text-[var(--text)] leading-relaxed">
+                    {award.label}
                   </li>
                 ))}
               </ul>
@@ -75,9 +78,9 @@ export function Hero() {
                 Certifications
               </h3>
               <ul className="space-y-1.5">
-                {certifications.map((c) => (
-                  <li key={c} className="text-sm text-[var(--text)] leading-relaxed">
-                    {c}
+                {certifications.map((cert) => (
+                  <li key={cert.id} className="text-sm text-[var(--text)] leading-relaxed">
+                    {cert.label}
                   </li>
                 ))}
               </ul>
@@ -91,7 +94,7 @@ export function Hero() {
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-border)] opacity-30 blur-lg" />
             <img
               src={heroImg}
-              alt="Sergio — portrait"
+              alt="Eric Gabriel Manabat — portrait"
               width={220}
               height={220}
               className="relative rounded-2xl object-cover shadow-xl border border-[var(--border)]"

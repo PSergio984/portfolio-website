@@ -11,13 +11,17 @@ describe('Credentials', () => {
   })
 
   it('renders all credential titles', () => {
-    expect(screen.getByText('ITlympics 2024')).toBeInTheDocument()
+    expect(screen.getByText('ITlympics 2026')).toBeInTheDocument()
     expect(screen.getByText('ITlympics 2025')).toBeInTheDocument()
-    expect(screen.getByText('14th IT Skills Olympics')).toBeInTheDocument()
+    expect(screen.getByText('14th National IT Skills Olympics')).toBeInTheDocument()
+    expect(screen.getByText('HackTheBox CTF')).toBeInTheDocument()
   })
 
   it('renders credential timestamps', () => {
-    expect(screen.getByText('[APR 2024]')).toBeInTheDocument()
+    expect(screen.getByText('[MAR 2026]')).toBeInTheDocument()
+    expect(screen.getByText('[APR 2025]')).toBeInTheDocument()
+    expect(screen.getByText('[NOV 2025]')).toBeInTheDocument()
+    expect(screen.getByText('[2024]')).toBeInTheDocument()
     expect(screen.getByText('[JAN 2026]')).toBeInTheDocument()
   })
 
