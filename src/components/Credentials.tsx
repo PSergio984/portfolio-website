@@ -11,7 +11,7 @@ const awardsData = [
     timestamp: "[MAR 2026]",
     award: "SILVER MEDAL",
     iconType: "silver",
-    imageUrl: "https://placehold.co/800x600/1e1e1e/e5e7eb?text=ITlympics+2026",
+    imageUrl: "/assets/certificates/itlympics-2026.png",
   },
   {
     id: "hackthebox-ctf",
@@ -21,7 +21,7 @@ const awardsData = [
     timestamp: "[MAY 2026]",
     award: "Ranked 63/589 Teams",
     iconType: "security",
-    imageUrl: "https://placehold.co/800x600/1e1e1e/22c55e?text=HackTheBox+CTF",
+    imageUrl: "/assets/certificates/HTB-Certificate-Sergio984.png",
   },
   {
     id: "gamecon",
@@ -52,7 +52,7 @@ const awardsData = [
     timestamp: "[APR 2025]",
     award: "GOLD MEDAL",
     iconType: "gold",
-    imageUrl: "https://placehold.co/800x600/1e1e1e/eab308?text=ITlympics+2025",
+    imageUrl: "/assets/certificates/itlympics-2025.png",
   },
 ];
 
