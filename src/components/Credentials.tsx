@@ -5,11 +5,11 @@ import { useFadeIn } from "../hooks/useFadeIn";
 const awardsData = [
   {
     id: "itlympics-2026",
-    title: "ITlympics 2026",
+    title: "Silver Medal: Cybersecurity CTF (ITlympics)",
     institution: "Pamantasan ng Lungsod ng Valenzuela",
     date: "March 2026",
     timestamp: "[MAR 2026]",
-    award: "SILVER MEDAL — CAPTURE THE FLAG",
+    award: "COMPETED IN CRYPTOGRAPHY, FORENSICS, AND REVERSING",
     iconType: "silver",
     imageUrl: "/assets/certificates/itlympics-2026.png",
   },
@@ -18,7 +18,7 @@ const awardsData = [
     title: "Global Cyber Skills Benchmark",
     institution: "HackTheBox",
     date: "2026",
-    timestamp: "[MAY 2026]",
+    timestamp: "[2026]",
     award: "Ranked 63/589 Teams",
     iconType: "security",
     imageUrl: "/assets/certificates/HTB-Certificate-Sergio984.png",
@@ -31,27 +31,37 @@ const awardsData = [
     timestamp: "[MAR 2026]",
     award: "BRONZE MEDAL",
     iconType: "bronze",
-    imageUrl: undefined,
+    imageUrl: "/assets/certificates/gamecon.png",
   },
   {
     id: "14th-it-skills",
-    title: "14th National IT Skills Olympics",
+    title: "National Representative: Cybersecurity Quiz Bee",
     institution: "University of Makati",
     date: "November 2025",
     timestamp: "[NOV 2025]",
-    award: "REPRESENTATIVE — CYBERSECURITY QUIZ BEE",
+    award: "Representative",
     iconType: "rep",
-    imageUrl: undefined,
+    imageUrl: "/assets/certificates/umak.jpg",
   },
   {
     id: "itlympics-2025",
-    title: "ITlympics 2025",
+    title: "Gold Medal: General IT Quiz Bee (ITlympics)",
     institution: "Pamantasan ng Lungsod ng Valenzuela",
     date: "April 2025",
     timestamp: "[APR 2025]",
-    award: "GOLD MEDAL — CYBERSECURITY QUIZ BEE",
+    award: "GOLD MEDAL — GENERAL IT & SYSTEMS LOGIC",
     iconType: "gold",
-    imageUrl: undefined,
+    imageUrl: "/assets/certificates/itlympics-2025.png",
+  },
+  {
+    id: "deans-list",
+    title: "Dean's List Academic Excellence",
+    institution: "Pamantasan ng Lungsod ng Valenzuela",
+    date: "2023 - 2026",
+    timestamp: "[2023 - 2026]",
+    award: "CONSISTENT DEAN'S LISTER — 1.03 RUNNING GWA",
+    iconType: "gold",
+    imageUrl: "/assets/certificates/deans-list.png",
   },
 ];
 
@@ -64,7 +74,7 @@ const certificationsData = [
     timestamp: "[JAN 2026]",
     award: "PROFESSIONAL CERTIFICATE",
     iconType: "security",
-    imageUrl: undefined,
+    imageUrl: "/assets/certificates/ggcyb.jpg",
   },
   {
     id: "tesda-nc3",
@@ -76,22 +86,13 @@ const certificationsData = [
     iconType: "design",
     imageUrl: "/assets/certificates/tesda-vgd.png",
   },
-  {
-    id: "tesda-nc2",
-    title: "Animation NC II",
-    institution: "TESDA",
-    date: "2022",
-    timestamp: "[JULY 2023]",
-    award: "NATIONAL CERTIFICATE",
-    iconType: "design",
-    imageUrl: undefined,
-  },
 ];
 
 const seminarsData = [
   {
     id: "seminar-cybersecurity",
-    title: "Securing Connections: Strategies for Cybersecurity and Network Operations",
+    title:
+      "Securing Connections: Strategies for Cybersecurity and Network Operations",
     institution: "Pamantasan ng Lungsod ng Valenzuela",
     date: "October 2025",
     timestamp: "[OCT 2025]",
@@ -101,7 +102,8 @@ const seminarsData = [
   },
   {
     id: "seminar-fullstack",
-    title: "Launch Your Tech Career: The High-Demand Skillset of a Full Stack Web Developer",
+    title:
+      "Launch Your Tech Career: The High-Demand Skillset of a Full Stack Web Developer",
     institution: "Pamantasan ng Lungsod ng Valenzuela",
     date: "September 2025",
     timestamp: "[SEPT 2025]",
@@ -120,6 +122,7 @@ interface Credential {
   award: string;
   iconType: string;
   imageUrl?: string;
+  profileUrl?: string;
 }
 
 export function Credentials() {
@@ -166,7 +169,6 @@ export function Credentials() {
           </span>
         </div>
         <p className="text-xs text-[var(--text)] mb-1">{cred.institution}</p>
-        <p className="text-xs text-[var(--text)] opacity-90">{cred.date}</p>
       </div>
 
       <div className="mt-auto pt-4 flex flex-col gap-4">
@@ -195,8 +197,21 @@ export function Credentials() {
             onClick={() => setSelectedCred(cred)}
             className="text-left text-xs font-bold text-[var(--accent)] tracking-wider uppercase hover:underline inline-flex items-center gap-1 group-hover:gap-2 transition-all"
           >
-            VIEW VERIFICATION <span aria-hidden="true">&gt;</span>
+            {cred.id === "deans-list"
+              ? "VIEW CERTIFICATE"
+              : "VIEW VERIFICATION"}{" "}
+            <span aria-hidden="true">&gt;</span>
           </button>
+        )}
+        {cred.profileUrl && (
+          <a
+            href={cred.profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-left text-xs font-bold text-[var(--accent)] tracking-wider uppercase hover:underline inline-flex items-center gap-1 group-hover:gap-2 transition-all"
+          >
+            VIEW PROFILE <span aria-hidden="true">&gt;</span>
+          </a>
         )}
       </div>
     </article>
