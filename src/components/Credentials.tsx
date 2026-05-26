@@ -76,8 +76,7 @@ const certificationsData = [
     timestamp: "[JULY 2023]",
     award: "NATIONAL CERTIFICATE",
     iconType: "design",
-    imageUrl:
-      "https://placehold.co/800x600/1e1e1e/ec4899?text=Visual+Graphics+NC+III",
+    imageUrl: "/assets/certificates/tesda-vgd.png",
   },
   {
     id: "tesda-nc2",
@@ -88,6 +87,29 @@ const certificationsData = [
     award: "NATIONAL CERTIFICATE",
     iconType: "design",
     imageUrl: "https://placehold.co/800x600/1e1e1e/ec4899?text=Animation+NC+II",
+  },
+];
+
+const seminarsData = [
+  {
+    id: "seminar-cybersecurity",
+    title: "Securing Connections: Strategies for Cybersecurity and Network Operations",
+    institution: "Pamantasan ng Lungsod ng Valenzuela",
+    date: "October 2025",
+    timestamp: "[OCT 2025]",
+    award: "SEMINAR CERTIFICATE",
+    iconType: "security",
+    imageUrl: "/assets/seminars/cyb.png",
+  },
+  {
+    id: "seminar-fullstack",
+    title: "Launch Your Tech Career: The High-Demand Skillset of a Full Stack Web Developer",
+    institution: "Pamantasan ng Lungsod ng Valenzuela",
+    date: "September 2025",
+    timestamp: "[SEPT 2025]",
+    award: "SEMINAR CERTIFICATE",
+    iconType: "design",
+    imageUrl: "/assets/seminars/fullstack.png",
   },
 ];
 
@@ -199,7 +221,7 @@ export function Credentials() {
         </div>
 
         {/* Certifications Section */}
-        <div>
+        <div className="mb-12">
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-[var(--text-h)] mb-2">
               Professional Certifications
@@ -210,6 +232,21 @@ export function Credentials() {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {certificationsData.map(renderCard)}
+          </div>
+        </div>
+
+        {/* Seminars & Workshops Section */}
+        <div>
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-[var(--text-h)] mb-2">
+              Seminars & Workshops
+            </h2>
+            <p className="text-sm text-[var(--text)]">
+              Participation in specialized tech seminars and industry briefings.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {seminarsData.map(renderCard)}
           </div>
         </div>
       </div>
