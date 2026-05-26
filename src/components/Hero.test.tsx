@@ -18,7 +18,7 @@ describe('Hero', () => {
   })
 
   it('displays the headline subtitle', () => {
-    expect(screen.getByText(/backend developer/i)).toBeInTheDocument()
+    expect(screen.getByText(/full-stack developer/i)).toBeInTheDocument()
   })
 
   it('displays the hero image', () => {

@@ -54,12 +54,11 @@ export function Hero() {
             Eric Gabriel Manabat
           </h1>
           <h2 className="text-lg md:text-xl text-[var(--text)] mb-6 leading-relaxed">
-            Backend Developer · Cybersecurity Enthusiast · Full-Stack Builder
+            Full-Stack Developer · Cybersecurity Enthusiast
           </h2>
           <p className="text-[var(--text)] leading-relaxed mb-8 max-w-xl mx-auto md:mx-0">
-            I build robust backend systems and hunt vulnerabilities by night.
-            Specialising in Python, PHP, and .NET, with hands-on CTF experience
-            and a Google Cybersecurity certification to back it up.
+            I build secure, high-performance web applications and hunt vulnerabilities.
+            Specialising in Python, PHP, and .NET, with hands-on CTF experience.
           </p>
 
           {/* CTA buttons */}
