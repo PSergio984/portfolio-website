@@ -39,7 +39,7 @@ const awardsData = [
     institution: "University of Makati",
     date: "November 2025",
     timestamp: "[NOV 2025]",
-    award: "REPRESENTATIVE — CYBERSECURITY",
+    award: "REPRESENTATIVE — CYBERSECURITY QUIZ BEE",
     iconType: "rep",
     imageUrl: undefined,
   },

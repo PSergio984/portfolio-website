@@ -16,7 +16,7 @@ const awards = [
   },
   {
     id: "award-it-skills",
-    label: "Cybersecurity Representative — 14th National IT Skills Olympics",
+    label: "Cybersecurity Quiz Bee Representative — 14th National IT Skills Olympics",
   },
   {
     id: "award-local-quiz",
