@@ -27,7 +27,7 @@ describe("Contact", () => {
 
   it("renders Say Hello link", () => {
     const link = screen.getByRole("link", { name: /say hello/i });
-    expect(link).toHaveAttribute("href", "mailto:hello@example.com");
+    expect(link).toHaveAttribute("href", "mailto:eric.manabatseam@gmail.com");
   });
 
   it("renders Download CV link", () => {

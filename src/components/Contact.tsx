@@ -52,7 +52,7 @@ export function Contact() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
             <a
-              href="mailto:hello@example.com"
+              href="mailto:eric.manabatseam@gmail.com"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--text-h)] text-[var(--bg)] font-semibold hover:bg-[var(--accent)] hover:text-white transition-colors"
             >
               <Mail className="w-4 h-4" />
