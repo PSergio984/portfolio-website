@@ -15,6 +15,9 @@ export function Header() {
           <a href="#about" className="text-sm hover:text-[var(--accent)] transition-colors">
             About
           </a>
+          <a href="#credentials" className="text-sm hover:text-[var(--accent)] transition-colors">
+            Credentials
+          </a>
           <a href="#projects" className="text-sm hover:text-[var(--accent)] transition-colors">
             Projects
           </a>

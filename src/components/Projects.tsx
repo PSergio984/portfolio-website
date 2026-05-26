@@ -19,11 +19,21 @@ const projects = [
     id: "agos",
     title: "Agos",
     description:
-      "A production-ready, PWA-optimized Laravel/Livewire library management system for Pamantasan ng Lungsod ng Valenzuela. It delivers secure role-based access, QR code-based asset borrowing, and real-time notifications.",
+      "An integrated AI-guided overflow surveillance capstone system designed for Barangay Maysan, Valenzuela City. Fuses camera feeds (YOLOv8 blockage detection) and ultrasonic waterway depth sensor telemetry via a Raspberry Pi Zero W to automate tiered, real-time SMS emergency dispatches.",
     tags: ["Fastapi", "React", "PostgreSQL", "Raspberry Pi"],
     sourceUrl: "https://github.com/PSergio984/agos-iot-flood-monitoring",
     detailsUrl: "https://agos-app.vercel.app/",
     imageUrl: "/assets/projects/agos.png",
+  },
+  {
+    id: "task-buddy",
+    title: "Task-Buddy",
+    description:
+      "A modern, high-performance task management application featuring a React 19 frontend and a FastAPI backend. It features dynamic task status updating, priority-based sorting, custom category tagging (Work, School, Personal), and real-time dashboard analytics tracking.",
+    tags: ["React 19", "FastAPI", "Tailwind CSS", "TypeScript"],
+    sourceUrl: "https://github.com/PSergio984/task-buddy-frontend",
+    detailsUrl: "https://task-buddy-frontend.vercel.app/",
+    imageUrl: "/assets/projects/taskbuddy.png",
   },
   {
     id: "ceit-library",

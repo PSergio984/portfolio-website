@@ -26,6 +26,6 @@ describe('Credentials', () => {
   })
 
   it('renders View Verification buttons', () => {
-    expect(screen.getAllByText(/VIEW VERIFICATION/)).toHaveLength(10)
+    expect(screen.getAllByText(/VIEW VERIFICATION/)).toHaveLength(5)
   })
 })

@@ -31,7 +31,7 @@ const awardsData = [
     timestamp: "[MAR 2026]",
     award: "BRONZE MEDAL",
     iconType: "bronze",
-    imageUrl: "https://placehold.co/800x600/1e1e1e/22c55e?text=HackTheBox+CTF",
+    imageUrl: undefined,
   },
   {
     id: "14th-it-skills",
@@ -41,8 +41,7 @@ const awardsData = [
     timestamp: "[NOV 2025]",
     award: "REPRESENTATIVE — CYBERSECURITY",
     iconType: "rep",
-    imageUrl:
-      "https://placehold.co/800x600/1e1e1e/3b82f6?text=IT+Skills+Olympics",
+    imageUrl: undefined,
   },
   {
     id: "itlympics-2025",
@@ -52,7 +51,7 @@ const awardsData = [
     timestamp: "[APR 2025]",
     award: "GOLD MEDAL — CYBERSECURITY QUIZ BEE",
     iconType: "gold",
-    imageUrl: "/assets/certificates/itlympics-2025.png",
+    imageUrl: undefined,
   },
 ];
 
@@ -65,8 +64,7 @@ const certificationsData = [
     timestamp: "[JAN 2026]",
     award: "PROFESSIONAL CERTIFICATE",
     iconType: "security",
-    imageUrl:
-      "https://placehold.co/800x600/1e1e1e/22c55e?text=Google+Cybersecurity",
+    imageUrl: undefined,
   },
   {
     id: "tesda-nc3",
@@ -86,7 +84,7 @@ const certificationsData = [
     timestamp: "[JULY 2023]",
     award: "NATIONAL CERTIFICATE",
     iconType: "design",
-    imageUrl: "https://placehold.co/800x600/1e1e1e/ec4899?text=Animation+NC+II",
+    imageUrl: undefined,
   },
 ];
 
@@ -192,12 +190,14 @@ export function Credentials() {
             {cred.award}
           </span>
         </div>
-        <button
-          onClick={() => setSelectedCred(cred)}
-          className="text-left text-xs font-bold text-[var(--accent)] tracking-wider uppercase hover:underline inline-flex items-center gap-1 group-hover:gap-2 transition-all"
-        >
-          VIEW VERIFICATION <span aria-hidden="true">&gt;</span>
-        </button>
+        {cred.imageUrl && (
+          <button
+            onClick={() => setSelectedCred(cred)}
+            className="text-left text-xs font-bold text-[var(--accent)] tracking-wider uppercase hover:underline inline-flex items-center gap-1 group-hover:gap-2 transition-all"
+          >
+            VIEW VERIFICATION <span aria-hidden="true">&gt;</span>
+          </button>
+        )}
       </div>
     </article>
   );
