@@ -3,13 +3,20 @@ import { useFadeIn } from "../hooks/useFadeIn";
 
 const awards = [
   {
-    id: "award-htb",
-    label: "69th Place (Team) — HackTheBox Global Event 2026",
+    id: "award-itlympics-2026",
+    label: "Silver Medal (CTF) — ITlympics 2026",
   },
-  { id: "award-uga", label: "25th Place — UGA GoldRush Gauntlet CTF" },
   {
-    id: "award-itlympics",
-    label: "UMak National ITlympics Representative",
+    id: "award-htb",
+    label: "Ranked 63/589 Teams — HackTheBox Global Cyber Skills Benchmark 2026",
+  },
+  {
+    id: "award-itlympics-2025",
+    label: "Gold Medal (Cybersecurity Quiz Bee) — ITlympics 2025",
+  },
+  {
+    id: "award-it-skills",
+    label: "Cybersecurity Representative — 14th National IT Skills Olympics",
   },
   {
     id: "award-local-quiz",

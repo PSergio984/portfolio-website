@@ -33,8 +33,7 @@ describe('Hero', () => {
   it('displays awards and certifications content', () => {
     // Check for specific keywords in awards
     expect(screen.getByText(/HackTheBox/i)).toBeInTheDocument()
-    expect(screen.getByText(/UGA GoldRush/i)).toBeInTheDocument()
-    expect(screen.getByText(/ITlympics/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/ITlympics/i)[0]).toBeInTheDocument()
     expect(screen.getByText(/Magna Cum Laude/i)).toBeInTheDocument()
 
     // Check for specific keywords in certifications
