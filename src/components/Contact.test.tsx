@@ -10,7 +10,18 @@ describe("Contact", () => {
     expect(document.querySelector("#contact")).toBeInTheDocument();
   });
 
-  it("renders GitHub link with correct href", () => {
+  it("renders Email Me link", () => {
+    const link = screen.getByRole("link", { name: /email me/i });
+    expect(link).toHaveAttribute("href", "mailto:eric.manabatseam@gmail.com");
+  });
+
+  it("renders Download CV link", () => {
+    const link = screen.getByRole("link", { name: /download cv/i });
+    expect(link).toHaveAttribute("href", "/resume.pdf");
+    expect(link).toHaveAttribute("target", "_blank");
+  });
+
+  it("renders GitHub link", () => {
     const link = screen.getByRole("link", { name: /github/i });
     expect(link).toHaveAttribute("href", "https://github.com/PSergio984");
     expect(link).toHaveAttribute("target", "_blank");
@@ -23,16 +34,6 @@ describe("Contact", () => {
       "href",
       "https://www.linkedin.com/in/eric-gabriel-manabat-554697204/",
     );
-  });
-
-  it("renders Say Hello link", () => {
-    const link = screen.getByRole("link", { name: /say hello/i });
-    expect(link).toHaveAttribute("href", "mailto:eric.manabatseam@gmail.com");
-  });
-
-  it("renders Download CV link", () => {
-    const link = screen.getByRole("link", { name: /download cv/i });
-    expect(link).toHaveAttribute("href", "/resume.pdf");
     expect(link).toHaveAttribute("target", "_blank");
   });
 });

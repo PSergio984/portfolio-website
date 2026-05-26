@@ -1,7 +1,7 @@
 import './index.css'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { Credentials } from './components/Credentials'
+import { Awards, Certifications, Seminars } from './components/Credentials'
 import { Skills } from './components/Skills'
 import { Projects } from './components/Projects'
 import { Contact } from './components/Contact'
@@ -17,12 +17,16 @@ function App() {
       <main className="flex-grow max-w-6xl w-full mx-auto px-6">
         <Hero />
         <div className="h-px bg-[var(--border)] w-full my-4" />
-        <Credentials />
+        <Projects />
         <div className="h-px bg-[var(--border)] w-full my-4" />
         <Skills />
-        <div className="h-px bg-[var(--border)] w-full" />
-        <Projects />
-        <div className="h-px bg-[var(--border)] w-full" />
+        <div className="h-px bg-[var(--border)] w-full my-4" />
+        <Awards />
+        <div className="h-px bg-[var(--border)] w-full my-4" />
+        <Certifications />
+        <div className="h-px bg-[var(--border)] w-full my-4" />
+        <Seminars />
+        <div className="h-px bg-[var(--border)] w-full my-4" />
         <Contact />
       </main>
 

@@ -37,6 +37,8 @@ import {
   SiSentry,
   SiVite,
   SiGithub,
+  SiTrello,
+  SiJira,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { useFadeIn } from "../hooks/useFadeIn";
@@ -51,7 +53,7 @@ const skillCategories = [
       { name: "TypeScript", icon: SiTypescript, color: "text-blue-500" },
       { name: "Python", icon: SiPython, color: "text-blue-400" },
       { name: "Java", icon: FaJava, color: "text-orange-500" },
-      { name: "C#", icon: null, color: "text-purple-500" },
+      { name: "C#", icon: null, color: "text-blue-700" },
       { name: "PHP", icon: SiPhp, color: "text-indigo-400" },
     ],
   },
@@ -78,8 +80,8 @@ const skillCategories = [
     label: "Frontend & UI/UX",
     icon: <LayoutTemplate className="w-5 h-5 text-purple-500" />,
     skills: [
-      { name: "React", icon: SiReact, color: "text-cyan-400" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500" },
+      { name: "React", icon: SiReact, color: "text-sky-500" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-sky-500" },
       {
         name: "shadcn/ui",
         icon: (props: any) => (
@@ -88,7 +90,7 @@ const skillCategories = [
         color: "",
       },
       { name: "Livewire", icon: SiLivewire, color: "text-pink-400" },
-      { name: "Alpine.js", icon: SiAlpinedotjs, color: "text-teal-300" },
+      { name: "Alpine.js", icon: SiAlpinedotjs, color: "text-sky-500" },
       { name: "Figma", icon: SiFigma, color: "text-pink-500" },
     ],
   },
@@ -96,10 +98,10 @@ const skillCategories = [
     label: "Database",
     icon: <Database className="w-5 h-5 text-emerald-500" />,
     skills: [
-      { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-400" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "text-indigo-600" },
       { name: "MySQL", icon: SiMysql, color: "text-orange-500" },
       { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
-      { name: "SQL Server", icon: null, color: "text-red-600" },
+      { name: "SQL Server", icon: Database, color: "text-blue-600" },
     ],
   },
   {
@@ -111,6 +113,7 @@ const skillCategories = [
       { name: "Railway", icon: SiRailway, color: "text-purple-400" },
       { name: "Cloudflare", icon: SiCloudflare, color: "text-orange-400" },
       { name: "Render", icon: SiRender, color: "text-teal-400" },
+      { name: "Laravel Cloud", icon: SiLaravel, color: "text-red-500" },
     ],
   },
   {
@@ -121,8 +124,10 @@ const skillCategories = [
       { name: "GitHub", icon: SiGithub, color: "text-gray-800" },
       { name: "Postman", icon: SiPostman, color: "text-orange-500" },
       { name: "Swagger", icon: SiSwagger, color: "text-green-500" },
-      { name: "Sentry", icon: SiSentry, color: "text-red-500" },
+      { name: "Sentry", icon: SiSentry, color: "text-gray-800" },
       { name: "Vite", icon: SiVite, color: "text-purple-500" },
+      { name: "Jira", icon: SiJira, color: "text-blue-500" },
+      { name: "Trello", icon: SiTrello, color: "text-blue-500" },
     ],
   },
 ];
@@ -134,17 +139,17 @@ export function Skills() {
     <section
       id="skills"
       aria-label="Skills & Technologies"
-      className="py-12 overflow-hidden"
+      className="py-8 overflow-hidden"
     >
       <div ref={ref} className={fadeClass}>
         <h2 className="text-2xl font-bold text-[var(--text-h)] mb-8">
           Skills & Technologies
         </h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2">
           {skillCategories.map(({ label, icon, skills }) => (
             <div
               key={label}
-              className="p-6 rounded-2xl bg-[var(--bg)] border border-[var(--border)] shadow-sm hover:shadow-md transition-shadow"
+              className="p-4 rounded-2xl bg-white dark:bg-[var(--bg)] border border-gray-300 dark:border-[var(--border)] shadow hover:shadow-lg transition-shadow"
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="p-2 rounded-lg bg-[var(--code-bg)]">
@@ -158,7 +163,7 @@ export function Skills() {
                 {skills.map((skill) => (
                   <span
                     key={skill.name}
-                    className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-lg bg-[var(--code-bg)] text-[var(--text-h)] border border-transparent hover:border-[var(--border)] transition-colors cursor-default"
+                    className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-lg bg-[var(--code-bg)] text-[var(--text-h)] border border-gray-500 dark:border-gray-400 hover:border-gray-700 dark:hover:border-gray-300 transition-colors cursor-default"
                   >
                     {skill.icon && (
                       <skill.icon className={`w-3.5 h-3.5 ${skill.color}`} />

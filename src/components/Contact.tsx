@@ -1,7 +1,6 @@
-import { Mail, ArrowRight, FileText } from "lucide-react";
+import { Mail, FileText } from "lucide-react";
 import { useFadeIn } from "../hooks/useFadeIn";
 
-// Inline SVGs for brand icons not present in lucide-react
 function GitHubIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -39,62 +38,53 @@ export function Contact() {
     >
       <div
         ref={ref}
-        className={`flex flex-col md:flex-row items-center md:items-start justify-between gap-10 ${fadeClass}`}
+        className={`max-w-2xl mx-auto text-center ${fadeClass}`}
       >
-        <div className="flex-1 text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-h)] tracking-tight mb-4">
-            Let's build something secure.
-          </h2>
-          <p className="text-[var(--text)] leading-relaxed mb-8 max-w-md mx-auto md:mx-0">
-            Currently open for new opportunities. Whether you have a question or
-            just want to say hi, my inbox is always open.
-          </p>
+        <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-h)] tracking-tight mb-4">
+          Let's build something secure.
+        </h2>
+        <p className="text-[var(--text)] leading-relaxed mb-8 max-w-md mx-auto">
+          Currently open for new opportunities. Whether you have a question or
+          just want to say hi, my inbox is always open.
+        </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-            <a
-              href="mailto:eric.manabatseam@gmail.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--text-h)] text-[var(--bg)] font-semibold hover:bg-[var(--accent)] hover:text-white transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              Say Hello
-            </a>
+        <div className="flex flex-wrap items-center gap-4 justify-center">
+          <a
+            href="mailto:eric.manabatseam@gmail.com"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--text-h)] text-[var(--bg)] font-semibold hover:bg-[var(--accent)] hover:text-white transition-colors"
+          >
+            <Mail className="w-4 h-4" />
+            Email Me
+          </a>
 
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-h)] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
-            >
-              <FileText className="w-4 h-4" />
-              Download CV
-            </a>
-          </div>
-        </div>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-h)] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+          >
+            <FileText className="w-4 h-4" />
+            Download CV
+          </a>
 
-        <div className="flex flex-col gap-4 min-w-[200px]">
           <a
             href="https://github.com/PSergio984"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between p-4 rounded-xl border border-[var(--border)] hover:border-[var(--text-h)] transition-colors bg-[var(--bg)]"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-h)] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
           >
-            <span className="flex items-center gap-3 text-sm font-medium text-[var(--text-h)]">
-              <GitHubIcon className="w-5 h-5 text-[var(--text)] group-hover:text-[var(--text-h)] transition-colors" />
-              GitHub
-            </span>
-            <ArrowRight className="w-4 h-4 text-[var(--text)] group-hover:text-[var(--text-h)] group-hover:-rotate-45 transition-all" />
+            <GitHubIcon className="w-4 h-4" />
+            GitHub
           </a>
+
           <a
             href="https://www.linkedin.com/in/eric-gabriel-manabat-554697204/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between p-4 rounded-xl border border-[var(--border)] hover:border-[#0a66c2] transition-colors bg-[var(--bg)]"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-h)] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
           >
-            <span className="flex items-center gap-3 text-sm font-medium text-[var(--text-h)]">
-              <LinkedInIcon className="w-5 h-5 text-[var(--text)] group-hover:text-[#0a66c2] transition-colors" />
-              LinkedIn
-            </span>
-            <ArrowRight className="w-4 h-4 text-[var(--text)] group-hover:text-[#0a66c2] group-hover:-rotate-45 transition-all" />
+            <LinkedInIcon className="w-4 h-4" />
+            LinkedIn
           </a>
         </div>
       </div>

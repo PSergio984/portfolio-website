@@ -89,7 +89,7 @@ export function Hero() {
     <section
       id="about"
       aria-label="About Eric Gabriel Manabat"
-      className="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden"
+      className="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Subtle background ambient glows */}
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[var(--accent)]/5 rounded-full blur-[100px] pointer-events-none -z-10" />
