@@ -56,16 +56,16 @@ const projects = [
       "https://valenzuela-satisfaction-survey-main-plae88.laravel.cloud/",
     imageUrl: "/assets/projects/survey.png",
   },
-  {
-    id: "datus",
-    title: "Datus-Ctf-Writeups",
-    description:
-      "Write-ups for  CTF competition breakdowns such as HacktheBox,PicoCTF, and more. These write-ups cover a wide range of topics, including web exploitation, reverse engineering, cryptography, and binary exploitation.",
-    tags: ["Burp Suite", "Kali Linux", "CTF", "Wireshark"],
-    sourceUrl: "https://github.com/PSergio984/datus-ctf-writeups",
-    detailsUrl: "https://datus-ctf-writeups.vercel.app/",
-    imageUrl: undefined,
-  },
+  // {
+  //   id: "datus",
+  //   title: "Datus-Ctf-Writeups",
+  //   description:
+  //     "Write-ups for  CTF competition breakdowns such as HacktheBox,PicoCTF, and more. These write-ups cover a wide range of topics, including web exploitation, reverse engineering, cryptography, and binary exploitation.",
+  //   tags: ["Burp Suite", "Kali Linux", "CTF", "Wireshark"],
+  //   sourceUrl: "https://github.com/PSergio984/datus-ctf-writeups",
+  //   detailsUrl: "https://datus-ctf-writeups.vercel.app/",
+  //   imageUrl: undefined,
+  // },
 ];
 
 function ProjectCard({
@@ -84,8 +84,14 @@ function ProjectCard({
         index % 2 !== 0 ? "md:flex-row-reverse" : ""
       } ${fadeClass}`}
     >
-      {/* Image Container */}
-      <div className="w-full md:w-1/2 aspect-[16/9] bg-gradient-to-br from-[var(--border)] to-[var(--bg)] rounded-2xl flex items-center justify-center text-[var(--text)] border border-[var(--border)] relative overflow-hidden group-hover:border-[var(--accent-border)] transition-colors backdrop-blur-sm bg-white/5">
+      {/* Image Container — clickable */}
+      <a
+        href={project.detailsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View ${project.title} live`}
+        className="w-full md:w-1/2 aspect-[16/9] bg-gradient-to-br from-[var(--border)] to-[var(--bg)] rounded-2xl flex items-center justify-center text-[var(--text)] border border-[var(--border)] relative overflow-hidden group-hover:border-[var(--accent-border)] transition-colors backdrop-blur-sm bg-white/5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2"
+      >
         {project.imageUrl ? (
           <img
             src={project.imageUrl}
@@ -94,16 +100,22 @@ function ProjectCard({
           />
         ) : (
           <div className="flex flex-col items-center justify-center p-6 text-center h-full w-full bg-gradient-to-tr from-[var(--accent-bg)] to-transparent select-none">
-            <span className="text-[var(--accent)] font-mono text-xs mb-2 tracking-widest">[ SECURITY LAB ]</span>
-            <span className="text-[var(--text-h)] font-bold text-lg mb-1">{project.title}</span>
-            <span className="opacity-40 font-mono text-[10px]">No image preview available</span>
+            <span className="text-[var(--accent)] font-mono text-xs mb-2 tracking-widest">
+              [ SECURITY LAB ]
+            </span>
+            <span className="text-[var(--text-h)] font-bold text-lg mb-1">
+              {project.title}
+            </span>
+            <span className="opacity-40 font-mono text-[10px]">
+              No image preview available
+            </span>
           </div>
         )}
         {/* Scanline Effect */}
         <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity">
           <div className="w-full h-[2px] bg-[var(--accent)] animate-scanline shadow-[0_0_15px_var(--accent)]" />
         </div>
-      </div>
+      </a>
 
       {/* Content */}
       <div className="w-full md:w-1/2 flex flex-col">
