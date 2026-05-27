@@ -140,7 +140,7 @@ function ProjectCard({
             href={project.detailsUrl}
             className="text-sm font-bold text-[var(--accent)] hover:underline inline-flex items-center gap-1 transition-all"
           >
-            View Details <span aria-hidden="true">&gt;</span>
+            Live Demo <span aria-hidden="true">&gt;</span>
           </a>
           <a
             href={project.sourceUrl}
