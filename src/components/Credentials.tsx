@@ -17,11 +17,11 @@ interface Credential {
 const awardsData: Credential[] = [
   {
     id: "itlympics-2026",
-    title: "Silver Medal: Cybersecurity CTF (ITlympics)",
-    institution: "Pamantasan ng Lungsod ng Valenzuela",
+    title: "Capture The Flag",
+    institution: "ITlympics: Pamantasan ng Lungsod ng Valenzuela",
     date: "March 2026",
     timestamp: "[MAR 2026]",
-    award: "COMPETED IN CRYPTOGRAPHY, FORENSICS, AND REVERSING",
+    award: "Silver Medal",
     iconType: "silver",
     imageUrl: "/assets/certificates/itlympics-2026.webp",
   },
@@ -30,15 +30,15 @@ const awardsData: Credential[] = [
     title: "Global Cyber Skills Benchmark",
     institution: "HackTheBox",
     date: "2026",
-    timestamp: "[2026]",
+    timestamp: "[MAY 2026]",
     award: "Ranked 63/589 Teams",
     iconType: "security",
     imageUrl: "/assets/certificates/HTB-Certificate-Sergio984.webp",
   },
   {
     id: "gamecon",
-    title: "Hybrid Tabletop: GameCon ",
-    institution: "Pamantasan ng Lungsod ng Valenzuela",
+    title: "Hybrid Game Development",
+    institution: "Gamecon: Pamantasan ng Lungsod ng Valenzuela",
     date: "2026",
     timestamp: "[MAR 2026]",
     award: "BRONZE MEDAL",
@@ -47,8 +47,8 @@ const awardsData: Credential[] = [
   },
   {
     id: "14th-it-skills",
-    title: "National Representative: Cybersecurity Quiz Bee",
-    institution: "University of Makati",
+    title: "Cybersecurity Quiz Bee",
+    institution: "14th National IT Skills Olympics - University of Makati",
     date: "November 2025",
     timestamp: "[NOV 2025]",
     award: "Representative",
@@ -57,7 +57,7 @@ const awardsData: Credential[] = [
   },
   {
     id: "itlympics-2025",
-    title: "Gold Medal: General IT Quiz Bee (ITlympics)",
+    title: "General IT Quiz Bee",
     institution: "Pamantasan ng Lungsod ng Valenzuela",
     date: "April 2025",
     timestamp: "[APR 2025]",
@@ -68,7 +68,8 @@ const awardsData: Credential[] = [
   {
     id: "deans-list",
     title: "Dean's List Academic Excellence",
-    institution: "Pamantasan ng Lungsod ng Valenzuela",
+    institution:
+      "Pamantasan ng Lungsod ng Valenzuela — BS Information Technology",
     date: "2023 - 2026",
     timestamp: "[2023 - 2026]",
     award: "CONSISTENT DEAN'S LISTER — 1.03 RUNNING GWA",

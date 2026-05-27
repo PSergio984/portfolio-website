@@ -1,12 +1,12 @@
-import './index.css'
-import { Header } from './components/Header'
-import { Hero } from './components/Hero'
-import { Awards, Certifications, Seminars } from './components/Credentials'
-import { Skills } from './components/Skills'
-import { Projects } from './components/Projects'
-import { Contact } from './components/Contact'
-import { Footer } from './components/Footer'
-import { CustomCursor } from './components/CustomCursor'
+import "./index.css";
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { Awards, Certifications, Seminars } from "./components/Credentials";
+import { Skills } from "./components/Skills";
+import { Projects } from "./components/Projects";
+import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
+import { CustomCursor } from "./components/CustomCursor";
 
 function App() {
   return (
@@ -21,18 +21,20 @@ function App() {
         <div className="h-px bg-[var(--border)] w-full my-4" />
         <Skills />
         <div className="h-px bg-[var(--border)] w-full my-4" />
-        <Awards />
-        <div className="h-px bg-[var(--border)] w-full my-4" />
-        <Certifications />
-        <div className="h-px bg-[var(--border)] w-full my-4" />
-        <Seminars />
+        <section id="credentials" aria-label="Credentials">
+          <Awards />
+          <div className="h-px bg-[var(--border)] w-full my-4" />
+          <Certifications />
+          <div className="h-px bg-[var(--border)] w-full my-4" />
+          <Seminars />
+        </section>
         <div className="h-px bg-[var(--border)] w-full my-4" />
         <Contact />
       </main>
 
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

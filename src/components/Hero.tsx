@@ -42,7 +42,7 @@ const whatIDo = [
     icon: Code2,
     title: "Full-Stack Development",
     desc: "Building secure, high-performance web applications and robust backend systems.",
-    tech: ["Python", "PHP", ".NET", "Secure Web Apps"],
+    tech: ["Python", "PHP", ".NET", "React"],
     accentClass:
       "border-blue-500/20 text-blue-400 bg-blue-500/5 hover:border-blue-500/50 hover:shadow-blue-500/5",
   },
@@ -58,7 +58,7 @@ const whatIDo = [
     icon: Flag,
     title: "CTF Competition",
     desc: "Active competitive player breaking challenges and solving security flags.",
-    tech: ["Cryptography", "Forensics", "Reversing"],
+    tech: ["OSINT", "Forensics", "Cryptography"],
     accentClass:
       "border-purple-500/20 text-purple-400 bg-purple-500/5 hover:border-purple-500/50 hover:shadow-purple-500/5",
   },
