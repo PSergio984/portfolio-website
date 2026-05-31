@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Mail, FileText } from "lucide-react";
 import { useFadeIn } from "../hooks/useFadeIn";
+import { ResumeModal } from "./ResumeModal";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -29,6 +31,7 @@ function LinkedInIcon({ className }: { className?: string }) {
 
 export function Contact() {
   const { ref, fadeClass } = useFadeIn();
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
     <section
@@ -61,10 +64,14 @@ export function Contact() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-h)] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsResumeOpen(true);
+            }}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--text-h)] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-pointer"
           >
             <FileText className="w-4 h-4" />
-            Download CV
+            View Resume
           </a>
 
           <a
@@ -88,6 +95,11 @@ export function Contact() {
           </a>
         </div>
       </div>
+
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+      />
     </section>
   );
 }
