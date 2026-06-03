@@ -6,12 +6,6 @@ export function Footer() {
           © {new Date().getFullYear()} Eric Gabriel Manabat. All rights
           reserved.
         </p>
-
-        {/* Performance Stamp */}
-        <div className="flex items-center gap-1.5 font-mono text-[10px] text-gray-700 dark:text-gray-300">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-          BUILD: v1.0.0
-        </div>
       </div>
     </footer>
   );

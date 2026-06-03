@@ -19,7 +19,7 @@ const projects = [
     id: "agos",
     title: "Agos",
     description:
-      "An integrated AI-guided overflow surveillance capstone system designed for Barangay Maysan, Valenzuela City. Fuses camera feeds (YOLOv8 blockage detection) and ultrasonic waterway depth sensor telemetry via a Raspberry Pi Zero W to automate tiered, real-time SMS emergency dispatches.",
+      "An integrated AI-guided overflow surveillance capstone system designed for Barangay Maysan, Valenzuela City. Fuses camera feeds (YOLOv8 blockage detection) and ultrasonic waterway depth sensor telemetry via a Raspberry Pi Zero 2W to automate tiered, real-time SMS emergency dispatches.",
     tags: ["Fastapi", "React", "PostgreSQL", "Raspberry Pi"],
     sourceUrl: "https://github.com/PSergio984/agos-iot-flood-monitoring",
     detailsUrl: "https://agos-app.vercel.app/",

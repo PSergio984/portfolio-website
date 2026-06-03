@@ -90,6 +90,16 @@ const certificationsData: Credential[] = [
     imageUrl: "/assets/certificates/ggcyb.webp",
   },
   {
+    id: "ibm-cybersecurity",
+    title: "IBM and ISC2 Cybersecurity Specialist",
+    institution: "IBM",
+    date: "2026",
+    timestamp: "[JUNE 2026]",
+    award: "PROFESSIONAL CERTIFICATE",
+    iconType: "security",
+    imageUrl: "/assets/certificates/ibm-cyb.png",
+  },
+  {
     id: "tesda-nc3",
     title: "Visual Graphics Design NC III",
     institution: "TESDA",

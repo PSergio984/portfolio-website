@@ -97,19 +97,19 @@ export function Hero() {
 
       <div ref={ref} className={`${fadeClass}`}>
         {/* ── Top Header nameplate row ── */}
-        <div className="flex flex-col-reverse sm:flex-row sm:items-start justify-between gap-6 mb-6">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-start items-center justify-between gap-6 mb-6 text-center sm:text-left">
           <div className="flex-1">
             <p className="text-xs font-mono text-[var(--accent)] tracking-widest uppercase select-none mb-3">
               Hello, world 👋
             </p>
-            <h1 className="text-4xl sm:text-6xl font-bold text-[var(--text-h)] leading-[1.1] tracking-tight">
+            <h1 className="text-3xl sm:text-6xl font-bold text-[var(--text-h)] leading-[1.1] tracking-tight">
               Eric Gabriel
               <br />
               Manabat
             </h1>
           </div>
           {/* Circular Nameplate Image */}
-          <div className="relative flex-shrink-0 w-32 h-32 sm:w-36 sm:h-36 self-start">
+          <div className="relative flex-shrink-0 w-24 h-24 sm:w-36 sm:h-36 self-center sm:self-start">
             {/* Animated glowing border effect */}
             <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[var(--accent)] to-purple-500 opacity-60 blur-sm animate-pulse" />
             <img
@@ -177,8 +177,8 @@ export function Hero() {
         </div>
 
         {/* ── CTA Buttons & Badges ── */}
-        <div className="flex flex-wrap items-center gap-6">
-          <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-6">
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-center sm:items-stretch">
             <a
               href="#contact"
               className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[var(--accent)] text-white font-medium text-sm hover:opacity-90 transition-opacity duration-200 cursor-pointer"
@@ -194,7 +194,7 @@ export function Hero() {
           </div>
 
           {/* Social icons row aligned correctly */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-4 w-full sm:w-auto">
             {platformLinks.map(({ id, label, href, icon: Icon }) => (
               <a
                 key={id}
