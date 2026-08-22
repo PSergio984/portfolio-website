@@ -26,3 +26,9 @@ GEMINI.md
 docs/
 .docs/
 .planning/
+
+# Local planning docs (kept on disk, not published)
+PLAN.md
+PLAN2.md
+STYLE.md
+handoff-redesign.md
