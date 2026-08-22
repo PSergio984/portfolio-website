@@ -1,5 +1,5 @@
-import "@testing-library/jest-dom";
-import { vi } from "vitest";
+import '@testing-library/jest-dom';
+import { vi } from 'vitest';
 
 // Mock IntersectionObserver
 class IntersectionObserverMock {
@@ -8,11 +8,11 @@ class IntersectionObserverMock {
   disconnect = vi.fn();
 }
 
-vi.stubGlobal("IntersectionObserver", IntersectionObserverMock);
+vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
 
 class MatchMediaMock {
   matches = false;
-  media = "";
+  media = '';
   onchange: ((event: MediaQueryListEvent) => void) | null = null;
   addEventListener = vi.fn();
   removeEventListener = vi.fn();
@@ -21,7 +21,7 @@ class MatchMediaMock {
   dispatchEvent = vi.fn(() => false);
 }
 
-Object.defineProperty(window, "matchMedia", {
+Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: vi.fn(() => new MatchMediaMock()),
 });

@@ -1,6 +1,6 @@
-import { Award, Medal, ShieldCheck, Palette, X } from "lucide-react";
-import { useState, useEffect } from "react";
-import { useFadeIn } from "../hooks/useFadeIn";
+import { Award, Medal, ShieldCheck, Palette, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useFadeIn } from '../hooks/useFadeIn';
 
 interface Credential {
   id: string;
@@ -16,143 +16,140 @@ interface Credential {
 
 const awardsData: Credential[] = [
   {
-    id: "itlympics-2026",
-    title: "Capture The Flag",
-    institution: "ITlympics: Pamantasan ng Lungsod ng Valenzuela",
-    date: "March 2026",
-    timestamp: "[MAR 2026]",
-    award: "Silver Medal",
-    iconType: "silver",
-    imageUrl: "/assets/certificates/itlympics-2026.webp",
+    id: 'itlympics-2026',
+    title: 'Capture The Flag',
+    institution: 'ITlympics: Pamantasan ng Lungsod ng Valenzuela',
+    date: 'March 2026',
+    timestamp: '[MAR 2026]',
+    award: 'Silver Medal',
+    iconType: 'silver',
+    imageUrl: '/assets/certificates/itlympics-2026.webp',
   },
   {
-    id: "hackthebox-ctf",
-    title: "Global Cyber Skills Benchmark",
-    institution: "HackTheBox",
-    date: "2026",
-    timestamp: "[MAY 2026]",
-    award: "Ranked 63/589 Teams",
-    iconType: "security",
-    imageUrl: "/assets/certificates/HTB-Certificate-Sergio984.webp",
+    id: 'hackthebox-ctf',
+    title: 'Global Cyber Skills Benchmark',
+    institution: 'HackTheBox',
+    date: '2026',
+    timestamp: '[MAY 2026]',
+    award: 'Ranked 63/589 Teams',
+    iconType: 'security',
+    imageUrl: '/assets/certificates/HTB-Certificate-Sergio984.webp',
   },
   {
-    id: "gamecon",
-    title: "Hybrid Game Development",
-    institution: "Gamecon: Pamantasan ng Lungsod ng Valenzuela",
-    date: "2026",
-    timestamp: "[MAR 2026]",
-    award: "BRONZE MEDAL",
-    iconType: "bronze",
-    imageUrl: "/assets/certificates/gamecon.jpg",
+    id: 'gamecon',
+    title: 'Hybrid Game Development',
+    institution: 'Gamecon: Pamantasan ng Lungsod ng Valenzuela',
+    date: '2026',
+    timestamp: '[MAR 2026]',
+    award: 'BRONZE MEDAL',
+    iconType: 'bronze',
+    imageUrl: '/assets/certificates/gamecon.jpg',
   },
   {
-    id: "14th-it-skills",
-    title: "Cybersecurity Quiz Bee",
-    institution: "14th National IT Skills Olympics - University of Makati",
-    date: "November 2025",
-    timestamp: "[NOV 2025]",
-    award: "Representative",
-    iconType: "rep",
-    imageUrl: "/assets/certificates/umak.webp",
+    id: '14th-it-skills',
+    title: 'Cybersecurity Quiz Bee',
+    institution: '14th National IT Skills Olympics - University of Makati',
+    date: 'November 2025',
+    timestamp: '[NOV 2025]',
+    award: 'Representative',
+    iconType: 'rep',
+    imageUrl: '/assets/certificates/umak.webp',
   },
   {
-    id: "itlympics-2025",
-    title: "General IT Quiz Bee",
-    institution: "Pamantasan ng Lungsod ng Valenzuela",
-    date: "April 2025",
-    timestamp: "[APR 2025]",
-    award: "GOLD MEDAL — GENERAL IT & SYSTEMS LOGIC",
-    iconType: "gold",
-    imageUrl: "/assets/certificates/itlympics-2025.webp",
+    id: 'itlympics-2025',
+    title: 'General IT Quiz Bee',
+    institution: 'Pamantasan ng Lungsod ng Valenzuela',
+    date: 'April 2025',
+    timestamp: '[APR 2025]',
+    award: 'GOLD MEDAL — GENERAL IT & SYSTEMS LOGIC',
+    iconType: 'gold',
+    imageUrl: '/assets/certificates/itlympics-2025.webp',
   },
   {
-    id: "deans-list",
+    id: 'deans-list',
     title: "Dean's List Academic Excellence",
-    institution:
-      "Pamantasan ng Lungsod ng Valenzuela — BS Information Technology",
-    date: "2023 - 2026",
-    timestamp: "[2023 - 2026]",
+    institution: 'Pamantasan ng Lungsod ng Valenzuela — BS Information Technology',
+    date: '2023 - 2026',
+    timestamp: '[2023 - 2026]',
     award: "CONSISTENT DEAN'S LISTER — 1.03 RUNNING GWA",
-    iconType: "gold",
-    imageUrl: "/assets/certificates/deans-list.webp",
+    iconType: 'gold',
+    imageUrl: '/assets/certificates/deans-list.webp',
   },
 ];
 
 const certificationsData: Credential[] = [
   {
-    id: "google-cybersecurity",
-    title: "Google Cybersecurity Professional",
-    institution: "Google",
-    date: "2026",
-    timestamp: "[JAN 2026]",
-    award: "PROFESSIONAL CERTIFICATE",
-    iconType: "security",
-    imageUrl: "/assets/certificates/ggcyb.webp",
+    id: 'google-cybersecurity',
+    title: 'Google Cybersecurity Professional',
+    institution: 'Google',
+    date: '2026',
+    timestamp: '[JAN 2026]',
+    award: 'PROFESSIONAL CERTIFICATE',
+    iconType: 'security',
+    imageUrl: '/assets/certificates/ggcyb.webp',
   },
   {
-    id: "ibm-cybersecurity",
-    title: "IBM and ISC2 Cybersecurity Specialist",
-    institution: "IBM",
-    date: "2026",
-    timestamp: "[JUNE 2026]",
-    award: "PROFESSIONAL CERTIFICATE",
-    iconType: "security",
-    imageUrl: "/assets/certificates/ibm-cyb.png",
+    id: 'ibm-cybersecurity',
+    title: 'IBM and ISC2 Cybersecurity Specialist',
+    institution: 'IBM',
+    date: '2026',
+    timestamp: '[JUNE 2026]',
+    award: 'PROFESSIONAL CERTIFICATE',
+    iconType: 'security',
+    imageUrl: '/assets/certificates/ibm-cyb.png',
   },
   {
-    id: "tesda-nc3",
-    title: "Visual Graphics Design NC III",
-    institution: "TESDA",
-    date: "2022",
-    timestamp: "[JULY 2023]",
-    award: "NATIONAL CERTIFICATE",
-    iconType: "design",
-    imageUrl: "/assets/certificates/tesda-vgd.webp",
+    id: 'tesda-nc3',
+    title: 'Visual Graphics Design NC III',
+    institution: 'TESDA',
+    date: '2022',
+    timestamp: '[JULY 2023]',
+    award: 'NATIONAL CERTIFICATE',
+    iconType: 'design',
+    imageUrl: '/assets/certificates/tesda-vgd.webp',
   },
   {
-    id: "fastapi-rest",
-    title: "Mastering REST APIs with FastAPI",
-    institution: "Packt",
-    date: "2026",
-    timestamp: "[MAY 2026]",
-    award: "COURSE CERTIFICATE",
-    iconType: "design",
-    imageUrl: "/assets/certificates/coursera-fastapi.png",
+    id: 'fastapi-rest',
+    title: 'Mastering REST APIs with FastAPI',
+    institution: 'Packt',
+    date: '2026',
+    timestamp: '[MAY 2026]',
+    award: 'COURSE CERTIFICATE',
+    iconType: 'design',
+    imageUrl: '/assets/certificates/coursera-fastapi.png',
   },
   {
-    id: "iot-intro",
-    title: "An Introduction to Programming the Internet of Things (IoT)",
-    institution: "UC Irvine",
-    date: "2026",
-    timestamp: "[MAY 2026]",
-    award: "SPECIALIZATION CERTIFICATE",
-    iconType: "design",
-    imageUrl: "/assets/certificates/coursera-iot-specialization.png",
+    id: 'iot-intro',
+    title: 'An Introduction to Programming the Internet of Things (IoT)',
+    institution: 'UC Irvine',
+    date: '2026',
+    timestamp: '[MAY 2026]',
+    award: 'SPECIALIZATION CERTIFICATE',
+    iconType: 'design',
+    imageUrl: '/assets/certificates/coursera-iot-specialization.png',
   },
 ];
 
 const seminarsData: Credential[] = [
   {
-    id: "seminar-cybersecurity",
-    title:
-      "Securing Connections: Strategies for Cybersecurity and Network Operations",
-    institution: "Pamantasan ng Lungsod ng Valenzuela",
-    date: "October 2025",
-    timestamp: "[OCT 2025]",
-    award: "SEMINAR CERTIFICATE",
-    iconType: "security",
-    imageUrl: "/assets/seminars/cyb.webp",
+    id: 'seminar-cybersecurity',
+    title: 'Securing Connections: Strategies for Cybersecurity and Network Operations',
+    institution: 'Pamantasan ng Lungsod ng Valenzuela',
+    date: 'October 2025',
+    timestamp: '[OCT 2025]',
+    award: 'SEMINAR CERTIFICATE',
+    iconType: 'security',
+    imageUrl: '/assets/seminars/cyb.webp',
   },
   {
-    id: "seminar-fullstack",
-    title:
-      "Launch Your Tech Career: The High-Demand Skillset of a Full Stack Web Developer",
-    institution: "Pamantasan ng Lungsod ng Valenzuela",
-    date: "September 2025",
-    timestamp: "[SEPT 2025]",
-    award: "SEMINAR CERTIFICATE",
-    iconType: "design",
-    imageUrl: "/assets/seminars/fullstack.webp",
+    id: 'seminar-fullstack',
+    title: 'Launch Your Tech Career: The High-Demand Skillset of a Full Stack Web Developer',
+    institution: 'Pamantasan ng Lungsod ng Valenzuela',
+    date: 'September 2025',
+    timestamp: '[SEPT 2025]',
+    award: 'SEMINAR CERTIFICATE',
+    iconType: 'design',
+    imageUrl: '/assets/seminars/fullstack.webp',
   },
 ];
 
@@ -216,15 +213,13 @@ export function Awards() {
   const { ref, fadeClass } = useFadeIn();
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
 
-  usePreloadImage(awardsData.map((d) => d.imageUrl || ""));
+  usePreloadImage(awardsData.map((d) => d.imageUrl || ''));
 
   return (
     <section id="awards" className="py-8 overflow-hidden">
       <div ref={ref} className={fadeClass}>
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-[var(--text-h)] mb-2">
-            Awards & Honors
-          </h2>
+          <h2 className="text-2xl font-bold text-[var(--text-h)] mb-2">Awards & Honors</h2>
           <p className="text-sm text-[var(--text)]">
             A record of competitive achievements and academic excellence.
           </p>
@@ -243,24 +238,14 @@ export function Awards() {
 
               <div className="mb-3">
                 <span className="inline-flex p-2 rounded-lg bg-[var(--code-bg)] mb-3">
-                  {cred.iconType === "security" && (
+                  {cred.iconType === 'security' && (
                     <ShieldCheck className="w-5 h-5 text-green-500" />
                   )}
-                  {cred.iconType === "design" && (
-                    <Palette className="w-5 h-5 text-pink-500" />
-                  )}
-                  {cred.iconType === "silver" && (
-                    <Medal className="w-5 h-5 text-slate-300" />
-                  )}
-                  {cred.iconType === "gold" && (
-                    <Medal className="w-5 h-5 text-yellow-500" />
-                  )}
-                  {cred.iconType === "bronze" && (
-                    <Medal className="w-5 h-5 text-amber-600" />
-                  )}
-                  {cred.iconType === "rep" && (
-                    <Award className="w-5 h-5 text-blue-500" />
-                  )}
+                  {cred.iconType === 'design' && <Palette className="w-5 h-5 text-pink-500" />}
+                  {cred.iconType === 'silver' && <Medal className="w-5 h-5 text-slate-300" />}
+                  {cred.iconType === 'gold' && <Medal className="w-5 h-5 text-yellow-500" />}
+                  {cred.iconType === 'bronze' && <Medal className="w-5 h-5 text-amber-600" />}
+                  {cred.iconType === 'rep' && <Award className="w-5 h-5 text-blue-500" />}
                 </span>
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="text-base font-semibold text-[var(--text-h)] leading-tight">
@@ -270,26 +255,24 @@ export function Awards() {
                     {cred.timestamp}
                   </span>
                 </div>
-                <p className="text-xs text-[var(--text)] mb-0">
-                  {cred.institution}
-                </p>
+                <p className="text-xs text-[var(--text)] mb-0">{cred.institution}</p>
               </div>
 
               <div className="mt-auto pt-3 flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <span
                     className={`w-1.5 h-1.5 rounded-full ${
-                      cred.iconType === "security"
-                        ? "bg-green-500"
-                        : cred.iconType === "design"
-                          ? "bg-pink-500"
-                          : cred.iconType === "silver"
-                            ? "bg-slate-300"
-                            : cred.iconType === "gold"
-                              ? "bg-yellow-500"
-                              : cred.iconType === "bronze"
-                                ? "bg-amber-600"
-                                : "bg-blue-500"
+                      cred.iconType === 'security'
+                        ? 'bg-green-500'
+                        : cred.iconType === 'design'
+                          ? 'bg-pink-500'
+                          : cred.iconType === 'silver'
+                            ? 'bg-slate-300'
+                            : cred.iconType === 'gold'
+                              ? 'bg-yellow-500'
+                              : cred.iconType === 'bronze'
+                                ? 'bg-amber-600'
+                                : 'bg-blue-500'
                     }`}
                   />
                   <span className="text-[10px] font-bold tracking-wider uppercase text-[var(--text-h)]">
@@ -301,9 +284,7 @@ export function Awards() {
                     onClick={() => setSelectedCred(cred)}
                     className="text-left text-xs font-semibold text-[var(--accent)] tracking-wider uppercase hover:underline inline-flex items-center gap-1 transition-all"
                   >
-                    {cred.id === "deans-list"
-                      ? "VIEW CERTIFICATE"
-                      : "VIEW VERIFICATION"}
+                    {cred.id === 'deans-list' ? 'VIEW CERTIFICATE' : 'VIEW VERIFICATION'}
                     <span aria-hidden="true">&gt;</span>
                   </button>
                 )}
@@ -323,10 +304,7 @@ export function Awards() {
         </div>
       </div>
 
-      <VerificationModal
-        selectedCred={selectedCred}
-        onClose={() => setSelectedCred(null)}
-      />
+      <VerificationModal selectedCred={selectedCred} onClose={() => setSelectedCred(null)} />
     </section>
   );
 }
@@ -336,16 +314,16 @@ export function Certifications() {
   const { ref, fadeClass } = useFadeIn();
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
 
-  usePreloadImage(certificationsData.map((d) => d.imageUrl || ""));
+  usePreloadImage(certificationsData.map((d) => d.imageUrl || ''));
 
   const getStatusColor = (type: string) => {
     switch (type) {
-      case "security":
-        return "bg-emerald-500 border-emerald-500/20";
-      case "design":
-        return "bg-pink-500 border-pink-500/20";
+      case 'security':
+        return 'bg-emerald-500 border-emerald-500/20';
+      case 'design':
+        return 'bg-pink-500 border-pink-500/20';
       default:
-        return "bg-blue-500 border-blue-500/20";
+        return 'bg-blue-500 border-blue-500/20';
     }
   };
 
@@ -405,10 +383,7 @@ export function Certifications() {
         </div>
       </div>
 
-      <VerificationModal
-        selectedCred={selectedCred}
-        onClose={() => setSelectedCred(null)}
-      />
+      <VerificationModal selectedCred={selectedCred} onClose={() => setSelectedCred(null)} />
     </section>
   );
 }
@@ -418,16 +393,16 @@ export function Seminars() {
   const { ref, fadeClass } = useFadeIn();
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
 
-  usePreloadImage(seminarsData.map((d) => d.imageUrl || ""));
+  usePreloadImage(seminarsData.map((d) => d.imageUrl || ''));
 
   const getStatusColor = (type: string) => {
     switch (type) {
-      case "security":
-        return "bg-emerald-500 border-emerald-500/20";
-      case "design":
-        return "bg-pink-500 border-pink-500/20";
+      case 'security':
+        return 'bg-emerald-500 border-emerald-500/20';
+      case 'design':
+        return 'bg-pink-500 border-pink-500/20';
       default:
-        return "bg-blue-500 border-blue-500/20";
+        return 'bg-blue-500 border-blue-500/20';
     }
   };
 
@@ -435,9 +410,7 @@ export function Seminars() {
     <section id="seminars" className="py-12 overflow-hidden">
       <div ref={ref} className={fadeClass}>
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-[var(--text-h)] mb-2">
-            Seminars & Workshops
-          </h2>
+          <h2 className="text-2xl font-bold text-[var(--text-h)] mb-2">Seminars & Workshops</h2>
           <p className="text-sm text-[var(--text)]">
             Participation in specialized tech seminars and industry briefings.
           </p>
@@ -487,10 +460,7 @@ export function Seminars() {
         </div>
       </div>
 
-      <VerificationModal
-        selectedCred={selectedCred}
-        onClose={() => setSelectedCred(null)}
-      />
+      <VerificationModal selectedCred={selectedCred} onClose={() => setSelectedCred(null)} />
     </section>
   );
 }

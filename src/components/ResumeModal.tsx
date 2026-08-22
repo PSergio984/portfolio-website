@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { X, Download, ExternalLink } from "lucide-react";
+import { useEffect } from 'react';
+import { X, Download, ExternalLink } from 'lucide-react';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -10,27 +10,27 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   // Prevent background scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
   // Close on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         onClose();
       }
     };
     if (isOpen) {
-      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener('keydown', handleKeyDown);
     }
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose]);
 
@@ -54,9 +54,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             <h3 className="text-base font-bold text-[var(--text-h)]">
               Eric Gabriel Manabat - Resume
             </h3>
-            <p className="text-xs text-[var(--text)] opacity-80 hidden sm:block">
-              PDF Document
-            </p>
+            <p className="text-xs text-[var(--text)] opacity-80 hidden sm:block">PDF Document</p>
           </div>
 
           <div className="flex items-center gap-3">

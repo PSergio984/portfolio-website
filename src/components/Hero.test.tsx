@@ -1,43 +1,42 @@
-import { render, screen } from '@testing-library/react'
-import { Hero } from './Hero'
+import { render, screen } from '@testing-library/react';
+import { Hero } from './Hero';
 
 // Mock the profile.png import
-vi.mock('../assets/profile.png', () => ({ default: 'profile.png' }))
+vi.mock('../assets/profile.png', () => ({ default: 'profile.png' }));
 
 describe('Hero', () => {
   beforeEach(() => {
-    render(<Hero />)
-  })
+    render(<Hero />);
+  });
 
   it('renders the about section', () => {
-    expect(document.querySelector('#about')).toBeInTheDocument()
-  })
+    expect(document.querySelector('#about')).toBeInTheDocument();
+  });
 
   it('displays name', () => {
-    expect(screen.getByRole('heading', { level: 1, name: /eric gabriel manabat/i })).toBeInTheDocument()
-  })
+    expect(
+      screen.getByRole('heading', { level: 1, name: /eric gabriel manabat/i }),
+    ).toBeInTheDocument();
+  });
 
   it('displays the headline subtitle', () => {
-    expect(screen.getByText(/full-stack developer/i)).toBeInTheDocument()
-  })
+    expect(screen.getAllByText(/full-stack developer/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/cybersecurity/i)[0]).toBeInTheDocument();
+  });
+
+  it('displays the what-i-do cards', () => {
+    expect(screen.getAllByText('Full-Stack Development')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Cybersecurity')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('CTF Competition')[0]).toBeInTheDocument();
+  });
 
   it('displays the hero image', () => {
-    expect(screen.getByAltText(/eric gabriel manabat.*portrait/i)).toBeInTheDocument()
-  })
+    expect(screen.getByAltText('Eric Gabriel Manabat')).toBeInTheDocument();
+  });
 
-  it('displays awards and certifications headers', () => {
-    expect(screen.getByText(/awards & honors/i)).toBeInTheDocument()
-    expect(screen.getByText(/certifications/i)).toBeInTheDocument()
-  })
-
-  it('displays awards and certifications content', () => {
-    // Check for specific keywords in awards
-    expect(screen.getByText(/HackTheBox/i)).toBeInTheDocument()
-    expect(screen.getAllByText(/ITlympics/i)[0]).toBeInTheDocument()
-    expect(screen.getByText(/Magna Cum Laude/i)).toBeInTheDocument()
-
-    // Check for specific keywords in certifications
-    expect(screen.getByText(/Google Cybersecurity Professional Certificate/i)).toBeInTheDocument()
-    expect(screen.getByText(/TESDA NC3/i)).toBeInTheDocument()
-  })
-})
+  it('links out to professional platforms', () => {
+    for (const label of ['GitHub', 'LinkedIn', 'TryHackMe', 'HackTheBox', 'HackerRank']) {
+      expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
+    }
+  });
+});

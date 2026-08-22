@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -13,8 +13,8 @@
   --color-social-bg-brand: var(--social-bg);
   --color-code-bg-brand: var(--code-bg);
 
-  --font-sans: "Space Grotesk", "Outfit", ui-sans-serif, system-ui;
-  --font-heading: "Outfit", ui-sans-serif, system-ui;
+  --font-sans: 'Space Grotesk', 'Outfit', ui-sans-serif, system-ui;
+  --font-heading: 'Outfit', ui-sans-serif, system-ui;
   --font-mono: var(--mono);
 }
 
@@ -36,8 +36,12 @@
 }
 
 @keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(400%); }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
 }
 
 .animate-scanline {
@@ -85,7 +89,9 @@ body {
 
 @layer base {
   @media (pointer: fine) {
-    body, a, button {
+    body,
+    a,
+    button {
       cursor: none !important;
     }
   }

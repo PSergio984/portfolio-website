@@ -9,7 +9,11 @@ export function CustomCursor() {
   useEffect(() => {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target && typeof target.closest === 'function' && target.closest('a, button, input, [role="button"]')) {
+      if (
+        target &&
+        typeof target.closest === 'function' &&
+        target.closest('a, button, input, [role="button"]')
+      ) {
         setIsHovering(true);
       } else {
         setIsHovering(false);

@@ -10,7 +10,7 @@ describe('useMousePosition', () => {
 
   it('should update position on mousemove', () => {
     const { result } = renderHook(() => useMousePosition());
-    
+
     act(() => {
       window.dispatchEvent(new MouseEvent('mousemove', { clientX: 100, clientY: 200 }));
     });

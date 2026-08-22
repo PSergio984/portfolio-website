@@ -9,7 +9,7 @@ vi.mock('../hooks/useMousePosition', () => ({
 describe('CustomCursor', () => {
   it('renders both dot and ring after mouse enter', () => {
     const { container } = render(<CustomCursor />);
-    
+
     // Initially should be null because isVisible is false
     expect(container.querySelector('.cursor-dot')).not.toBeInTheDocument();
 

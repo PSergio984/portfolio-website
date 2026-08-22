@@ -1,13 +1,13 @@
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "../hooks/useTheme";
-import { useActiveSection } from "../hooks/useActiveSection";
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../hooks/useTheme';
+import { useActiveSection } from '../hooks/useActiveSection';
 
 const navigationItems = [
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "credentials", label: "Credentials" },
-  { id: "contact", label: "Contact" },
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'credentials', label: 'Credentials' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 const navigationSectionIds = navigationItems.map((item) => item.id);
@@ -19,8 +19,8 @@ export function Header() {
   const linkClassName = (id: string) =>
     `text-sm transition-colors ${
       activeSection === id
-        ? "text-[var(--accent)] font-semibold"
-        : "text-[var(--text)] hover:text-[var(--accent)]"
+        ? 'text-[var(--accent)] font-semibold'
+        : 'text-[var(--text)] hover:text-[var(--accent)]'
     }`;
 
   return (
@@ -35,7 +35,7 @@ export function Header() {
               href={`#${item.id}`}
               className={`${linkClassName(item.id)} whitespace-nowrap`}
               title={item.label}
-              aria-current={activeSection === item.id ? "page" : undefined}
+              aria-current={activeSection === item.id ? 'page' : undefined}
             >
               {item.label}
             </a>
@@ -48,11 +48,7 @@ export function Header() {
             className="p-2 rounded-full hover:bg-[var(--accent-bg)] hover:text-[var(--accent)] transition-colors text-[var(--text)]"
             aria-label="Toggle theme"
           >
-            {isDark ? (
-              <Sun className="w-5 h-5" />
-            ) : (
-              <Moon className="w-5 h-5" />
-            )}
+            {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
         </nav>
       </div>

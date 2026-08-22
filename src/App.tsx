@@ -1,12 +1,12 @@
-import "./index.css";
-import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { Awards, Certifications, Seminars } from "./components/Credentials";
-import { Skills } from "./components/Skills";
-import { Projects } from "./components/Projects";
-import { Contact } from "./components/Contact";
-import { Footer } from "./components/Footer";
-import { CustomCursor } from "./components/CustomCursor";
+import './index.css';
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { Awards, Certifications, Seminars } from './components/Credentials';
+import { Skills } from './components/Skills';
+import { Projects } from './components/Projects';
+import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
+import { CustomCursor } from './components/CustomCursor';
 
 function App() {
   return (

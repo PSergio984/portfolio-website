@@ -1,29 +1,29 @@
-import { render, screen } from '@testing-library/react'
-import { Skills } from './Skills'
+import { render, screen } from '@testing-library/react';
+import { Skills } from './Skills';
 
 describe('Skills', () => {
   beforeEach(() => {
-    render(<Skills />)
-  })
+    render(<Skills />);
+  });
 
   it('renders the skills section', () => {
-    expect(document.querySelector('#skills')).toBeInTheDocument()
-  })
+    expect(document.querySelector('#skills')).toBeInTheDocument();
+  });
 
   it('renders all skill categories', () => {
-    expect(screen.getByText('Languages')).toBeInTheDocument()
-    expect(screen.getByText('Backend')).toBeInTheDocument()
-    expect(screen.getByText('Cybersecurity')).toBeInTheDocument()
-    expect(screen.getByText('Frontend & UI/UX')).toBeInTheDocument()
-    expect(screen.getByText('Database')).toBeInTheDocument()
-    expect(screen.getByText('DevOps & Cloud')).toBeInTheDocument()
-    expect(screen.getByText('Tools')).toBeInTheDocument()
-  })
+    expect(screen.getByText('Languages')).toBeInTheDocument();
+    expect(screen.getByText('Backend')).toBeInTheDocument();
+    expect(screen.getByText('Cybersecurity')).toBeInTheDocument();
+    expect(screen.getByText('Frontend & UI/UX')).toBeInTheDocument();
+    expect(screen.getByText('Database')).toBeInTheDocument();
+    expect(screen.getByText('DevOps & Cloud')).toBeInTheDocument();
+    expect(screen.getByText('Tools')).toBeInTheDocument();
+  });
 
   it('renders specific skills', () => {
-    expect(screen.getByText('TypeScript')).toBeInTheDocument()
-    expect(screen.getByText('Burp Suite')).toBeInTheDocument()
-    expect(screen.getByText('PostgreSQL')).toBeInTheDocument()
-    expect(screen.getByText('Docker')).toBeInTheDocument()
-  })
-})
+    expect(screen.getByText('TypeScript')).toBeInTheDocument();
+    expect(screen.getByText('Burp Suite')).toBeInTheDocument();
+    expect(screen.getByText('PostgreSQL')).toBeInTheDocument();
+    expect(screen.getByText('Docker')).toBeInTheDocument();
+  });
+});

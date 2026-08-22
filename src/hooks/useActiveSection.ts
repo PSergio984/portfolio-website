@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export function useActiveSection(sectionIds: string[]) {
-  const [activeSection, setActiveSection] = useState(sectionIds[0] ?? "");
+  const [activeSection, setActiveSection] = useState(sectionIds[0] ?? '');
 
   useEffect(() => {
     if (sectionIds.length === 0) return;
 
     const updateActiveSection = () => {
       const viewportCenter = window.innerHeight / 2;
-      let currentSection = sectionIds[0] ?? "";
+      let currentSection = sectionIds[0] ?? '';
       let closestDistance = Number.POSITIVE_INFINITY;
 
       for (const sectionId of sectionIds) {
@@ -33,12 +33,12 @@ export function useActiveSection(sectionIds: string[]) {
     };
 
     updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
-    window.addEventListener("resize", updateActiveSection);
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
 
     return () => {
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
     };
   }, [sectionIds]);
 
