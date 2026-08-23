@@ -7,6 +7,7 @@ import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
+import { DigitalEricChat } from './components/DigitalEricChat';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       </main>
 
       <Footer />
+      <DigitalEricChat />
     </div>
   );
 }
