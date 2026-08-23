@@ -32,3 +32,10 @@ PLAN.md
 PLAN2.md
 STYLE.md
 handoff-redesign.md
+
+# Python agent
+agent/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
