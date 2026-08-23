@@ -1,4 +1,14 @@
+from pathlib import Path
+
 from agent.app.prompt import build_contents, build_system_prompt
+
+REPO_KNOWLEDGE = Path(__file__).resolve().parent.parent.parent / "knowledge" / "digital-eric.md"
+VENDORED_KNOWLEDGE = Path(__file__).resolve().parent.parent / "knowledge" / "digital-eric.md"
+
+
+def test_vendored_knowledge_matches_canonical_file():
+    """agent/ deploys self-contained, so its knowledge copy must never drift."""
+    assert VENDORED_KNOWLEDGE.read_bytes() == REPO_KNOWLEDGE.read_bytes()
 
 
 def test_system_prompt_includes_framing_and_knowledge():
