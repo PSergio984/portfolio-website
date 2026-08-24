@@ -43,24 +43,18 @@ const whatIDo = [
     title: 'Full-Stack Development',
     desc: 'Building secure, high-performance web applications and robust backend systems.',
     tech: ['Python', 'PHP', '.NET', 'React'],
-    accentClass:
-      'border-blue-500/20 text-blue-400 bg-blue-500/5 hover:border-blue-500/50 hover:shadow-blue-500/5',
   },
   {
     icon: ShieldCheck,
     title: 'Cybersecurity',
     desc: 'Vulnerability hunting, defense mechanisms design, and security posture auditing.',
     tech: ['Google Certified', 'Vulnerability Hunting'],
-    accentClass:
-      'border-green-500/20 text-green-400 bg-green-500/5 hover:border-green-500/50 hover:shadow-green-500/5',
   },
   {
     icon: Flag,
     title: 'CTF Competition',
     desc: 'Active competitive player breaking challenges and solving security flags.',
     tech: ['OSINT', 'Forensics', 'Cryptography'],
-    accentClass:
-      'border-purple-500/20 text-purple-400 bg-purple-500/5 hover:border-purple-500/50 hover:shadow-purple-500/5',
   },
 ];
 
@@ -141,7 +135,7 @@ export function Hero() {
             return (
               <div
                 key={index}
-                className={`p-6 rounded-2xl border ${item.accentClass} flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-lg duration-300`}
+                className="p-6 rounded-2xl border border-[var(--accent-border)] bg-[var(--accent-bg)] text-[var(--accent)] flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-lg hover:border-[var(--accent)] duration-300"
               >
                 <div>
                   <div className="mb-4">

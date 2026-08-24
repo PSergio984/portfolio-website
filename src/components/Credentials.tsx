@@ -1,5 +1,5 @@
 import { Award, Medal, ShieldCheck, Palette, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
 
 interface Credential {
@@ -153,18 +153,6 @@ const seminarsData: Credential[] = [
   },
 ];
 
-// Helper to pre-load verification images
-function usePreloadImage(images: string[]) {
-  useEffect(() => {
-    images.forEach((src) => {
-      if (src) {
-        const img = new Image();
-        img.src = src;
-      }
-    });
-  }, [images]);
-}
-
 // Shared Verification Modal Component
 function VerificationModal({
   selectedCred,
@@ -212,8 +200,6 @@ function VerificationModal({
 export function Awards() {
   const { ref, fadeClass } = useFadeIn();
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
-
-  usePreloadImage(awardsData.map((d) => d.imageUrl || ''));
 
   return (
     <section id="awards" className="py-8 overflow-hidden">
@@ -314,8 +300,6 @@ export function Certifications() {
   const { ref, fadeClass } = useFadeIn();
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
 
-  usePreloadImage(certificationsData.map((d) => d.imageUrl || ''));
-
   const getStatusColor = (type: string) => {
     switch (type) {
       case 'security':
@@ -392,8 +376,6 @@ export function Certifications() {
 export function Seminars() {
   const { ref, fadeClass } = useFadeIn();
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
-
-  usePreloadImage(seminarsData.map((d) => d.imageUrl || ''));
 
   const getStatusColor = (type: string) => {
     switch (type) {
