@@ -9,7 +9,7 @@ const STARTERS = [
 ];
 
 function apiBase(): string {
-  return import.meta.env.VITE_CHAT_API_URL ?? '';
+  return (import.meta.env.VITE_CHAT_API_URL ?? '').replace(/\/+$/, '');
 }
 
 type Msg = { role: 'user' | 'assistant'; content: string };
