@@ -15,7 +15,7 @@ import httpx
 
 logger = logging.getLogger("digital-eric")
 
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
 GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.1-8b-instant")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
@@ -81,7 +81,7 @@ class ProviderChain:
         if not self.steps:
             yield "Digital Eric is still being configured - no LLM keys are set yet."
             return
-        for _name, streamer, key in self.steps:
+        for name, streamer, key in self.steps:
             emitted = False
             try:
                 async for token in streamer(system_prompt, contents, key):  # type: ignore[operator]
