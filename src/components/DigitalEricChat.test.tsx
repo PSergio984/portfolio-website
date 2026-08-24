@@ -17,7 +17,7 @@ describe('DigitalEricChat', () => {
   it('opens a panel with a visible AI disclosure badge', async () => {
     render(<DigitalEricChat />);
     fireEvent.click(screen.getByRole('button', { name: /chat with digital eric/i }));
-    expect(await screen.findByTestId('ai-badge')).toHaveTextContent(/AI · not the human/i);
+    expect(await screen.findByTestId('ai-badge')).toHaveTextContent(/ai avatar/i);
   });
 
   it('shows starter chips that fill and send a message', async () => {
