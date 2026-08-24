@@ -5,7 +5,7 @@ const STARTERS = [
   'What is AGOS?',
   'How did you get into cybersecurity?',
   'What does Full-Stack AI Engineer mean for you?',
-  'Tell me about your CTF medals',
+  "What's your proudest project?",
 ];
 
 function apiBase(): string {
