@@ -7,12 +7,15 @@ another model's continuation.
 """
 
 import json
+import logging
 import os
 from collections.abc import AsyncIterator
 
 import httpx
 
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+logger = logging.getLogger("digital-eric")
+
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.1-8b-instant")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
@@ -85,7 +88,8 @@ class ProviderChain:
                     emitted = True
                     yield token
                 return
-            except Exception:  # noqa: BLE001 - fallback is the whole point
+            except Exception as exc:  # noqa: BLE001 - fallback is the whole point
+                logger.warning("provider %s failed: %s: %s", name, type(exc).__name__, exc)
                 if emitted:
                     # Mid-stream failure: keep the partial answer, stop cleanly.
                     yield CUT_OFF_NOTICE
