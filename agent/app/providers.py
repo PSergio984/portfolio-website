@@ -22,14 +22,20 @@ CUT_OFF_NOTICE = " …(my connection dropped mid-answer — ask again and I'll c
 async def stream_gemini(
     system_prompt: str, contents: list[dict], api_key: str
 ) -> AsyncIterator[str]:
+    import inspect
+
     from google import genai
     from google.genai import types as gtypes
 
     client = genai.Client(api_key=api_key)
     config = gtypes.GenerateContentConfig(system_instruction=system_prompt)
-    async for chunk in client.aio.models.generate_content_stream(
+    result = client.aio.models.generate_content_stream(
         model=GEMINI_MODEL, contents=contents, config=config  # type: ignore[arg-type]
-    ):
+    )
+    if inspect.iscoroutine(result):
+        # newer google-genai versions: await to obtain the async iterator
+        result = await result
+    async for chunk in result:
         text = chunk.text or ""
         if text:
             yield text
