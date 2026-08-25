@@ -25,15 +25,15 @@ Visitor browser
 
 ## Operating manual
 
-| Task | How |
-|---|---|
-| **Teach Digital Eric something new** | Edit `knowledge/digital-eric.md`, copy it to `agent/knowledge/digital-eric.md`, commit, push. Auto-deploys. |
-| **Change the model** | FastAPI Cloud env `GEMINI_MODEL` (default `gemini-3.6-flash` — Google retires names often; check AI Studio when answers 404) |
-| **Deploy manually** | `cd agent && fastapi deploy` (normally automatic on push to `main`) |
-| **Read a conversation** | Your Telegram chat (one push per exchange) |
-| **See errors** | FastAPI Cloud dashboard logs — provider failures log as `provider gemini failed: …` |
-| **Frontend env** | Vercel: `VITE_CHAT_API_URL = https://portfolio-website-1e1b9d48.fastapicloud.dev` (no trailing slash needed) |
-| **Secrets** | FastAPI Cloud env (write-once): `GEMINI_API_KEY`, optional `GROQ_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. Changes apply on next deploy. |
+| Task                                 | How                                                                                                                                                |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Teach Digital Eric something new** | Edit `knowledge/digital-eric.md`, copy it to `agent/knowledge/digital-eric.md`, commit, push. Auto-deploys.                                        |
+| **Change the model**                 | FastAPI Cloud env `GEMINI_MODEL` (default `gemini-3.6-flash` — Google retires names often; check AI Studio when answers 404)                       |
+| **Deploy manually**                  | `cd agent && fastapi deploy` (normally automatic on push to `main`)                                                                                |
+| **Read a conversation**              | Your Telegram chat (one push per exchange)                                                                                                         |
+| **See errors**                       | FastAPI Cloud dashboard logs — provider failures log as `provider gemini failed: …`                                                                |
+| **Frontend env**                     | Vercel: `VITE_CHAT_API_URL = https://portfolio-website-1e1b9d48.fastapicloud.dev` (no trailing slash needed)                                       |
+| **Secrets**                          | FastAPI Cloud env (write-once): `GEMINI_API_KEY`, optional `GROQ_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. Changes apply on next deploy. |
 
 ## Known trade-offs (accepted, revisit if traffic grows)
 
