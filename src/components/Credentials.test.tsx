@@ -46,8 +46,8 @@ describe('Credentials Components', () => {
   });
 
   it('renders verification buttons for every credentialed item', () => {
-    // 5 awards + 5 certifications open the verification modal
-    expect(screen.getAllByText(/VIEW VERIFICATION/)).toHaveLength(10);
+    // 5 awards + 11 certifications open the verification modal
+    expect(screen.getAllByText(/VIEW VERIFICATION/)).toHaveLength(16);
     // Dean's List award + 2 seminars use the certificate label
     expect(screen.getAllByText(/VIEW CERTIFICATE/)).toHaveLength(3);
   });
