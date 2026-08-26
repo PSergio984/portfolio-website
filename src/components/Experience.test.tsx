@@ -11,22 +11,23 @@ describe('Experience', () => {
   });
 
   it('renders both roles with companies and timestamps', () => {
-    expect(screen.getByText('Backend AI Engineer — Intern')).toBeInTheDocument();
-    expect(screen.getByText('Flyrank')).toBeInTheDocument();
-    expect(screen.getByText('[JUL – AUG 2026]')).toBeInTheDocument();
+    expect(screen.getByText('Full-Stack AI Engineer Intern')).toBeInTheDocument();
+    expect(screen.getByText('FlyRank AI')).toBeInTheDocument();
+    expect(screen.getAllByText('[JUN 2026 – PRESENT]')[0]).toBeInTheDocument();
 
-    expect(screen.getByText('Software Engineering Intern — HRIS SWE Team')).toBeInTheDocument();
+    expect(screen.getByText('Full Stack Software Engineering Intern — Team Lead')).toBeInTheDocument();
     expect(screen.getByText('Nexvision Innovations Inc.')).toBeInTheDocument();
-    expect(screen.getByText('[JUN – SEP 2026]')).toBeInTheDocument();
   });
 
-  it('keeps NDA client names out while summarizing the work', () => {
-    expect(screen.getByText(/four white-label HRIS products \(client names under NDA\)/i));
+  it('summarizes the work and NDA context accurately', () => {
+    expect(screen.getByText(/mission-critical enterprise HRIS features under NDA/i)).toBeInTheDocument();
   });
 
-  it('renders accomplishment bullets from the weekly reports', () => {
-    expect(screen.getByText(/night-differential double-counting/i)).toBeInTheDocument();
-    expect(screen.getByText(/SSS \/ PhilHealth \/ Pag-IBIG/i)).toBeInTheDocument();
-    expect(screen.getByText(/agentic AI workflows/i)).toBeInTheDocument();
+  it('renders accomplishment bullets from reports including DOLE labor audit and Google XYZ metrics', () => {
+    expect(screen.getByText(/Department of Labor and Employment \(DOLE\) statutory standards/i)).toBeInTheDocument();
+    expect(screen.getByText(/progressive SSS\/WISP, PhilHealth, and Pag-IBIG/i)).toBeInTheDocument();
+    expect(screen.getByText(/10 PM – 6 AM night differentials/i)).toBeInTheDocument();
+    expect(screen.getByText(/FastAPI AI sidecar microservice/i)).toBeInTheDocument();
+    expect(screen.getByText(/increasing retrieval accuracy from 81\.8% to 86\.4% Top-1/i)).toBeInTheDocument();
   });
 });

@@ -5,32 +5,42 @@ interface ExperienceEntry {
   company: string;
   role: string;
   timestamp: string;
+  location: string;
   summary: string;
   bullets: string[];
+  tags: string[];
 }
 
 const experienceData: ExperienceEntry[] = [
   {
-    company: 'Flyrank',
-    role: 'Backend AI Engineer — Intern',
-    timestamp: '[JUL – AUG 2026]',
-    summary: 'Shipped backend AI features.',
+    company: 'FlyRank AI',
+    role: 'Full-Stack AI Engineer Intern',
+    timestamp: '[JUN 2026 – PRESENT]',
+    location: 'Remote',
+    summary:
+      'Engineered decoupled AI microservices, autonomous RAG pipelines, and hybrid neural retrieval architectures with end-to-end telemetry and LLM-as-judge evaluation.',
+    tags: ['FastAPI', 'Python', 'Hybrid RRF (k=60)', 'SQLite FTS5', 'SSE Streaming', 'Prometheus', 'LLM-as-Judge'],
     bullets: [
-      'Built agentic AI workflows and conversational AI services.',
-      'Retro-fitted AI agents into existing projects — adding an AI layer without rewriting what already worked.',
+      'Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing retrieval accuracy from 81.8% to 86.4% Top-1 on ground-truth benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.',
+      'Eliminated out-of-domain hallucinations to achieve a 100% negative query pass rate and 90% LLM-as-judge relevance score by designing a bounded 3-step agentic query loop with cosine similarity gating (<0.50 threshold) and inline numbered citations.',
+      'Reduced time-to-first-token (TTFT) by ~65% and established real-time observability across production deployments by implementing asynchronous Server-Sent Events (SSE) streaming APIs, Prometheus /metrics latency histograms, and Grafana telemetry dashboards.',
     ],
   },
   {
     company: 'Nexvision Innovations Inc.',
-    role: 'Software Engineering Intern — HRIS SWE Team',
-    timestamp: '[JUN – SEP 2026]',
+    role: 'Full Stack Software Engineering Intern — Team Lead',
+    timestamp: '[JUN 2026 – PRESENT]',
+    location: 'Marikina (Hybrid)',
     summary:
-      'Maintaining and enhancing four white-label HRIS products (client names under NDA) across payroll, attendance, and employee records. Promoted to team lead for the intern group mid-internship.',
+      'Promoted to Intern Team Lead across a 12-week lifecycle; led sprint execution, audited payroll compliance against DOLE labor standards, and delivered mission-critical enterprise HRIS features under NDA.',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Zustand', 'Jenkins', 'GitHub Actions', 'DOLE Audit'],
     bullets: [
-      'Fixed payroll-engine correctness issues: night-differential double-counting, overtime edge cases, and statutory deduction validation (SSS / PhilHealth / Pag-IBIG) — backed by new automated tests.',
-      'Audited and fixed bugs spanning authentication security, row-level-security policies, holiday computation, and CI pipelines.',
-      'Shipped features end-to-end: attendance heatmap scheduling, print-ready payroll Excel exports, and descriptive empty-state UX across table views.',
-      'Assigned GitHub issues to fellow interns based on supervisor direction.',
+      'Ensured 100% compliance with Department of Labor and Employment (DOLE) statutory standards across 4 enterprise HRIS applications by auditing payroll calculation engines and implementing interval-partitioned time algorithms to isolate 10 PM – 6 AM night differentials from standard overtime multipliers.',
+      'Automated statutory multi-tier payroll deductions and 13th-month proration across 500+ employee records by developing TypeScript/Next.js calculation modules for progressive SSS/WISP, PhilHealth, and Pag-IBIG regular/MP2 brackets with immutable audit logging.',
+      'Prevented cross-branch data leaks and strengthened multi-tenant data isolation by auditing Supabase and PostgreSQL data-access layers and implementing strict branch-scoped row-level query constraints.',
+      'Accelerated CI/CD build and test execution cycles by 40% (cutting runner execution times from ~12m to ~7m) by architecting an offline mock testing daemon in GitHub Actions and Jenkins to eliminate flaky external DNS timeouts.',
+      'Reduced monthly branch audit preparation time from 3 days to under 5 minutes by building interactive DTR attendance heatmaps with Zustand state persistence and high-throughput multi-sheet Excel/CSV compliance export engines.',
+      'Accelerated team sprint velocity across 180+ Jira/GitHub issues as Intern Team Lead by delegating frontend/backend tasks, conducting peer code reviews for TypeScript type safety, and enforcing clean architectural standards.',
     ],
   },
 ];
@@ -39,51 +49,66 @@ export function Experience() {
   const { ref, fadeClass } = useFadeIn();
 
   return (
-    <section id="experience" className="py-8 overflow-hidden">
+    <section id="experience" aria-label="Professional Experience" className="py-10 overflow-hidden">
       <div ref={ref} className={fadeClass}>
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-[var(--text-h)] mb-2">Experience</h2>
-          <p className="text-sm text-[var(--text)]">
-            Where I&apos;ve applied the stack — internships with real production impact.
-          </p>
+          <div className="text-xs font-mono text-[var(--accent-text)] uppercase tracking-wider font-semibold mb-1 px-2.5 py-0.5 rounded-md bg-[var(--accent-bg)] border border-[var(--accent-border)] w-fit">
+            Production Experience
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-h)] mt-1.5">Engineering Internships & Leadership</h2>
         </div>
 
-        <div className="relative pl-4 sm:pl-6 border-l border-[var(--border)] ml-2 sm:ml-4 space-y-8 my-4">
+        <div className="space-y-6">
           {experienceData.map((exp) => (
-            <div key={exp.company} className="relative group">
-              <span className="absolute -left-[25px] sm:-left-[33px] top-1.5 flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full border-4 bg-[var(--accent)] border-[var(--accent-border)] transition-transform group-hover:scale-125 duration-200" />
-
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="space-y-1">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <h3 className="text-base font-bold text-[var(--text-h)] group-hover:text-[var(--accent)] transition-colors duration-200">
-                      {exp.role}
-                    </h3>
-                    <span className="font-mono text-[10px] text-[var(--accent)] font-semibold">
+            <article
+              key={exp.company}
+              className="p-6 sm:p-7 rounded-2xl bg-[var(--card-bg)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all duration-200 shadow-[var(--shadow-card)] space-y-4"
+            >
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-[var(--border)]">
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="text-base sm:text-lg font-bold text-[var(--text-h)]">{exp.role}</h3>
+                    <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-[var(--accent-bg)] text-[var(--accent-text)] border border-[var(--accent-border)]">
                       {exp.timestamp}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-[var(--text)]">
-                    <Briefcase className="w-3.5 h-3.5" />
-                    <span className="font-semibold">{exp.company}</span>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm text-[var(--text-muted)] mt-1 font-medium">
+                    <Briefcase className="w-3.5 h-3.5 text-[var(--accent)]" />
+                    <span className="font-semibold text-[var(--text-h)]">{exp.company}</span>
+                    <span>&bull;</span>
+                    <span>{exp.location}</span>
                   </div>
-                  <p className="text-xs text-[var(--text)] leading-relaxed max-w-2xl pt-1">
-                    {exp.summary}
-                  </p>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1">
+                  {exp.tags.slice(0, 4).map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium border border-slate-200 dark:border-slate-700/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              <ul className="space-y-1.5 mt-3">
-                {exp.bullets.map((bullet, i) => (
-                  <li key={i} className="flex gap-2 text-xs text-[var(--text)] leading-relaxed">
-                    <span aria-hidden="true" className="text-[var(--accent)] font-mono">
-                      &gt;
-                    </span>
+              {/* Summary */}
+              <p className="text-xs sm:text-sm text-[var(--text)] leading-relaxed italic">
+                &ldquo;{exp.summary}&rdquo;
+              </p>
+
+              {/* Bullets formatted in Google XYZ (Accomplished X as measured by Y by doing Z) */}
+              <ul className="space-y-2.5">
+                {exp.bullets.map((bullet) => (
+                  <li key={bullet.slice(0, 32)} className="flex gap-3 text-xs sm:text-sm text-[var(--text)] leading-relaxed">
+                    <span className="text-[var(--accent)] font-mono font-bold mt-0.5 shrink-0">&gt;</span>
                     <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
         </div>
       </div>

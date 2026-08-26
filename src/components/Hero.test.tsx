@@ -20,14 +20,13 @@ describe('Hero', () => {
   });
 
   it('displays the headline subtitle', () => {
-    expect(screen.getAllByText(/full-stack developer/i)[0]).toBeInTheDocument();
-    expect(screen.getAllByText(/cybersecurity/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/full-stack ai engineer/i)[0]).toBeInTheDocument();
   });
 
   it('displays the what-i-do cards', () => {
-    expect(screen.getAllByText('Full-Stack Development')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('Cybersecurity')[0]).toBeInTheDocument();
-    expect(screen.getAllByText('CTF Competition')[0]).toBeInTheDocument();
+    expect(screen.getByText('Full-Stack AI Engineering')).toBeInTheDocument();
+    expect(screen.getByText('Secure Backend Architecture')).toBeInTheDocument();
+    expect(screen.getByText('Cybersecurity & CTF Honors')).toBeInTheDocument();
   });
 
   it('displays the hero image', () => {
@@ -35,7 +34,7 @@ describe('Hero', () => {
   });
 
   it('links out to professional platforms', () => {
-    for (const label of ['GitHub', 'LinkedIn', 'TryHackMe', 'HackTheBox', 'HackerRank']) {
+    for (const label of ['GitHub', 'LinkedIn', 'Boot.dev', 'TryHackMe', 'HackTheBox', 'HackerRank']) {
       expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
     }
   });

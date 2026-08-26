@@ -32,8 +32,14 @@ describe('Contact', () => {
     const link = screen.getByRole('link', { name: /linkedin/i });
     expect(link).toHaveAttribute(
       'href',
-      'https://www.linkedin.com/in/eric-gabriel-manabat-554697204/',
+      'https://www.linkedin.com/in/eric-gabriel-manabat',
     );
+    expect(link).toHaveAttribute('target', '_blank');
+  });
+
+  it('renders Boot.dev link', () => {
+    const link = screen.getByRole('link', { name: /boot\.dev/i });
+    expect(link).toHaveAttribute('href', 'https://www.boot.dev/u/eric984');
     expect(link).toHaveAttribute('target', '_blank');
   });
 

@@ -1,5 +1,4 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from './Header';
 
 function mockSection(id: string, top: number) {
@@ -27,6 +26,7 @@ function mockSection(id: string, top: number) {
 describe('Header', () => {
   let aboutSection: HTMLElement & { setTop?: (value: number) => void };
   let projectsSection: HTMLElement & { setTop?: (value: number) => void };
+  let experienceSection: HTMLElement & { setTop?: (value: number) => void };
   let skillsSection: HTMLElement & { setTop?: (value: number) => void };
   let credentialsSection: HTMLElement & { setTop?: (value: number) => void };
 
@@ -38,9 +38,20 @@ describe('Header', () => {
     });
     aboutSection = mockSection('about', 0);
     projectsSection = mockSection('projects', 1200);
-    skillsSection = mockSection('skills', 2400);
-    credentialsSection = mockSection('credentials', 3600);
-    mockSection('contact', 7200);
+    experienceSection = mockSection('experience', 2400);
+    skillsSection = mockSection('skills', 3600);
+    credentialsSection = mockSection('credentials', 4800);
+    mockSection('contact', 6000);
+  });
+
+  it('renders the header and navigation links', () => {
+    render(<Header />);
+    expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Projects' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Experience' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Skills' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Credentials' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Contact' })).toBeInTheDocument();
   });
 
   it('highlights the active section link as the page scrolls', async () => {
@@ -50,15 +61,16 @@ describe('Header', () => {
 
     aboutSection.setTop?.(-900);
     projectsSection.setTop?.(-100);
-    skillsSection.setTop?.(100);
-    credentialsSection.setTop?.(1200);
+    experienceSection.setTop?.(100);
+    skillsSection.setTop?.(1200);
+    credentialsSection.setTop?.(2400);
 
     act(() => {
       window.dispatchEvent(new Event('scroll'));
     });
 
     await waitFor(() => {
-      expect(screen.getByRole('link', { name: 'Skills' })).toHaveAttribute('aria-current', 'page');
+      expect(screen.getByRole('link', { name: 'Experience' })).toHaveAttribute('aria-current', 'page');
     });
   });
 });

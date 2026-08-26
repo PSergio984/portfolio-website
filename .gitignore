@@ -32,6 +32,8 @@ PLAN.md
 PLAN2.md
 STYLE.md
 handoff-redesign.md
+REHAUL-SPEC.md
+graphify-out/
 
 # Python agent
 agent/.venv/

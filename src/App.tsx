@@ -1,10 +1,10 @@
 import './index.css';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Awards, Certifications, Seminars, Programs } from './components/Credentials';
+import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
 import { Skills } from './components/Skills';
-import { Projects } from './components/Projects';
+import { Credentials } from './components/Credentials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
@@ -16,25 +16,17 @@ function App() {
       <CustomCursor />
       <Header />
 
-      <main className="flex-grow max-w-6xl w-full mx-auto px-6">
+      <main className="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6">
         <Hero />
-        <div className="h-px bg-[var(--border)] w-full my-4" />
+        <div className="h-px bg-[var(--border)] w-full my-2" />
         <Projects />
-        <div className="h-px bg-[var(--border)] w-full my-4" />
-        <Skills />
-        <div className="h-px bg-[var(--border)] w-full my-4" />
-        <section id="credentials" aria-label="Credentials">
-          <Awards />
-          <div className="h-px bg-[var(--border)] w-full my-4" />
-          <Certifications />
-          <div className="h-px bg-[var(--border)] w-full my-4" />
-          <Seminars />
-          <div className="h-px bg-[var(--border)] w-full my-4" />
-          <Programs />
-        </section>
-        <div className="h-px bg-[var(--border)] w-full my-4" />
+        <div className="h-px bg-[var(--border)] w-full my-2" />
         <Experience />
-        <div className="h-px bg-[var(--border)] w-full my-4" />
+        <div className="h-px bg-[var(--border)] w-full my-2" />
+        <Skills />
+        <div className="h-px bg-[var(--border)] w-full my-2" />
+        <Credentials />
+        <div className="h-px bg-[var(--border)] w-full my-2" />
         <Contact />
       </main>
 
