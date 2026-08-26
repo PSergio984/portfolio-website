@@ -1,7 +1,7 @@
 import './index.css';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Awards, Certifications, Seminars } from './components/Credentials';
+import { Awards, Certifications, Seminars, Programs } from './components/Credentials';
 import { Experience } from './components/Experience';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
@@ -29,6 +29,8 @@ function App() {
           <Certifications />
           <div className="h-px bg-[var(--border)] w-full my-4" />
           <Seminars />
+          <div className="h-px bg-[var(--border)] w-full my-4" />
+          <Programs />
         </section>
         <div className="h-px bg-[var(--border)] w-full my-4" />
         <Experience />

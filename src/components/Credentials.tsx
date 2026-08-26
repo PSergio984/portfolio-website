@@ -153,6 +153,59 @@ const seminarsData: Credential[] = [
   },
 ];
 
+const programsData: Credential[] = [
+  {
+    id: 'devkada-ai-infra',
+    title: 'Your Cloud, Your Agent: Hands-On Intro to AI-Driven Infrastructure',
+    institution: 'DevKada',
+    date: 'August 15, 2026',
+    timestamp: '[AUG 2026]',
+    award: 'CERTIFICATE OF PARTICIPATION',
+    iconType: 'security',
+    imageUrl: '/assets/certificates/devkada-your-cloud-your-agent.webp',
+  },
+  {
+    id: 'snowflake-discover-ai',
+    title: 'Discover AI — Snowflake',
+    institution: 'Snowflake',
+    date: 'July 2026',
+    timestamp: '[JUL 2026]',
+    award: 'COMPLETION CERTIFICATE',
+    iconType: 'security',
+    imageUrl: '/assets/certificates/snowflake-discover-ai.pdf',
+  },
+  {
+    id: 'gcp-arcade',
+    title: 'The Arcade Facilitator Program',
+    institution: 'Google Cloud Skills — Arcade',
+    date: '2026',
+    timestamp: '[2026]',
+    award: 'ENROLLED — FACILITATOR',
+    iconType: 'security',
+    imageUrl: '/assets/cohorts/google-cloud-arcade-enrollment.webp',
+  },
+  {
+    id: 'dep-datacamp',
+    title: 'Data Engineering Pilipinas × DataCamp Scholarship',
+    institution: 'DataCamp',
+    date: '2026',
+    timestamp: '[2026]',
+    award: 'SCHOLAR — ACCEPTED',
+    iconType: 'design',
+    imageUrl: '/assets/cohorts/datacamp-dep-scholar.webp',
+  },
+  {
+    id: 'llm-zoomcamp',
+    title: 'LLM Zoomcamp',
+    institution: 'DataTalks.Club',
+    date: '2026',
+    timestamp: '[2026]',
+    award: 'COHORT MEMBER',
+    iconType: 'security',
+    profileUrl: 'https://github.com/DataTalksClub/llm-zoomcamp',
+  },
+];
+
 // Shared Verification Modal Component
 function VerificationModal({
   selectedCred,
@@ -162,6 +215,7 @@ function VerificationModal({
   onClose: () => void;
 }) {
   if (!selectedCred) return null;
+  const isPdf = selectedCred.imageUrl?.toLowerCase().endsWith('.pdf');
 
   return (
     <div
@@ -173,11 +227,19 @@ function VerificationModal({
         onClick={(e) => e.stopPropagation()}
       >
         {selectedCred.imageUrl ? (
-          <img
-            src={selectedCred.imageUrl}
-            alt={`Verification for ${selectedCred.title}`}
-            className="max-w-full h-auto object-contain shadow-2xl max-h-[90vh] rounded-xl border border-white/10"
-          />
+          isPdf ? (
+            <iframe
+              src={selectedCred.imageUrl}
+              title={`Verification for ${selectedCred.title}`}
+              className="w-full h-[80vh] bg-white rounded-xl border border-white/10 shadow-2xl"
+            />
+          ) : (
+            <img
+              src={selectedCred.imageUrl}
+              alt={`Verification for ${selectedCred.title}`}
+              className="max-w-full h-auto object-contain shadow-2xl max-h-[90vh] rounded-xl border border-white/10"
+            />
+          )
         ) : (
           <div className="w-full max-w-2xl h-64 flex items-center justify-center bg-[var(--bg)] rounded-xl border border-[var(--border)] text-[var(--text)] opacity-50">
             Image verification not available
@@ -436,6 +498,89 @@ export function Seminars() {
                     </button>
                   </div>
                 )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <VerificationModal selectedCred={selectedCred} onClose={() => setSelectedCred(null)} />
+    </section>
+  );
+}
+
+// 4. PROGRAMS & COHORTS (Timeline/List)
+export function Programs() {
+  const { ref, fadeClass } = useFadeIn();
+  const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
+
+  const getStatusColor = (type: string) => {
+    switch (type) {
+      case 'security':
+        return 'bg-violet-500 border-violet-500/20';
+      case 'design':
+        return 'bg-cyan-500 border-cyan-500/20';
+      default:
+        return 'bg-amber-500 border-amber-500/20';
+    }
+  };
+
+  return (
+    <section id="programs" className="py-8 overflow-hidden">
+      <div ref={ref} className={fadeClass}>
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-[var(--text-h)] mb-2">Programs & Cohorts</h2>
+          <p className="text-sm text-[var(--text)]">
+            Scholarships, cloud programs, and learning communities I&apos;m part of.
+          </p>
+        </div>
+
+        <div className="relative pl-4 sm:pl-6 border-l border-[var(--border)] ml-2 sm:ml-4 space-y-6 my-4">
+          {programsData.map((cred) => (
+            <div key={cred.id || cred.title} className="relative group">
+              <span
+                className={`absolute -left-[25px] sm:-left-[33px] top-1.5 flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full border-4 bg-[var(--bg)] transition-transform group-hover:scale-125 duration-200 ${getStatusColor(cred.iconType)}`}
+              />
+
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <h3 className="text-base font-bold text-[var(--text-h)] group-hover:text-[var(--accent)] transition-colors duration-200">
+                      {cred.title}
+                    </h3>
+                    <span className="font-mono text-[10px] text-[var(--accent)] font-semibold">
+                      {cred.timestamp}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[var(--text)]">
+                    <span className="font-semibold">{cred.institution}</span>
+                    <span>&bull;</span>
+                    <span className="uppercase tracking-wider text-[10px] text-gray-500 font-medium">
+                      {cred.award}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 shrink-0 sm:text-right">
+                  {cred.imageUrl && (
+                    <button
+                      onClick={() => setSelectedCred(cred)}
+                      className="text-xs font-semibold text-[var(--accent)] tracking-wider uppercase hover:underline inline-flex items-center gap-1 transition-all"
+                    >
+                      VIEW PROOF <span aria-hidden="true">&gt;</span>
+                    </button>
+                  )}
+                  {cred.profileUrl && (
+                    <a
+                      href={cred.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-[var(--accent)] tracking-wider uppercase hover:underline inline-flex items-center gap-1"
+                    >
+                      VIEW PROGRAM <span aria-hidden="true">&gt;</span>
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
