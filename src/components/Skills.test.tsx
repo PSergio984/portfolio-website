@@ -28,4 +28,13 @@ describe('Skills', () => {
     expect(screen.getByText('PostgreSQL')).toBeInTheDocument();
     expect(screen.getByText('Burp Suite')).toBeInTheDocument();
   });
+
+  it('renders modern Cloud, DevOps observability, and MCP skills', () => {
+    expect(screen.getByText('Kubernetes')).toBeInTheDocument();
+    expect(screen.getByText('OpenTelemetry')).toBeInTheDocument();
+    expect(screen.getByText('Jaeger Tracing')).toBeInTheDocument();
+    expect(screen.getByText('Prometheus')).toBeInTheDocument();
+    expect(screen.getByText('Grafana')).toBeInTheDocument();
+    expect(screen.getByText('Model Context Protocol (MCP)')).toBeInTheDocument();
+  });
 });
