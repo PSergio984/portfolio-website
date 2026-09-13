@@ -45,4 +45,11 @@ describe('Credentials Component', () => {
     fireEvent.click(closeBtn);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
+
+  it('renders newly verified Anthropic MCP, Claude Code, and FlyRank credentials', () => {
+    expect(screen.getByText('Introduction to Model Context Protocol (MCP)')).toBeInTheDocument();
+    expect(screen.getByText('Claude Code 101')).toBeInTheDocument();
+    expect(screen.getByText('Learn Logging and Observability in Go')).toBeInTheDocument();
+    expect(screen.getByText('Backend AI Engineering Internship Program')).toBeInTheDocument();
+  });
 });
