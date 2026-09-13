@@ -19,7 +19,15 @@ const experienceData: ExperienceEntry[] = [
     location: 'Remote',
     summary:
       'Completed Backend AI Engineering internship (Sept 2026) and currently progressing through Frontend AI Engineering; engineered decoupled AI microservices, autonomous RAG pipelines, and hybrid neural retrieval architectures with end-to-end telemetry and LLM-as-judge evaluation.',
-    tags: ['FastAPI', 'Python', 'Hybrid RRF (k=60)', 'SQLite FTS5', 'SSE Streaming', 'Prometheus', 'LLM-as-Judge'],
+    tags: [
+      'FastAPI',
+      'Python',
+      'Hybrid RRF (k=60)',
+      'SQLite FTS5',
+      'SSE Streaming',
+      'Prometheus',
+      'LLM-as-Judge',
+    ],
     bullets: [
       'Graduated from the Backend AI Engineering Internship Program (Certificate ID: FR-D11-28D6B-6AC8A, Sept 2026) with verified distinction and continued directly into the Frontend AI Engineering internship track.',
       'Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing retrieval accuracy from 81.8% to 86.4% Top-1 on ground-truth benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.',
@@ -34,7 +42,16 @@ const experienceData: ExperienceEntry[] = [
     location: 'Marikina (Hybrid)',
     summary:
       'Promoted to Intern Team Lead across a 12-week lifecycle; led sprint execution, audited payroll compliance against DOLE labor standards, and delivered mission-critical enterprise HRIS features under NDA.',
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Zustand', 'Jenkins', 'GitHub Actions', 'DOLE Audit'],
+    tags: [
+      'Next.js',
+      'TypeScript',
+      'Supabase',
+      'PostgreSQL',
+      'Zustand',
+      'Jenkins',
+      'GitHub Actions',
+      'DOLE Audit',
+    ],
     bullets: [
       'Ensured 100% compliance with Department of Labor and Employment (DOLE) statutory standards across 4 enterprise HRIS applications by auditing payroll calculation engines and implementing interval-partitioned time algorithms to isolate 10 PM – 6 AM night differentials from standard overtime multipliers.',
       'Automated statutory multi-tier payroll deductions and 13th-month proration across 500+ employee records by developing TypeScript/Next.js calculation modules for progressive SSS/WISP, PhilHealth, and Pag-IBIG regular/MP2 brackets with immutable audit logging.',
@@ -56,7 +73,9 @@ export function Experience() {
           <div className="text-xs font-mono text-[var(--accent-text)] uppercase tracking-wider font-semibold mb-1 px-2.5 py-0.5 rounded-md bg-[var(--accent-bg)] border border-[var(--accent-border)] w-fit">
             Production Experience
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-h)] mt-1.5">Engineering Internships & Leadership</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-h)] mt-1.5">
+            Engineering Internships & Leadership
+          </h2>
         </div>
 
         <div className="space-y-6">
@@ -69,7 +88,9 @@ export function Experience() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-[var(--border)]">
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="text-base sm:text-lg font-bold text-[var(--text-h)]">{exp.role}</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-[var(--text-h)]">
+                      {exp.role}
+                    </h3>
                     <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-[var(--accent-bg)] text-[var(--accent-text)] border border-[var(--accent-border)]">
                       {exp.timestamp}
                     </span>
@@ -103,8 +124,13 @@ export function Experience() {
               {/* Bullets formatted in Google XYZ (Accomplished X as measured by Y by doing Z) */}
               <ul className="space-y-2.5">
                 {exp.bullets.map((bullet) => (
-                  <li key={bullet.slice(0, 32)} className="flex gap-3 text-xs sm:text-sm text-[var(--text)] leading-relaxed">
-                    <span className="text-[var(--accent)] font-mono font-bold mt-0.5 shrink-0">&gt;</span>
+                  <li
+                    key={bullet.slice(0, 32)}
+                    className="flex gap-3 text-xs sm:text-sm text-[var(--text)] leading-relaxed"
+                  >
+                    <span className="text-[var(--accent)] font-mono font-bold mt-0.5 shrink-0">
+                      &gt;
+                    </span>
                     <span>{bullet}</span>
                   </li>
                 ))}

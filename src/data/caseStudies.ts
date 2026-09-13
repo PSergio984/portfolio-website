@@ -58,10 +58,20 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'ceit-library',
     title: 'PLV eLib (CEIT Library)',
-    tagline: 'Academic Paper Directory with Hybrid RRF Search, Bounded Agentic RAG, and Real-Time Telemetry',
+    tagline:
+      'Academic Paper Directory with Hybrid RRF Search, Bounded Agentic RAG, and Real-Time Telemetry',
     summary:
       'A dual-engine academic library management system combining a production Laravel 11 core with an intelligent FastAPI AI sidecar for natural-language thesis discovery, policy Q&A, and citation-grounded answers.',
-    tags: ['FastAPI', 'Laravel 11', 'PostgreSQL', 'SQLite FTS5', 'RRF (k=60)', 'Docker', 'Prometheus', 'Livewire 3'],
+    tags: [
+      'FastAPI',
+      'Laravel 11',
+      'PostgreSQL',
+      'SQLite FTS5',
+      'RRF (k=60)',
+      'Docker',
+      'Prometheus',
+      'Livewire 3',
+    ],
     imageUrl: '/assets/projects/ceit-lib.webp',
     links: {
       demo: 'https://ceit-library-main-cru0ty.laravel.cloud/',
@@ -127,11 +137,31 @@ export const caseStudies: CaseStudy[] = [
 | (Relational Storage)  | (Decoupled Export / Zero DB Locking)
 +-----------------------+`,
       stack: [
-        { layer: 'Core Backend', tech: 'Laravel 11 / PHP 8.4', role: 'Authentication, QR attendance, loans, and business rules' },
-        { layer: 'AI Sidecar', tech: 'FastAPI / Python 3.12', role: 'Hybrid search, embedding inference, agentic RAG, and SSE streaming' },
-        { layer: 'Primary Storage', tech: 'PostgreSQL', role: 'Relational data, user accounts, circulation transaction logs' },
-        { layer: 'Search Index', tech: 'SQLite FTS5 + Dense Vectors', role: 'BM25 text indexing + 384d vector storage in memory/disk' },
-        { layer: 'Observability', tech: 'Prometheus & Grafana', role: 'Latency histograms, retrieval throughput, and thumbs up/down stream' },
+        {
+          layer: 'Core Backend',
+          tech: 'Laravel 11 / PHP 8.4',
+          role: 'Authentication, QR attendance, loans, and business rules',
+        },
+        {
+          layer: 'AI Sidecar',
+          tech: 'FastAPI / Python 3.12',
+          role: 'Hybrid search, embedding inference, agentic RAG, and SSE streaming',
+        },
+        {
+          layer: 'Primary Storage',
+          tech: 'PostgreSQL',
+          role: 'Relational data, user accounts, circulation transaction logs',
+        },
+        {
+          layer: 'Search Index',
+          tech: 'SQLite FTS5 + Dense Vectors',
+          role: 'BM25 text indexing + 384d vector storage in memory/disk',
+        },
+        {
+          layer: 'Observability',
+          tech: 'Prometheus & Grafana',
+          role: 'Latency histograms, retrieval throughput, and thumbs up/down stream',
+        },
       ],
     },
     aiIntegration: {
@@ -146,12 +176,32 @@ export const caseStudies: CaseStudy[] = [
         'Bounded Agentic Loop: Maximum 3 search iterations with inline numbered citation grounding and deterministic refusal on zero context.',
       ],
       benchmarks: [
-        { metric: 'Top-1 Retrieval Rate', value: '86.36%', notes: 'With blend reranking on 27-case golden set' },
-        { metric: 'Negative Pass Rate', value: '100.0%', notes: 'Zero hallucinations on out-of-domain queries' },
+        {
+          metric: 'Top-1 Retrieval Rate',
+          value: '86.36%',
+          notes: 'With blend reranking on 27-case golden set',
+        },
+        {
+          metric: 'Negative Pass Rate',
+          value: '100.0%',
+          notes: 'Zero hallucinations on out-of-domain queries',
+        },
         { metric: 'Recall@5', value: '72.39%', notes: 'Top-5 relevant catalog document capture' },
-        { metric: 'Precision@5', value: '45.45%', notes: 'High precision on mixed department queries' },
-        { metric: 'LLM-as-Judge Relevance', value: '90.0%', notes: 'Evaluated with llama-3.3-70b across 40 benchmark questions' },
-        { metric: 'LLM Partly-or-Better', value: '100.0%', notes: 'Zero irrelevant or unsupported answers generated' },
+        {
+          metric: 'Precision@5',
+          value: '45.45%',
+          notes: 'High precision on mixed department queries',
+        },
+        {
+          metric: 'LLM-as-Judge Relevance',
+          value: '90.0%',
+          notes: 'Evaluated with llama-3.3-70b across 40 benchmark questions',
+        },
+        {
+          metric: 'LLM Partly-or-Better',
+          value: '100.0%',
+          notes: 'Zero irrelevant or unsupported answers generated',
+        },
       ],
     },
     decisions: [
@@ -199,10 +249,20 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'agos',
     title: 'AGOS (AI-Guided Overflow Surveillance)',
-    tagline: 'Multi-Modal Edge IoT Flood Monitoring with YOLOv8 Obstruction Detection and Dual-Cadence Telemetry',
+    tagline:
+      'Multi-Modal Edge IoT Flood Monitoring with YOLOv8 Obstruction Detection and Dual-Cadence Telemetry',
     summary:
       'An end-to-end IoT and computer vision flood surveillance system designed for Barangay Maysan, fusing solar-powered Raspberry Pi edge sensing, ultrasonic water depth, and decoupled server-side YOLOv8 inference.',
-    tags: ['YOLOv8', 'Raspberry Pi', 'FastAPI', 'React', 'OpenCV', 'IoT Telemetry', 'PostgreSQL', 'Tailwind CSS'],
+    tags: [
+      'YOLOv8',
+      'Raspberry Pi',
+      'FastAPI',
+      'React',
+      'OpenCV',
+      'IoT Telemetry',
+      'PostgreSQL',
+      'Tailwind CSS',
+    ],
     imageUrl: '/assets/projects/agos.webp',
     links: {
       demo: 'https://agos-app.vercel.app/',
@@ -265,11 +325,31 @@ export const caseStudies: CaseStudy[] = [
   • Safe (0-44) -> Green LED | Warning (45-75) -> Yellow LED
   • Critical (76-100) -> Red LED + Push Notifications + SMS Dispatch`,
       stack: [
-        { layer: 'Edge Hardware', tech: 'Raspberry Pi Zero 2W + Solar', role: 'On-site sensor capture, power management, LTE transmission' },
-        { layer: 'Sensors', tech: 'RPi IR-Cut Cam + JSN-SR04T', role: 'Visual obstruction capture + ultrasonic water depth measurement' },
-        { layer: 'Vision & AI', tech: 'YOLOv8 + OpenCV', role: 'Frame quality validation and drainage blockage classification' },
-        { layer: 'Backend Engine', tech: 'FastAPI + PostgreSQL', role: 'Telemetry ingestion, fusion decision scoring, alert dispatch' },
-        { layer: 'Web Dashboard', tech: 'React 19 + TypeScript + Tailwind', role: 'Real-time telemetry charts, live camera feeds, and alert logs' },
+        {
+          layer: 'Edge Hardware',
+          tech: 'Raspberry Pi Zero 2W + Solar',
+          role: 'On-site sensor capture, power management, LTE transmission',
+        },
+        {
+          layer: 'Sensors',
+          tech: 'RPi IR-Cut Cam + JSN-SR04T',
+          role: 'Visual obstruction capture + ultrasonic water depth measurement',
+        },
+        {
+          layer: 'Vision & AI',
+          tech: 'YOLOv8 + OpenCV',
+          role: 'Frame quality validation and drainage blockage classification',
+        },
+        {
+          layer: 'Backend Engine',
+          tech: 'FastAPI + PostgreSQL',
+          role: 'Telemetry ingestion, fusion decision scoring, alert dispatch',
+        },
+        {
+          layer: 'Web Dashboard',
+          tech: 'React 19 + TypeScript + Tailwind',
+          role: 'Real-time telemetry charts, live camera feeds, and alert logs',
+        },
       ],
     },
     aiIntegration: {
@@ -320,10 +400,20 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'task-buddy',
     title: 'Task-Buddy',
-    tagline: 'AI-Powered Task Management System with Conversational RAG Memory, Effort Estimation, and Smart Scheduling',
+    tagline:
+      'AI-Powered Task Management System with Conversational RAG Memory, Effort Estimation, and Smart Scheduling',
     summary:
       'A full-stack productivity web application featuring React 19, FastAPI, pgvector vector search, Groq sub-second inference, and real-time WebSocket synchronization.',
-    tags: ['React 19', 'FastAPI', 'PostgreSQL', 'pgvector', 'RAG (BM25 + Jina)', 'Groq', 'Supabase Realtime', 'TypeScript'],
+    tags: [
+      'React 19',
+      'FastAPI',
+      'PostgreSQL',
+      'pgvector',
+      'RAG (BM25 + Jina)',
+      'Groq',
+      'Supabase Realtime',
+      'TypeScript',
+    ],
     imageUrl: '/assets/projects/taskbuddy.webp',
     links: {
       demo: 'https://task-buddy-frontend.vercel.app/',
@@ -354,10 +444,26 @@ export const caseStudies: CaseStudy[] = [
       summary:
         'Unified full-stack architecture combining React 19 SPA, FastAPI REST endpoints, Supabase PostgreSQL with pgvector, and Groq ultra-low latency inference.',
       stack: [
-        { layer: 'Frontend', tech: 'React 19 + TypeScript + Tailwind v4', role: 'Interactive task boards, analytics dashboard, theme switching' },
-        { layer: 'Backend API', tech: 'FastAPI / Python 3.12', role: 'Authentication, CRUD endpoints, Alembic migrations, background tasks' },
-        { layer: 'Vector Storage', tech: 'Supabase PostgreSQL + pgvector', role: 'Relational task storage and dense vector embeddings' },
-        { layer: 'LLM & RAG', tech: 'Groq (llama-3.3-70b) + Jina AI', role: 'Sub-second planning, effort estimation, and hybrid BM25/Vector RRF' },
+        {
+          layer: 'Frontend',
+          tech: 'React 19 + TypeScript + Tailwind v4',
+          role: 'Interactive task boards, analytics dashboard, theme switching',
+        },
+        {
+          layer: 'Backend API',
+          tech: 'FastAPI / Python 3.12',
+          role: 'Authentication, CRUD endpoints, Alembic migrations, background tasks',
+        },
+        {
+          layer: 'Vector Storage',
+          tech: 'Supabase PostgreSQL + pgvector',
+          role: 'Relational task storage and dense vector embeddings',
+        },
+        {
+          layer: 'LLM & RAG',
+          tech: 'Groq (llama-3.3-70b) + Jina AI',
+          role: 'Sub-second planning, effort estimation, and hybrid BM25/Vector RRF',
+        },
       ],
     },
     aiIntegration: {
@@ -368,12 +474,14 @@ export const caseStudies: CaseStudy[] = [
       {
         decision: 'Unified PostgreSQL with pgvector on Supabase',
         alternative: 'Standalone vector database (Pinecone/Qdrant)',
-        rationale: 'Kept relational task state and vector embeddings in one database, eliminating split-brain data synchronization.',
+        rationale:
+          'Kept relational task state and vector embeddings in one database, eliminating split-brain data synchronization.',
       },
       {
         decision: 'In-Process Background Async Tasks',
         alternative: 'Heavy Celery + RabbitMQ cluster',
-        rationale: 'Handled email confirmations and push notification scans efficiently without unnecessary infrastructure overhead.',
+        rationale:
+          'Handled email confirmations and push notification scans efficiently without unnecessary infrastructure overhead.',
       },
     ],
     challenges: [
@@ -391,10 +499,19 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'survey-system',
     title: 'Compliant Customer Satisfaction Survey System',
-    tagline: 'Enterprise Survey Platform with Dynamic Schemas, Real-Time Detractor Alerts, and PII Log Scrubbing',
+    tagline:
+      'Enterprise Survey Platform with Dynamic Schemas, Real-Time Detractor Alerts, and PII Log Scrubbing',
     summary:
       'A production-ready monolithic Laravel 12 / Inertia.js 2 / React 19 application delivering dynamic survey creation, synchronous detractor notifications (<3 rating), and queued background reporting.',
-    tags: ['Laravel 12', 'React 19', 'Inertia.js 2', 'PostgreSQL', 'Filament 4', 'PII Scrubbing', 'PestPHP'],
+    tags: [
+      'Laravel 12',
+      'React 19',
+      'Inertia.js 2',
+      'PostgreSQL',
+      'Filament 4',
+      'PII Scrubbing',
+      'PestPHP',
+    ],
     imageUrl: '/assets/projects/survey.webp',
     links: {
       demo: 'https://valenzuela-satisfaction-survey-main-plae88.laravel.cloud/',
@@ -424,22 +541,40 @@ export const caseStudies: CaseStudy[] = [
       summary:
         'Monolithic Layered MVC architecture connecting Laravel 12 to a React 19 SPA via Inertia.js 2 with Filament 4 administrative resources.',
       stack: [
-        { layer: 'Backend & Routing', tech: 'Laravel 12 / PHP 8.2+', role: 'Routing, validation, queue management, Eloquent models' },
-        { layer: 'Frontend UI', tech: 'React 19.2 + Inertia.js 2', role: 'SPA client rendering without separate REST boilerplate' },
-        { layer: 'Admin Panel', tech: 'Filament 4 + Shield', role: 'Role-based survey builder, analytics widgets, manager data isolation' },
-        { layer: 'Security Layer', tech: 'PiiScrubberProcessor', role: 'Recursive redaction of PII from logs and secure private file delivery' },
+        {
+          layer: 'Backend & Routing',
+          tech: 'Laravel 12 / PHP 8.2+',
+          role: 'Routing, validation, queue management, Eloquent models',
+        },
+        {
+          layer: 'Frontend UI',
+          tech: 'React 19.2 + Inertia.js 2',
+          role: 'SPA client rendering without separate REST boilerplate',
+        },
+        {
+          layer: 'Admin Panel',
+          tech: 'Filament 4 + Shield',
+          role: 'Role-based survey builder, analytics widgets, manager data isolation',
+        },
+        {
+          layer: 'Security Layer',
+          tech: 'PiiScrubberProcessor',
+          role: 'Recursive redaction of PII from logs and secure private file delivery',
+        },
       ],
     },
     decisions: [
       {
         decision: 'Inertia.js Monolith over Separate React/API Backend',
         alternative: 'Decoupled React SPA + REST API',
-        rationale: 'Retained Laravel’s powerful server-side validation, routing, and Fortify 2FA while delivering a reactive SPA frontend.',
+        rationale:
+          'Retained Laravel’s powerful server-side validation, routing, and Fortify 2FA while delivering a reactive SPA frontend.',
       },
       {
         decision: 'Custom PII Log Scrubber',
         alternative: 'Standard Monolog output',
-        rationale: 'Automatically replaces emails, names, IPs, and 2FA secrets with [REDACTED] to guarantee compliance with RA 10173.',
+        rationale:
+          'Automatically replaces emails, names, IPs, and 2FA secrets with [REDACTED] to guarantee compliance with RA 10173.',
       },
     ],
     challenges: [

@@ -9,8 +9,14 @@ mkdirSync('public/assets/cohorts', { recursive: true });
 
 const tasks = [
   // Real certificates -> public/assets/certificates (optimized webp, max 1200px)
-  { src: join(srcDir, 'Devkada-Eric Gabriel F. Manabat.jpg'), out: join(outDir, 'devkada-your-cloud-your-agent.webp') },
-  { src: join(srcDir, 'gcp.png'), out: join('public/assets/cohorts', 'google-cloud-arcade-enrollment.webp') },
+  {
+    src: join(srcDir, 'Devkada-Eric Gabriel F. Manabat.jpg'),
+    out: join(outDir, 'devkada-your-cloud-your-agent.webp'),
+  },
+  {
+    src: join(srcDir, 'gcp.png'),
+    out: join('public/assets/cohorts', 'google-cloud-arcade-enrollment.webp'),
+  },
   { src: join(srcDir, 'dep.png'), out: join('public/assets/cohorts', 'datacamp-dep-scholar.webp') },
   // Event photos -> cohorts (optional, as community evidence, smaller)
   // 1.png and gcp.png are already handled; 2-6.png are event photos - compress to 800px for optional gallery use
@@ -20,7 +26,10 @@ const tasks = [
 ];
 
 for (const { src, out } of tasks) {
-  if (!existsSync(src)) { console.log(`SKIP missing ${src}`); continue; }
+  if (!existsSync(src)) {
+    console.log(`SKIP missing ${src}`);
+    continue;
+  }
   const isCert = out.includes('certificates');
   const resizeWidth = isCert ? 1200 : 800;
   await sharp(src)

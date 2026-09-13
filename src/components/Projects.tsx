@@ -16,7 +16,10 @@ export function Projects() {
       if (hash.startsWith('#case-study/')) {
         const id = hash.replace('#case-study/', '');
         const found = caseStudies.find(
-          (c) => c.id === id || (id === 'plv-elib' && c.id === 'ceit-library') || (id === 'ceit-library' && c.id === 'plv-elib')
+          (c) =>
+            c.id === id ||
+            (id === 'plv-elib' && c.id === 'ceit-library') ||
+            (id === 'ceit-library' && c.id === 'plv-elib'),
         );
         if (found) {
           setSelectedStudy(found);
@@ -46,7 +49,11 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" aria-label="Featured Projects" className="py-8 sm:py-10 overflow-hidden w-full">
+    <section
+      id="projects"
+      aria-label="Featured Projects"
+      className="py-8 sm:py-10 overflow-hidden w-full"
+    >
       <div ref={ref} className={`${fadeClass} w-full`}>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 gap-3">
           <div>
@@ -56,10 +63,13 @@ export function Projects() {
                 <span>Featured Systems</span>
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-h)]">Featured Case Studies</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-h)]">
+              Featured Case Studies
+            </h2>
           </div>
           <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-md">
-            Production full-stack & AI architectures with verified test benchmarks and decision trade-offs.
+            Production full-stack & AI architectures with verified test benchmarks and decision
+            trade-offs.
           </p>
         </div>
 

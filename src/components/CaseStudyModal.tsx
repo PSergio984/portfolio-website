@@ -94,7 +94,10 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
               <div className="text-[10px] font-mono font-bold text-violet-700 dark:text-violet-400 uppercase tracking-widest mb-1">
                 Case Study
               </div>
-              <h2 id="case-study-title" className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-tight">
+              <h2
+                id="case-study-title"
+                className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-tight"
+              >
                 {study.title}
               </h2>
               <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed line-clamp-2 sm:line-clamp-none">
@@ -105,15 +108,25 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
             {/* High-Impact Capabilities Chips */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
               {study.highlights.map((h) => (
-                <div key={h.label} className="bg-white dark:bg-slate-900/90 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800 shadow-2xs">
-                  <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 truncate uppercase font-semibold">{h.label}</div>
-                  <div className="text-xs font-bold text-violet-700 dark:text-violet-400 font-mono mt-0.5">{h.value}</div>
+                <div
+                  key={h.label}
+                  className="bg-white dark:bg-slate-900/90 rounded-lg p-2.5 border border-slate-200 dark:border-slate-800 shadow-2xs"
+                >
+                  <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 truncate uppercase font-semibold">
+                    {h.label}
+                  </div>
+                  <div className="text-xs font-bold text-violet-700 dark:text-violet-400 font-mono mt-0.5">
+                    {h.value}
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Desktop Interactive Navigation Links */}
-            <nav className="hidden md:block space-y-1 pt-2 border-t border-slate-200 dark:border-slate-800" aria-label="Case Study Sections">
+            <nav
+              className="hidden md:block space-y-1 pt-2 border-t border-slate-200 dark:border-slate-800"
+              aria-label="Case Study Sections"
+            >
               <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-2">
                 Filter Sections
               </div>
@@ -247,8 +260,13 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
                 </div>
                 <ul className="space-y-2">
                   {study.contribution.map((c) => (
-                    <li key={c.slice(0, 32)} className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                      <span className="text-violet-600 dark:text-violet-400 font-mono font-bold shrink-0">&gt;</span>
+                    <li
+                      key={c.slice(0, 32)}
+                      className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"
+                    >
+                      <span className="text-violet-600 dark:text-violet-400 font-mono font-bold shrink-0">
+                        &gt;
+                      </span>
                       <span>{c}</span>
                     </li>
                   ))}
@@ -310,7 +328,10 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {study.architecture.stack.map((s) => (
-                      <div key={s.layer} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-1">
+                      <div
+                        key={s.layer}
+                        className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-1"
+                      >
                         <div className="flex items-center justify-between gap-1">
                           <span className="text-[10px] font-mono font-bold text-violet-700 dark:text-violet-400 uppercase">
                             {s.layer}
@@ -349,8 +370,13 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
                     </div>
                     <ul className="space-y-2">
                       {study.aiIntegration.pipelineSteps.map((step, i) => (
-                        <li key={step.slice(0, 32)} className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                          <span className="font-mono text-violet-600 dark:text-violet-400 font-bold shrink-0">{i + 1}.</span>
+                        <li
+                          key={step.slice(0, 32)}
+                          className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"
+                        >
+                          <span className="font-mono text-violet-600 dark:text-violet-400 font-bold shrink-0">
+                            {i + 1}.
+                          </span>
                           <span>{step}</span>
                         </li>
                       ))}
@@ -365,10 +391,19 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                       {study.aiIntegration.benchmarks.map((b) => (
-                        <div key={b.metric} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-1">
-                          <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 font-semibold">{b.metric}</div>
-                          <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400 font-mono">{b.value}</div>
-                          <div className="text-[11px] text-slate-600 dark:text-slate-400">{b.notes}</div>
+                        <div
+                          key={b.metric}
+                          className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-1"
+                        >
+                          <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 font-semibold">
+                            {b.metric}
+                          </div>
+                          <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400 font-mono">
+                            {b.value}
+                          </div>
+                          <div className="text-[11px] text-slate-600 dark:text-slate-400">
+                            {b.notes}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -388,14 +423,21 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
                 </div>
                 <div className="space-y-3">
                   {study.decisions.map((d) => (
-                    <div key={d.decision} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2 shadow-2xs">
+                    <div
+                      key={d.decision}
+                      className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2 shadow-2xs"
+                    >
                       <div className="flex items-center justify-between flex-wrap gap-1.5">
-                        <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{d.decision}</span>
+                        <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
+                          {d.decision}
+                        </span>
                         <span className="text-[10px] sm:text-[11px] font-mono text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 px-2 py-0.5 rounded border border-rose-200 dark:border-rose-800/50 font-semibold">
                           Rejected: {d.alternative}
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{d.rationale}</p>
+                      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        {d.rationale}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -409,7 +451,10 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
                 </div>
                 <ul className="space-y-2">
                   {study.challenges.map((ch) => (
-                    <li key={ch.slice(0, 32)} className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                    <li
+                      key={ch.slice(0, 32)}
+                      className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"
+                    >
                       <span className="text-amber-500 font-mono font-bold shrink-0">&bull;</span>
                       <span>{ch}</span>
                     </li>
@@ -429,8 +474,13 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
                 </div>
                 <ul className="space-y-2">
                   {study.results.map((r) => (
-                    <li key={r.slice(0, 32)} className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                      <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold shrink-0">✓</span>
+                    <li
+                      key={r.slice(0, 32)}
+                      className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"
+                    >
+                      <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold shrink-0">
+                        ✓
+                      </span>
                       <span>{r}</span>
                     </li>
                   ))}
@@ -444,8 +494,13 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
                 </div>
                 <ul className="space-y-2">
                   {study.lessons.map((l) => (
-                    <li key={l.slice(0, 32)} className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-mono font-bold shrink-0">→</span>
+                    <li
+                      key={l.slice(0, 32)}
+                      className="flex gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"
+                    >
+                      <span className="text-indigo-600 dark:text-indigo-400 font-mono font-bold shrink-0">
+                        →
+                      </span>
                       <span>{l}</span>
                     </li>
                   ))}

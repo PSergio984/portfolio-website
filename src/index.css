@@ -76,11 +76,15 @@ body {
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  background-image: 
+  background-image:
     radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.06) 0%, transparent 50%),
     radial-gradient(rgba(100, 116, 139, 0.12) 1px, transparent 1px);
-  background-size: 100% 100%, 24px 24px;
-  background-position: center top, 0 0;
+  background-size:
+    100% 100%,
+    24px 24px;
+  background-position:
+    center top,
+    0 0;
   background-attachment: fixed;
   transition-property: background-color, color, border-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -88,10 +92,12 @@ body {
 }
 
 .dark body {
-  background-image: 
+  background-image:
     radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 60%),
     radial-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px);
-  background-size: 100% 100%, 28px 28px;
+  background-size:
+    100% 100%,
+    28px 28px;
 }
 
 /* Custom scrollbar matching minimalist design */

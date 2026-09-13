@@ -31,7 +31,9 @@ describe('Credentials Component', () => {
   it('filters items when clicking a tab', () => {
     fireEvent.click(screen.getByText('Honors & Awards'));
     expect(screen.getByText('Capture The Flag (CTF)')).toBeInTheDocument();
-    expect(screen.queryByText(/Google Cybersecurity Professional Certificate/i)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/Google Cybersecurity Professional Certificate/i),
+    ).not.toBeInTheDocument();
   });
 
   it('opens and closes the proof preview modal with matching title', () => {

@@ -14,7 +14,12 @@ describe('Projects', () => {
     expect(screen.getByRole('heading', { level: 3, name: /PLV eLib/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: /AGOS/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: /Task-Buddy/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 3, name: /Compliant Customer Satisfaction Survey System/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        level: 3,
+        name: /Compliant Customer Satisfaction Survey System/i,
+      }),
+    ).toBeInTheDocument();
   });
 
   it('renders Live Demo, Source, and Sidecar links', () => {

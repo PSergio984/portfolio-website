@@ -109,9 +109,10 @@ export function Hero() {
 
         {/* ── Stand-out Tagline / Summary ── */}
         <p className="text-[var(--text)] text-sm sm:text-base md:text-lg font-normal leading-relaxed mb-8 max-w-3xl">
-          I design, build, and deploy production-ready AI-powered full-stack applications with grounded RAG pipelines,
-          scalable backends, and security-first engineering. By combining modern AI architecture with competitive
-          cybersecurity principles, I engineer software that is robust, test-verified, and secure by design.
+          I design, build, and deploy production-ready AI-powered full-stack applications with
+          grounded RAG pipelines, scalable backends, and security-first engineering. By combining
+          modern AI architecture with competitive cybersecurity principles, I engineer software that
+          is robust, test-verified, and secure by design.
         </p>
 
         {/* ── What I Do Cards ── */}
@@ -128,9 +129,7 @@ export function Hero() {
                     <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-sm font-bold text-[var(--text-h)] mb-1.5">{item.title}</h3>
-                  <p className="text-xs text-[var(--text)] leading-relaxed mb-4">
-                    {item.desc}
-                  </p>
+                  <p className="text-xs text-[var(--text)] leading-relaxed mb-4">{item.desc}</p>
                 </div>
                 <div className="flex flex-wrap gap-1 mt-auto">
                   {item.tech.map((t) => (

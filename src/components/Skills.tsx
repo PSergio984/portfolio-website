@@ -85,13 +85,25 @@ const skillGroups: SkillGroup[] = [
     label: 'AI & RAG Engineering',
     icon: <Cpu className="w-4 h-4 text-purple-600 dark:text-purple-400" />,
     skills: [
-      { name: 'LangChain / LangGraph', icon: SiLangchain, color: 'text-emerald-600 dark:text-emerald-400' },
+      {
+        name: 'LangChain / LangGraph',
+        icon: SiLangchain,
+        color: 'text-emerald-600 dark:text-emerald-400',
+      },
       { name: 'Hybrid RRF Search', icon: Database, color: 'text-cyan-600 dark:text-cyan-400' },
       { name: 'FastAPI AI Sidecars', icon: SiFastapi, color: 'text-teal-600 dark:text-teal-400' },
-      { name: 'pgvector Embeddings', icon: SiPostgresql, color: 'text-blue-600 dark:text-blue-400' },
+      {
+        name: 'pgvector Embeddings',
+        icon: SiPostgresql,
+        color: 'text-blue-600 dark:text-blue-400',
+      },
       { name: 'YOLOv8 & OpenCV', icon: SiOpencv, color: 'text-emerald-600 dark:text-green-400' },
       { name: 'LLM-as-Judge Evaluation', icon: Cpu, color: 'text-purple-600 dark:text-purple-400' },
-      { name: 'Model Context Protocol (MCP)', icon: SiAnthropic, color: 'text-amber-700 dark:text-amber-400' },
+      {
+        name: 'Model Context Protocol (MCP)',
+        icon: SiAnthropic,
+        color: 'text-amber-700 dark:text-amber-400',
+      },
       { name: 'DSPy & Agent Frameworks', icon: Cpu, color: 'text-indigo-600 dark:text-indigo-400' },
     ],
   },
@@ -134,7 +146,11 @@ const skillGroups: SkillGroup[] = [
     icon: <Cloud className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />,
     skills: [
       { name: 'AWS', icon: FaAws, color: 'text-amber-600 dark:text-amber-400' },
-      { name: 'Google Cloud (GCP)', icon: SiGooglecloud, color: 'text-blue-600 dark:text-blue-400' },
+      {
+        name: 'Google Cloud (GCP)',
+        icon: SiGooglecloud,
+        color: 'text-blue-600 dark:text-blue-400',
+      },
       { name: 'Kubernetes', icon: SiKubernetes, color: 'text-blue-600 dark:text-blue-400' },
       { name: 'Docker', icon: SiDocker, color: 'text-sky-600 dark:text-sky-400' },
       { name: 'Prometheus', icon: SiPrometheus, color: 'text-orange-600 dark:text-orange-400' },
@@ -179,10 +195,13 @@ export function Skills() {
             <div className="text-xs font-mono text-[var(--accent-text)] uppercase tracking-wider font-semibold mb-1">
               Technical Competencies
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-h)]">Skills & Technology Stack</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-h)]">
+              Skills & Technology Stack
+            </h2>
           </div>
           <p className="text-xs text-[var(--text-muted)] max-w-md">
-            Production-tested stack spanning AI retrieval, full-stack backends, modern frontend, and security tools.
+            Production-tested stack spanning AI retrieval, full-stack backends, modern frontend, and
+            security tools.
           </p>
         </div>
 

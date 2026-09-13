@@ -70,7 +70,10 @@ describe('Header', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByRole('link', { name: 'Experience' })).toHaveAttribute('aria-current', 'page');
+      expect(screen.getByRole('link', { name: 'Experience' })).toHaveAttribute(
+        'aria-current',
+        'page',
+      );
     });
   });
 });
