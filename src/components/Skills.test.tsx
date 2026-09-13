@@ -35,6 +35,8 @@ describe('Skills', () => {
     expect(screen.getByText('Jaeger Tracing')).toBeInTheDocument();
     expect(screen.getByText('Prometheus')).toBeInTheDocument();
     expect(screen.getByText('Grafana')).toBeInTheDocument();
+    expect(screen.getByText('Render')).toBeInTheDocument();
+    expect(screen.getByText('Railway')).toBeInTheDocument();
     expect(screen.getByText('Model Context Protocol (MCP)')).toBeInTheDocument();
   });
 });

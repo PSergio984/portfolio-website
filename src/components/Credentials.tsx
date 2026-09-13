@@ -67,6 +67,8 @@ export function VerificationModal({
             <img
               src={selectedCred.imageUrl}
               alt={`Certificate proof for ${selectedCred.title}`}
+              loading="lazy"
+              decoding="async"
               className="max-w-full max-h-[78vh] w-auto h-auto object-contain rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800"
             />
           )

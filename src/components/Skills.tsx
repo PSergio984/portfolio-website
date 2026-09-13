@@ -33,6 +33,8 @@ import {
   SiJaeger,
   SiVercel,
   SiCloudflare,
+  SiRender,
+  SiRailway,
   SiGit,
   SiGithub,
   SiPostman,
@@ -143,6 +145,8 @@ const skillGroups: SkillGroup[] = [
       { name: 'GitHub Actions', icon: SiGithubactions, color: 'text-blue-600 dark:text-blue-400' },
       { name: 'Cloudflare', icon: SiCloudflare, color: 'text-orange-600 dark:text-orange-400' },
       { name: 'Vercel', icon: SiVercel, color: 'text-slate-900 dark:text-white' },
+      { name: 'Render', icon: SiRender, color: 'text-teal-600 dark:text-teal-400' },
+      { name: 'Railway', icon: SiRailway, color: 'text-pink-600 dark:text-pink-400' },
     ],
   },
   {
