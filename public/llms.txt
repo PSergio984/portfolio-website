@@ -1,0 +1,71 @@
+# Eric Gabriel Manabat — Full-Stack AI Engineer
+
+> Full-Stack AI Engineer specializing in production-ready AI systems, bounded agentic RAG architectures, hybrid retrieval (BM25 + dense vectors), and high-integrity software engineering.
+
+## Core Information
+- **Full Name**: Eric Gabriel F. Manabat
+- **Professional Title**: Full-Stack AI Engineer
+- **Location**: Valenzuela City, Philippines (Open to global remote and hybrid roles)
+- **Education**: BS Information Technology, Pamantasan ng Lungsod ng Valenzuela (Expected 2026, 1.03 running GWA, Dean's Lister)
+- **Website**: https://ericmanabat-dev.vercel.app/
+- **Email**: eric.manabatseam@gmail.com
+- **GitHub**: https://github.com/PSergio984
+- **LinkedIn**: https://www.linkedin.com/in/eric-gabriel-manabat
+- **Boot.dev Profile**: https://www.boot.dev/u/eric984
+- **Resume**: https://ericmanabat-dev.vercel.app/resume.pdf
+
+## Flagship Projects & Verified Metrics
+
+### 1. PLV eLib (CEIT Library) + AI Sidecar
+- **Role**: Forward-Deployed Engineer, Technical Lead, and Solutions Architect
+- **Architecture**: Decoupled dual-engine topology — Laravel 11 monolith (PHP 8.4, PostgreSQL, Livewire 3) paired with an external FastAPI AI Sidecar.
+- **AI/RAG Pipeline**: SQLite FTS5 (BM25) + all-MiniLM-L6-v2 dense embeddings fused via Reciprocal Rank Fusion (RRF, k=60) with deterministic blend re-ranking.
+- **Metrics & Telemetry**:
+  - Lifted Top-1 retrieval accuracy from 81.8% to 86.4% on a 27-case golden evaluation dataset.
+  - 100% negative query pass rate (zero hallucination on out-of-domain queries).
+  - 90% relevance score evaluated by automated LLM-as-judge (llama-3.3-70b).
+  - Prometheus `/metrics` latency histograms and 6-chart Dockerized Grafana telemetry dashboard.
+  - 600+ PHPUnit tests and 78 pytest tests.
+- **Repositories**: https://github.com/PSergio984/CEIT-Library and https://github.com/PSergio984/ceit-ai-sidecar
+
+### 2. AGOS — AI-Guided Overflow Surveillance
+- **Role**: Technical Lead
+- **Architecture**: Solar-powered edge IoT flood surveillance unit (Raspberry Pi Zero 2W + IR-Cut camera + JSN-SR04T waterproof ultrasonic sensor + 4G LTE) for Barangay Maysan, Valenzuela City.
+- **AI & Optimization**:
+  - Decoupled cadence: 15s web camera stream for human monitoring decoupled from 3-minute server-side YOLOv8 inference, slashing server compute by ~92%.
+  - Decision Fusion Engine: Composite hazard score (water level <= 50pts, blockage <= 30pts, weather API <= 20pts) driving 3-tier physical alert LEDs and push/SMS notifications with 30-minute cooldown.
+  - Dataset: 5,000 annotated drainage frames on CVAT.ai with OpenCV frame-quality pre-filtering.
+
+### 3. Task-Buddy — AI-Assisted Task Management & RAG Memory
+- **Role**: Technical Lead and Sole Developer
+- **Stack**: React 19, TypeScript, Vite, Tailwind v4, FastAPI, PostgreSQL (Supabase), pgvector, Redis.
+- **AI/RAG Pipeline**:
+  - Hybrid BM25 + Jina embeddings (jina-embeddings-v3) with RRF.
+  - Sub-500ms task breakdown planning via Groq llama-3.3-70b with OpenAI fallback.
+  - Contextual effort estimation derived from completion history.
+  - 347 pytest backend tests, 338 KB minified frontend bundle, real-time WebSocket sync.
+
+### 4. Compliant Customer Satisfaction Survey System
+- **Role**: Sole Developer
+- **Stack**: Laravel 12, Inertia.js 2, React 19, Filament 4, Spatie RBAC.
+- **Security & Integrity**:
+  - Custom `PiiScrubberProcessor` recursively redacting sensitive PII from application logs.
+  - Synchronous `AnswerObserver` triggering immediate alerts for low ratings (<3 on 5-point scale).
+  - 146 automated tests with 5,856 assertions.
+
+## Experience Highlights
+- **FlyRank AI** — Full-Stack AI Engineer Intern (Jun 2026 – Present): Engineered hybrid RAG pipelines, FastAPI AI microservices, SSE token streaming, and Prometheus/Grafana observability.
+- **Nexvision Innovations Inc.** — Full Stack Software Engineering Intern / Team Lead (Jun 2026 – Present): Led engineering on statutory multi-tier payroll calculation engines, interval-partitioned time algorithms, and branch-scoped row-level data isolation.
+
+## Technical Skills Summary
+- **AI Engineering**: Retrieval-Augmented Generation (RAG), Bounded Agentic Loops, Hybrid Search (BM25 + Dense Vectors), Reciprocal Rank Fusion (RRF), Reranking, Vector Databases (pgvector), LLM-as-Judge Evals, YOLOv8, OpenCV, Gemini API, Groq, LangChain/LangGraph.
+- **Backend**: Python (FastAPI, Pytest, Pydantic, SQLAlchemy), PHP 8.4 / Laravel 11/12 (Eloquent, Livewire, PHPUnit), PostgreSQL, Redis, REST APIs, SSE, WebSockets.
+- **Frontend**: React 19, TypeScript, Vite, Next.js, Tailwind CSS v4, State Management, Responsive Design.
+- **Security & Infrastructure**: Role-Based Access Control (RBAC), Row-Level Security (RLS), PII Sanitization, Docker, Prometheus, Grafana, Git CI/CD, Edge IoT (Raspberry Pi, Linux).
+
+## Digital Eric Conversational Agent
+Eric's portfolio features **Digital Eric**, a first-person AI double deployed directly on the site. Digital Eric answers visitor and recruiter questions conversationally using a bounded knowledge file covering his verified background, war stories, certifications, and explicit refusal boundaries for unknown queries.
+
+## Optional
+- [Full LLM Context & Case Studies](https://ericmanabat-dev.vercel.app/llms-full.txt): Deep architectural case studies, full work experience, benchmark telemetry, and complete Digital Eric operational boundaries.
+- [Resume PDF](https://ericmanabat-dev.vercel.app/resume.pdf): Official printable resume.
