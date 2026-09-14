@@ -30,10 +30,7 @@ describe('Contact', () => {
 
   it('renders LinkedIn link', () => {
     const link = screen.getByRole('link', { name: /linkedin/i });
-    expect(link).toHaveAttribute(
-      'href',
-      'https://www.linkedin.com/in/eric-gabriel-manabat',
-    );
+    expect(link).toHaveAttribute('href', 'https://www.linkedin.com/in/eric-gabriel-manabat');
     expect(link).toHaveAttribute('target', '_blank');
   });
 

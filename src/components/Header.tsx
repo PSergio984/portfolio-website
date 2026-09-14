@@ -56,7 +56,11 @@ export function Header() {
             className="p-1.5 sm:p-2 rounded-full hover:bg-[var(--accent-bg)] hover:text-[var(--accent)] transition-colors text-[var(--text)] cursor-pointer shrink-0 ml-1"
             aria-label="Toggle theme"
           >
-            {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700" />}
+            {isDark ? (
+              <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700" />
+            )}
           </button>
         </div>
       </div>

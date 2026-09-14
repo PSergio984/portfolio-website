@@ -31,7 +31,9 @@ describe('Credentials Component', () => {
   it('filters items when clicking a tab', () => {
     fireEvent.click(screen.getByText('Honors & Awards'));
     expect(screen.getByText('Capture The Flag (CTF)')).toBeInTheDocument();
-    expect(screen.queryByText(/Google Cybersecurity Professional Certificate/i)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/Google Cybersecurity Professional Certificate/i),
+    ).not.toBeInTheDocument();
   });
 
   it('opens and closes the proof preview modal with matching title', () => {
@@ -44,5 +46,12 @@ describe('Credentials Component', () => {
     const closeBtn = screen.getByLabelText('Close proof preview');
     fireEvent.click(closeBtn);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('renders newly verified Anthropic MCP, Claude Code, and FlyRank credentials', () => {
+    expect(screen.getByText('Introduction to Model Context Protocol (MCP)')).toBeInTheDocument();
+    expect(screen.getByText('Claude Code 101')).toBeInTheDocument();
+    expect(screen.getByText('Learn Logging and Observability in Go')).toBeInTheDocument();
+    expect(screen.getByText('Backend AI Engineering Internship Program')).toBeInTheDocument();
   });
 });

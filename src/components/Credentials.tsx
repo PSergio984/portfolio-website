@@ -44,7 +44,10 @@ export function VerificationModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-slate-800 px-1">
-          <div className="text-sm font-bold text-slate-900 dark:text-white truncate pr-4" id="modal-cred-title">
+          <div
+            className="text-sm font-bold text-slate-900 dark:text-white truncate pr-4"
+            id="modal-cred-title"
+          >
             {selectedCred.title}
           </div>
           <button
@@ -67,6 +70,8 @@ export function VerificationModal({
             <img
               src={selectedCred.imageUrl}
               alt={`Certificate proof for ${selectedCred.title}`}
+              loading="lazy"
+              decoding="async"
               className="max-w-full max-h-[78vh] w-auto h-auto object-contain rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800"
             />
           )
@@ -83,7 +88,9 @@ export function VerificationModal({
 // Unified Compact Credentials Component with Tabbed Filtering
 export function Credentials() {
   const { ref, fadeClass } = useFadeIn();
-  const [activeTab, setActiveTab] = useState<'all' | 'awards' | 'certifications' | 'programs' | 'seminars'>('all');
+  const [activeTab, setActiveTab] = useState<
+    'all' | 'awards' | 'certifications' | 'programs' | 'seminars'
+  >('all');
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
 
   const tabs = [
@@ -115,12 +122,14 @@ export function Credentials() {
   ] as const;
 
   const filteredCredentials =
-    activeTab === 'all'
-      ? credentialsData
-      : credentialsData.filter((c) => c.category === activeTab);
+    activeTab === 'all' ? credentialsData : credentialsData.filter((c) => c.category === activeTab);
 
   return (
-    <section id="credentials" aria-label="Credentials and Certifications" className="py-10 overflow-hidden">
+    <section
+      id="credentials"
+      aria-label="Credentials and Certifications"
+      className="py-10 overflow-hidden"
+    >
       <div ref={ref} className={fadeClass}>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 gap-3">
           <div>
@@ -132,7 +141,8 @@ export function Credentials() {
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-md">
-            Verified academic excellence, cybersecurity certifications, CTF awards, and continuous engineering cohorts.
+            Verified academic excellence, cybersecurity certifications, CTF awards, and continuous
+            engineering cohorts.
           </p>
         </div>
 
@@ -182,19 +192,25 @@ export function Credentials() {
                       cred.category === 'awards'
                         ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60'
                         : cred.category === 'certifications'
-                        ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-800 dark:text-violet-300 border border-violet-300 dark:border-violet-800/60'
-                        : cred.category === 'programs'
-                        ? 'bg-cyan-100 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800/60'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700'
+                          ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-800 dark:text-violet-300 border border-violet-300 dark:border-violet-800/60'
+                          : cred.category === 'programs'
+                            ? 'bg-cyan-100 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800/60'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700'
                     }`}
                   >
                     {cred.category}
                   </span>
-                  <span className="text-[11px] font-mono text-[var(--text-muted)]">{cred.timestamp}</span>
+                  <span className="text-[11px] font-mono text-[var(--text-muted)]">
+                    {cred.timestamp}
+                  </span>
                 </div>
 
-                <h3 className="text-sm font-bold text-[var(--text-h)] mb-1 leading-snug">{cred.title}</h3>
-                <div className="text-xs font-medium text-[var(--accent-text)] mb-2">{cred.institution}</div>
+                <h3 className="text-sm font-bold text-[var(--text-h)] mb-1 leading-snug">
+                  {cred.title}
+                </h3>
+                <div className="text-xs font-medium text-[var(--accent-text)] mb-2">
+                  {cred.institution}
+                </div>
                 {cred.award && (
                   <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 font-mono mb-2">
                     {cred.award}

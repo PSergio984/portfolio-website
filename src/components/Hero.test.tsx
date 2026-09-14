@@ -34,7 +34,14 @@ describe('Hero', () => {
   });
 
   it('links out to professional platforms', () => {
-    for (const label of ['GitHub', 'LinkedIn', 'Boot.dev', 'TryHackMe', 'HackTheBox', 'HackerRank']) {
+    for (const label of [
+      'GitHub',
+      'LinkedIn',
+      'Boot.dev',
+      'TryHackMe',
+      'HackTheBox',
+      'HackerRank',
+    ]) {
       expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
     }
   });

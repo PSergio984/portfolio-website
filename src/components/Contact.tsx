@@ -9,14 +9,18 @@ export function Contact() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <section id="contact" aria-label="Contact and Links" className="py-14 sm:py-20 md:py-24 overflow-hidden w-full">
+    <section
+      id="contact"
+      aria-label="Contact and Links"
+      className="py-14 sm:py-20 md:py-24 overflow-hidden w-full"
+    >
       <div ref={ref} className={`max-w-2xl mx-auto text-center ${fadeClass}`}>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-h)] tracking-tight mb-3">
           Let's build intelligent, production-ready systems.
         </h2>
         <p className="text-xs sm:text-sm text-[var(--text)] leading-relaxed mb-8 max-w-md mx-auto">
-          Currently open for Full-Stack & AI Engineering roles. Whether you have an opportunity to discuss
-          or want to collaborate on a project, my inbox is always open.
+          Currently open for Full-Stack & AI Engineering roles. Whether you have an opportunity to
+          discuss or want to collaborate on a project, my inbox is always open.
         </p>
 
         <div className="flex flex-wrap items-center gap-3 justify-center">
