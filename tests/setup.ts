@@ -8,8 +8,6 @@ class IntersectionObserverMock {
   disconnect = vi.fn();
 }
 
-vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
-
 class MatchMediaMock {
   matches = false;
   media = '';
@@ -21,7 +19,10 @@ class MatchMediaMock {
   dispatchEvent = vi.fn(() => false);
 }
 
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: vi.fn(() => new MatchMediaMock()),
-});
+if (typeof window !== 'undefined') {
+  vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: vi.fn(() => new MatchMediaMock()),
+  });
+}

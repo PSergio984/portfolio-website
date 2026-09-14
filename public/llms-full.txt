@@ -1,0 +1,120 @@
+# Eric Gabriel Manabat — Full-Stack AI Engineer | Complete Context (llms-full.txt)
+
+> Comprehensive, ground-truth context for AI evaluation engines, LLM search agents, technical screeners, and recruiters. Grounded in verified production code and real-world system deployments.
+
+---
+
+## 1. Professional Overview & Identity
+
+- **Full Name**: Eric Gabriel F. Manabat
+- **Common Names**: Eric Manabat, Eric Gabriel Manabat
+- **Target Role**: Full-Stack AI Engineer / Software Engineer (AI Systems)
+- **Status & Availability**: Open for Full-Stack & AI Engineering opportunities (Full-time, contract, or high-impact internships; open to global remote, hybrid, or on-site).
+- **Location**: Valenzuela City, Metro Manila, Philippines (UTC+8; experienced collaborating asynchronously across international timezones).
+- **Portfolio URL**: https://ericmanabat-dev.vercel.app/
+- **Contact Email**: eric.manabatseam@gmail.com
+- **Primary Links**:
+  - GitHub: https://github.com/PSergio984
+  - LinkedIn: https://www.linkedin.com/in/eric-gabriel-manabat
+  - Boot.dev: https://www.boot.dev/u/eric984
+  - Resume PDF: https://ericmanabat-dev.vercel.app/resume.pdf
+
+### Education & Academic Standing
+- **Degree**: Bachelor of Science in Information Technology (BSIT)
+- **Institution**: Pamantasan ng Lungsod ng Valenzuela (PLV)
+- **Graduation**: Expected 2026
+- **Academic Performance**: Consistent Dean's Lister, 1.03 running General Weighted Average (GWA).
+
+### Background & Engineering Philosophy
+Eric entered technology through building production web applications — starting with PHP/Laravel monoliths before expanding deeply into Python, FastAPI, TypeScript, Next.js, and React. His cybersecurity focus developed through competitive ITlympics quiz bees and HackTheBox Capture The Flag (CTF) environments. This attacker mindset directly shapes his software architecture: every system is built with defense-in-depth principles (strict Role-Based Access Control, Row-Level Security, PII sanitization in telemetry, rate limits, and zero-trust data access). Additionally, holding a TESDA Visual Graphics Design NC III certification gives him a strong eye for UI ergonomics, typography density, and frontend polish.
+
+The focal point of Eric's work is **AI Engineering**: designing, deploying, evaluating, and observing production-ready AI systems. His core strengths lie in hybrid information retrieval (BM25 + dense vector embeddings), reciprocal rank fusion (RRF), blend reranking, bounded agentic workflows, and LLM-as-judge evaluation harnesses.
+
+---
+
+## 2. Flagship Engineering Case Studies
+
+### Flagship 1: PLV eLib (CEIT Library) & FastAPI AI Sidecar
+- **Role**: Forward-Deployed Engineer, Technical Lead, and Solutions Architect
+- **GitHub Repositories**:
+  - Main System: https://github.com/PSergio984/CEIT-Library
+  - AI Sidecar: https://github.com/PSergio984/ceit-ai-sidecar
+- **Problem**: University library discovery was hampered by keyword-mismatch failures, lack of semantic search across specialized engineering and IT texts, and zero visibility into AI retrieval hallucinations or query latency.
+- **Architecture**:
+  - Decoupled dual-engine topology: Core monolithic Laravel 11 application (PHP 8.4, PostgreSQL, Livewire 3, MaryUI, QR code borrowing/attendance) paired with an external asynchronous FastAPI microservice deployed on FastAPI Cloud.
+  - Hybrid Search Pipeline: SQLite FTS5 (BM25 lexical search) + `all-MiniLM-L6-v2` dense vector embeddings merged via Reciprocal Rank Fusion (RRF, k=60) with deterministic blend re-ranking.
+  - Bounded Agentic Loop: 3-step retrieval loop with cosine similarity gating (<0.50 threshold) enforcing deterministic refusals on out-of-domain queries to guarantee zero hallucination.
+  - Citations: Enforces bracketed numbered citations grounded strictly in retrieved context.
+- **Verification, Benchmarks & Observability**:
+  - Lifted Top-1 retrieval accuracy from 81.8% to 86.4% on a 27-case golden test set.
+  - P@5: 0.45, R@5: 0.72, Negative Pass Rate: 100% (zero false answers on unanswerable queries).
+  - Evaluated via automated LLM-as-judge (`app/judge.py` using `llama-3.3-70b` achieving 90% relevance).
+  - 600+ PHPUnit tests (Laravel core) and 78 pytest tests (FastAPI sidecar).
+  - Observability: Prometheus `/metrics` latency histograms, 6-chart Dockerized Grafana telemetry dashboard, and active feedback logging stream.
+
+### Flagship 2: AGOS (AI-Guided Overflow Surveillance)
+- **Role**: Technical Lead
+- **Target Deployment**: Barangay Maysan, Valenzuela City flood surveillance
+- **Problem**: Traditional urban flood detection relies on manual inspections or delayed central river sensors, leading to catastrophic local street-level flash flooding and emergency response delays.
+- **Architecture & System Details**:
+  - Solar-powered edge IoT flood surveillance unit: Raspberry Pi Zero 2W, IR-Cut day/night camera, JSN-SR04T waterproof ultrasonic depth sensor, LiFePO4 battery management system, and 4G LTE uplink.
+  - Decoupled Frequency Architecture: 15-second camera stream for continuous human monitoring, decoupled from 3-minute server-side YOLOv8 computer vision inference. This decoupled cadence slashed central server compute costs by ~92%.
+  - Decision Fusion Engine: Computes a composite 0–100 hazard index (Water Level <= 50 pts, Drainage Blockage <= 30 pts, Real-time Weather API <= 20 pts).
+  - Automated Alerting: 3-tier physical alert beacons (Safe, Warning, Critical) on-site plus automated citizen/responder SMS and push alerts with a 30-minute deduplicating cooldown.
+  - Dataset: 5,000 manually annotated drainage images on CVAT.ai with OpenCV frame-quality and blur-detection pre-filtering.
+
+### Flagship 3: Task-Buddy (AI-Assisted Task Management & RAG Memory)
+- **Role**: Technical Lead and Sole Developer
+- **Stack**: React 19, TypeScript, Vite, Tailwind CSS v4, FastAPI, PostgreSQL (Supabase), pgvector, Redis.
+- **AI/RAG Architecture**:
+  - Hybrid lexical BM25 + Jina vector embeddings (`jina-embeddings-v3`) with Reciprocal Rank Fusion.
+  - Sub-500ms task decomposition and scheduling planning powered by Groq `llama-3.3-70b` with seamless OpenAI API fallback.
+  - Contextual effort estimation derived from historical user completion velocity.
+  - Verification: 347 passing pytest backend tests, 338 KB minified frontend bundle, real-time WebSocket state synchronization.
+
+### Flagship 4: Compliant Customer Satisfaction Survey System
+- **Role**: Sole Developer
+- **Stack**: Laravel 12, Inertia.js 2, React 19, Filament 4 admin panel, Spatie RBAC.
+- **Security & Integrity Engineering**:
+  - Custom `PiiScrubberProcessor` middleware that recursively strips personally identifiable information (PII) from logs before persistence (`[REDACTED]`).
+  - Synchronous `AnswerObserver` triggering instant notifications to administration for low customer sentiment ratings (<3 on 5-point scale).
+  - Multi-tenant data segregation with `ScopedByManager` row-level isolation.
+  - 146 automated tests with 5,856 assertions.
+
+---
+
+## 3. Work Experience & Leadership
+
+### FlyRank AI — Full-Stack AI Engineer Intern [JUN 2026 – PRESENT]
+- Accomplished autonomous FastAPI AI sidecar microservice deployment, as measured by increasing retrieval accuracy from 81.8% to 86.4% Top-1 on ground-truth benchmarks, by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.
+- Accomplished elimination of out-of-domain hallucinations, as measured by a 100% negative query pass rate and 90% LLM-as-judge relevance score, by designing a bounded 3-step agentic query loop with cosine similarity gating (<0.50 threshold) and inline numbered citations.
+- Accomplished ~65% reduction in time-to-first-token (TTFT) and real-time observability across production deployments, by implementing asynchronous Server-Sent Events (SSE) streaming APIs, Prometheus `/metrics` latency histograms, and Grafana telemetry dashboards.
+
+### Nexvision Innovations Inc. — Full Stack Software Engineering Intern (Team Lead) [JUN 2026 – PRESENT]
+- Accomplished 100% compliance with Department of Labor and Employment (DOLE) statutory standards across 4 enterprise HRIS applications, by auditing payroll calculation engines and implementing interval-partitioned time algorithms to isolate 10 PM – 6 AM night differentials from standard overtime multipliers.
+- Accomplished automation of statutory multi-tier payroll deductions and 13th-month proration across 500+ employee records, by developing TypeScript/Next.js calculation modules for progressive SSS/WISP, PhilHealth, and Pag-IBIG regular/MP2 brackets with immutable audit logging.
+- Accomplished prevention of cross-branch data leaks and strengthened multi-tenant data isolation, by auditing Supabase and PostgreSQL data-access layers and implementing strict branch-scoped row-level query constraints.
+
+---
+
+## 4. Digital Eric Conversational Agent Specification
+
+### What is Digital Eric?
+Digital Eric is a first-person AI agent integrated into Eric's portfolio (`src/components/DigitalEricChat.tsx`). It allows technical recruiters, engineering managers, and visitors to conduct an interactive interview directly with Eric's digital double.
+
+### Operational Characteristics & Boundaries
+- **Disclosed Identity**: Digital Eric is explicitly disclosed as an AI system at all times (indicated by an AI badge and disclaimer in the UI).
+- **Knowledge Boundary**: Strictly grounded in the curated Knowledge File (`knowledge/digital-eric.md`). Digital Eric never hallucinates facts, jobs, or credentials. If a visitor asks about something outside the knowledge file, Digital Eric states the boundary plainly and offers to forward the question via email.
+- **Backend Architecture**: FastAPI microservice deployed on FastAPI Cloud serving Server-Sent Events (SSE) token streaming via Google Gemini API (with Groq `llama-3.1-8b-instant` fallback) with in-memory per-IP rate limiting and Telegram notification tripwires.
+
+---
+
+## 5. Summary of Technical Competencies
+
+- **AI & ML**: RAG Pipelines, Hybrid Search (FTS5 BM25 + Vector Embeddings), Reciprocal Rank Fusion (RRF), Reranking Models, pgvector, Vector Indexing, Prompt Engineering, Agentic Workflows, LLM-as-Judge Evals, YOLOv8, OpenCV, Gemini API, Groq, LangChain, LangGraph.
+- **Languages**: TypeScript, JavaScript, Python, PHP, SQL, HTML5, CSS3/Tailwind.
+- **Backend & APIs**: FastAPI, Pydantic, SQLAlchemy, Pytest, Laravel 11/12, Node.js, RESTful APIs, SSE (Server-Sent Events), WebSockets.
+- **Frontend**: React 19, TypeScript, Next.js, Vite, Tailwind CSS v4, Component Systems, Responsive Design, State Management.
+- **Databases & Caching**: PostgreSQL, Supabase, SQLite, Redis.
+- **Security & DevOps**: RBAC, Row-Level Security, PII Redaction, Docker, Prometheus, Grafana, Linux, Git/GitHub Actions, Vercel.
+- **Credentials**: TESDA Visual Graphics Design NC III, Boot.dev Backend Graduate, HackTheBox CTF participant.
