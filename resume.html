@@ -1,339 +1,426 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Eric Gabriel Manabat - Resume</title>
-  <style>
-    @page {
-      size: letter;
-      margin: 0.32in 0.44in;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Times New Roman", Times, Georgia, serif;
-    }
-    body {
-      font-family: "Times New Roman", Times, Georgia, serif;
-      font-size: 9.3pt;
-      line-height: 1.25;
-      color: #000000;
-      background: #ffffff;
-      -webkit-font-smoothing: antialiased;
-    }
-    .page {
-      max-width: 8.5in;
-      margin: 0 auto;
-      padding: 0.32in 0.44in;
-    }
-    @media print {
+  <head>
+    <meta charset="UTF-8" />
+    <title>Eric Gabriel Manabat - Resume</title>
+    <style>
+      @page {
+        size: letter;
+        margin: 0.32in 0.44in;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Times New Roman', Times, Georgia, serif;
+      }
       body {
+        font-family: 'Times New Roman', Times, Georgia, serif;
         font-size: 9.3pt;
         line-height: 1.25;
         color: #000000;
+        background: #ffffff;
+        -webkit-font-smoothing: antialiased;
       }
       .page {
-        padding: 0;
-        max-width: 100%;
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 0.32in 0.44in;
       }
-      a {
+      @media print {
+        body {
+          font-size: 9.3pt;
+          line-height: 1.25;
+          color: #000000;
+        }
+        .page {
+          padding: 0;
+          max-width: 100%;
+        }
+        a {
+          color: #000000;
+          text-decoration: none;
+        }
+      }
+
+      /* Header */
+      header {
+        text-align: center;
+        margin-bottom: 6px;
+      }
+      h1 {
+        font-size: 19pt;
+        font-weight: bold;
+        letter-spacing: 0.02em;
+        color: #000000;
+        text-transform: uppercase;
+        margin-bottom: 1px;
+      }
+      .role-title {
+        font-size: 10pt;
+        font-weight: bold;
+        color: #000000;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+      }
+      .contact-bar {
+        font-size: 8.4pt;
+        color: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
+        gap: 5px;
+      }
+      .contact-bar a {
         color: #000000;
         text-decoration: none;
       }
-    }
-    
-    /* Header */
-    header {
-      text-align: center;
-      margin-bottom: 6px;
-    }
-    h1 {
-      font-size: 19pt;
-      font-weight: bold;
-      letter-spacing: 0.02em;
-      color: #000000;
-      text-transform: uppercase;
-      margin-bottom: 1px;
-    }
-    .role-title {
-      font-size: 10pt;
-      font-weight: bold;
-      color: #000000;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-    .contact-bar {
-      font-size: 8.4pt;
-      color: #000000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      white-space: nowrap;
-      gap: 5px;
-    }
-    .contact-bar a {
-      color: #000000;
-      text-decoration: none;
-    }
-    .contact-bar a:hover {
-      text-decoration: underline;
-    }
-    .sep {
-      color: #000000;
-    }
+      .contact-bar a:hover {
+        text-decoration: underline;
+      }
+      .sep {
+        color: #000000;
+      }
 
-    /* Section Styling */
-    section {
-      margin-bottom: 6px;
-    }
-    section:last-child {
-      margin-bottom: 0;
-    }
-    .section-title {
-      font-size: 9.6pt;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #000000;
-      border-bottom: 1px solid #000000;
-      padding-bottom: 1px;
-      margin-bottom: 3.5px;
-    }
+      /* Section Styling */
+      section {
+        margin-bottom: 6px;
+      }
+      section:last-child {
+        margin-bottom: 0;
+      }
+      .section-title {
+        font-size: 9.6pt;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #000000;
+        border-bottom: 1px solid #000000;
+        padding-bottom: 1px;
+        margin-bottom: 3.5px;
+      }
 
-    /* Item Blocks */
-    .item {
-      margin-bottom: 3.5px;
-    }
-    .item:last-child {
-      margin-bottom: 0;
-    }
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1px;
-    }
-    .item-title {
-      font-size: 9.3pt;
-      color: #000000;
-    }
-    .item-title .company {
-      font-weight: bold;
-    }
-    .item-title .role {
-      font-style: italic;
-    }
-    .item-title .tech {
-      font-style: italic;
-      font-size: 8.8pt;
-    }
-    .item-date {
-      font-size: 8.8pt;
-      font-weight: normal;
-      color: #000000;
-      white-space: nowrap;
-    }
+      /* Item Blocks */
+      .item {
+        margin-bottom: 3.5px;
+      }
+      .item:last-child {
+        margin-bottom: 0;
+      }
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 1px;
+      }
+      .item-title {
+        font-size: 9.3pt;
+        color: #000000;
+      }
+      .item-title .company {
+        font-weight: bold;
+      }
+      .item-title .role {
+        font-style: italic;
+      }
+      .item-title .tech {
+        font-style: italic;
+        font-size: 8.8pt;
+      }
+      .item-date {
+        font-size: 8.8pt;
+        font-weight: normal;
+        color: #000000;
+        white-space: nowrap;
+      }
 
-    /* Bullet lists */
-    ul.bullets {
-      list-style-type: disc;
-      padding-left: 14px;
-      margin-top: 1px;
-    }
-    ul.bullets li {
-      margin-bottom: 1.2px;
-      color: #000000;
-      text-align: justify;
-    }
-    ul.bullets li:last-child {
-      margin-bottom: 0;
-    }
-    strong {
-      color: #000000;
-      font-weight: bold;
-    }
+      /* Bullet lists */
+      ul.bullets {
+        list-style-type: disc;
+        padding-left: 14px;
+        margin-top: 1px;
+      }
+      ul.bullets li {
+        margin-bottom: 1.2px;
+        color: #000000;
+        text-align: justify;
+      }
+      ul.bullets li:last-child {
+        margin-bottom: 0;
+      }
+      strong {
+        color: #000000;
+        font-weight: bold;
+      }
 
-    /* Skills List */
-    .skills-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5px;
-    }
-    .skill-row {
-      font-size: 9.1pt;
-      color: #000000;
-      line-height: 1.24;
-    }
-    .skill-category {
-      font-weight: bold;
-      color: #000000;
-    }
+      /* Skills List */
+      .skills-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5px;
+      }
+      .skill-row {
+        font-size: 9.1pt;
+        color: #000000;
+        line-height: 1.24;
+      }
+      .skill-category {
+        font-weight: bold;
+        color: #000000;
+      }
 
-    /* Honors List */
-    ul.honors-list {
-      list-style-type: disc;
-      padding-left: 14px;
-    }
-    ul.honors-list li {
-      font-size: 8.9pt;
-      margin-bottom: 1px;
-      color: #000000;
-    }
-    ul.honors-list li:last-child {
-      margin-bottom: 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header>
-      <h1>Eric Gabriel Manabat</h1>
-      <div class="role-title">Full-Stack AI Engineer</div>
-      <div class="contact-bar">
-        <a href="mailto:eric.manabatseam@gmail.com">eric.manabatseam@gmail.com</a>
-        <span class="sep">|</span>
-        <span>+63 962 844 5842</span>
-        <span class="sep">|</span>
-        <a href="https://ericmanabat-dev.vercel.app" target="_blank">ericmanabat-dev.vercel.app</a>
-        <span class="sep">|</span>
-        <a href="https://linkedin.com/in/eric-gabriel-manabat" target="_blank">linkedin.com/in/eric-gabriel-manabat</a>
-        <span class="sep">|</span>
-        <a href="https://github.com/PSergio984" target="_blank">github.com/PSergio984</a>
-      </div>
-    </header>
+      /* Honors List */
+      ul.honors-list {
+        list-style-type: disc;
+        padding-left: 14px;
+      }
+      ul.honors-list li {
+        font-size: 8.9pt;
+        margin-bottom: 1px;
+        color: #000000;
+      }
+      ul.honors-list li:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>Eric Gabriel Manabat</h1>
+        <div class="role-title">Full-Stack AI Engineer</div>
+        <div class="contact-bar">
+          <a href="mailto:eric.manabatseam@gmail.com">eric.manabatseam@gmail.com</a>
+          <span class="sep">|</span>
+          <span>+63 962 844 5842</span>
+          <span class="sep">|</span>
+          <a href="https://ericmanabat-dev.vercel.app" target="_blank"
+            >ericmanabat-dev.vercel.app</a
+          >
+          <span class="sep">|</span>
+          <a href="https://linkedin.com/in/eric-gabriel-manabat" target="_blank"
+            >linkedin.com/in/eric-gabriel-manabat</a
+          >
+          <span class="sep">|</span>
+          <a href="https://github.com/PSergio984" target="_blank">github.com/PSergio984</a>
+        </div>
+      </header>
 
-    <!-- Education -->
-    <section>
-      <div class="section-title">Education</div>
-      <div class="item">
-        <div class="item-header">
-          <div class="item-title">
-            <span class="company">Pamantasan ng Lungsod ng Valenzuela</span>
-            <span class="sep">|</span>
-            <span class="role">Bachelor of Science in Information Technology</span>
+      <!-- Education -->
+      <section>
+        <div class="section-title">Education</div>
+        <div class="item">
+          <div class="item-header">
+            <div class="item-title">
+              <span class="company">Pamantasan ng Lungsod ng Valenzuela</span>
+              <span class="sep">|</span>
+              <span class="role">Bachelor of Science in Information Technology</span>
+            </div>
+            <div class="item-date">2023 - 2027</div>
           </div>
-          <div class="item-date">2023 - 2027</div>
-        </div>
-        <div style="font-size: 8.8pt; color: #000000;">
-          Honors: <strong>Consistent Dean's Lister (1.03 Running GWA)</strong> | Valenzuela City, Philippines
-        </div>
-      </div>
-    </section>
-
-    <!-- Professional Experience -->
-    <section>
-      <div class="section-title">Professional Experience</div>
-      
-      <!-- FlyRank AI -->
-      <div class="item">
-        <div class="item-header">
-          <div class="item-title">
-            <span class="company">FlyRank AI</span>
-            <span class="sep">|</span>
-            <span class="role">Full-Stack AI Engineer Intern</span>
+          <div style="font-size: 8.8pt; color: #000000">
+            Honors: <strong>Consistent Dean's Lister (1.03 Running GWA)</strong> | Valenzuela City,
+            Philippines
           </div>
-          <div class="item-date">Jun 2026 - Present | Remote</div>
         </div>
-        <ul class="bullets">
-          <li>Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing retrieval accuracy from <strong>81.8% to 86.4% Top-1</strong> on ground-truth benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.</li>
-          <li>Eliminated out-of-domain hallucinations to achieve a <strong>100% negative query pass rate</strong> and <strong>90% LLM-as-judge relevance score</strong> by designing a bounded 3-step LangChain agentic query loop with cosine similarity gating (&lt;0.50 threshold) and inline citation grounding.</li>
-          <li>Reduced time-to-first-token (TTFT) by <strong>~65%</strong> and established real-time operational observability by implementing asynchronous Server-Sent Events (SSE) token streaming APIs, Prometheus /metrics latency histograms, and Grafana telemetry dashboards.</li>
-          <li>Built automated end-to-end evaluation pipelines and integrated production-ready streaming chat interfaces, expanding backend AI sidecars into full-stack agentic systems.</li>
+      </section>
+
+      <!-- Professional Experience -->
+      <section>
+        <div class="section-title">Professional Experience</div>
+
+        <!-- FlyRank AI -->
+        <div class="item">
+          <div class="item-header">
+            <div class="item-title">
+              <span class="company">FlyRank AI</span>
+              <span class="sep">|</span>
+              <span class="role">Full-Stack AI Engineer Intern</span>
+            </div>
+            <div class="item-date">Jun 2026 - Present | Remote</div>
+          </div>
+          <ul class="bullets">
+            <li>
+              Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing
+              retrieval accuracy from <strong>81.8% to 86.4% Top-1</strong> on ground-truth
+              benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank
+              Fusion (RRF k=60) and deterministic blend reranking.
+            </li>
+            <li>
+              Eliminated out-of-domain hallucinations to achieve a
+              <strong>100% negative query pass rate</strong> and
+              <strong>90% LLM-as-judge relevance score</strong> by designing a bounded 3-step
+              LangChain agentic query loop with cosine similarity gating (&lt;0.50 threshold) and
+              inline citation grounding.
+            </li>
+            <li>
+              Reduced time-to-first-token (TTFT) by <strong>~65%</strong> and established real-time
+              operational observability by implementing asynchronous Server-Sent Events (SSE) token
+              streaming APIs, Prometheus /metrics latency histograms, and Grafana telemetry
+              dashboards.
+            </li>
+            <li>
+              Built automated end-to-end evaluation pipelines and integrated production-ready
+              streaming chat interfaces, expanding backend AI sidecars into full-stack agentic
+              systems.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Nexvision Innovations -->
+        <div class="item">
+          <div class="item-header">
+            <div class="item-title">
+              <span class="company">Nexvision Innovations Inc.</span>
+              <span class="sep">|</span>
+              <span class="role">Full Stack Software Engineering Intern - Team Lead</span>
+            </div>
+            <div class="item-date">Jun 2026 - Present | Marikina (Hybrid)</div>
+          </div>
+          <ul class="bullets">
+            <li>
+              Engineered DOLE statutory compliance algorithms across 4 enterprise applications by
+              designing interval-partitioned time calculations to isolate 10 PM - 6 AM night
+              differentials from standard overtime multipliers.
+            </li>
+            <li>
+              Automated statutory deduction and 13th-month proration calculations across
+              <strong>500+ employee records</strong> by developing modular TypeScript/Next.js
+              computation engines with immutable audit logging.
+            </li>
+            <li>
+              Streamlined monthly branch audit preparation time from
+              <strong>3 days to under 5 minutes</strong> by building high-throughput multi-sheet
+              Excel/CSV data export engines and state persistence modules.
+            </li>
+            <li>
+              Accelerated sprint execution velocity by <strong>40%</strong> across 180+ Jira/GitHub
+              issues as Intern Team Lead by delegating frontend/backend modules, conducting peer
+              code reviews, and enforcing architectural standards.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Featured AI Projects -->
+      <section>
+        <div class="section-title">Featured AI Projects</div>
+
+        <!-- PLV eLib -->
+        <div class="item">
+          <div class="item-header">
+            <div class="item-title">
+              <span class="company">PLV eLib - Academic Library AI Sidecar</span>
+              <span class="sep">|</span>
+              <span class="tech"
+                >FastAPI, Laravel, LangChain, PostgreSQL, SQLite FTS5, Prometheus, Grafana</span
+              >
+            </div>
+            <div class="item-date">2026</div>
+          </div>
+          <ul class="bullets">
+            <li>
+              Architected decoupled dual-engine topology pairing a Laravel 11 monolith with an
+              external FastAPI AI sidecar, lifting Top-1 retrieval accuracy from
+              <strong>81.8% to 86.4%</strong> via SQLite FTS5 (BM25) and dense vectors fused with
+              RRF (k=60).
+            </li>
+            <li>
+              Constructed bounded LangChain agentic retrieval loop with deterministic refusals on
+              out-of-domain queries and automated LLM-as-judge verification, achieving a
+              <strong>100% negative query pass rate</strong>.
+            </li>
+            <li>
+              Deployed Prometheus metrics and a 6-chart Dockerized Grafana dashboard to track
+              production inference latency histograms and live query feedback streams.
+            </li>
+          </ul>
+        </div>
+
+        <!-- AGOS -->
+        <div class="item">
+          <div class="item-header">
+            <div class="item-title">
+              <span class="company">AGOS - AI-Guided Overflow Surveillance</span>
+              <span class="sep">|</span>
+              <span class="tech">FastAPI, React, YOLOv8, OpenCV, Docker, Raspberry Pi</span>
+            </div>
+            <div class="item-date">2026</div>
+          </div>
+          <ul class="bullets">
+            <li>
+              Fine-tuned custom YOLOv8 object detection model on
+              <strong>5,000 CVAT-annotated</strong> drainage images, automating real-time floating
+              debris and waterway blockage classification.
+            </li>
+            <li>
+              Developed automated OpenCV preprocessing pipeline to filter frame quality, mitigate
+              glare, and eliminate motion blur prior to batch model inference.
+            </li>
+            <li>
+              Slashed cloud GPU compute overhead by <strong>92%</strong> by architecting a decoupled
+              batch inference engine that evaluated camera streams on an optimized 3-minute
+              inference cadence.
+            </li>
+            <li>
+              Formulated multi-modal hazard scoring engine fusing visual blockage, ultrasonic depth,
+              and weather APIs to trigger 3-tier physical LEDs and queued emergency push/SMS alerts
+              with a 30-minute deduplication cooldown.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Technical Skills -->
+      <section>
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-grid">
+          <div class="skill-row">
+            <span class="skill-category">AI &amp; Machine Learning:</span> LangChain, LangGraph, RAG
+            Pipelines, Vector Search (pgvector, Hybrid BM25/Dense RRF), Embeddings, YOLOv8, OpenCV,
+            LLM-as-Judge Evaluation, Prompt Engineering, SSE Streaming, Prometheus &amp; Grafana
+            Observability
+          </div>
+          <div class="skill-row">
+            <span class="skill-category">Languages:</span> Python, TypeScript, JavaScript, SQL, C#,
+            Java, PHP
+          </div>
+          <div class="skill-row">
+            <span class="skill-category">Frameworks &amp; Full-Stack:</span> FastAPI, Next.js,
+            React, Node.js, Laravel, Tailwind CSS
+          </div>
+          <div class="skill-row">
+            <span class="skill-category">Databases &amp; Cloud:</span> PostgreSQL, Redis, Supabase,
+            Docker, AWS, GitHub Actions
+          </div>
+        </div>
+      </section>
+
+      <!-- Honors & Certifications -->
+      <section>
+        <div class="section-title">Honors &amp; Certifications</div>
+        <ul class="honors-list">
+          <li>
+            <strong>LLM Zoomcamp - Production LLM &amp; RAG Engineering Bootcamp</strong> |
+            DataTalks.Club | Aug 2026
+          </li>
+          <li><strong>Learn RAG (Retrieval-Augmented Generation)</strong> | Boot.dev | 2026</li>
+          <li>
+            <strong>Global Cyber Skills Benchmark (Project Nightfall)</strong> - Ranked 63/589
+            Global Teams | HackTheBox | May 2026
+          </li>
+          <li>
+            <strong>Google Cybersecurity Professional Certificate</strong> | Google | Jan 2026
+          </li>
+          <li><strong>Mastering REST APIs with FastAPI</strong> | Packt / Coursera | May 2026</li>
+          <li>
+            <strong>ITLympics 2026 - Silver Medal</strong> | Capture the Flag | Pamantasan ng
+            Lungsod ng Valenzuela | Mar 2026
+          </li>
         </ul>
-      </div>
-
-      <!-- Nexvision Innovations -->
-      <div class="item">
-        <div class="item-header">
-          <div class="item-title">
-            <span class="company">Nexvision Innovations Inc.</span>
-            <span class="sep">|</span>
-            <span class="role">Full Stack Software Engineering Intern - Team Lead</span>
-          </div>
-          <div class="item-date">Jun 2026 - Present | Marikina (Hybrid)</div>
-        </div>
-        <ul class="bullets">
-          <li>Engineered DOLE statutory compliance algorithms across 4 enterprise applications by designing interval-partitioned time calculations to isolate 10 PM - 6 AM night differentials from standard overtime multipliers.</li>
-          <li>Automated statutory deduction and 13th-month proration calculations across <strong>500+ employee records</strong> by developing modular TypeScript/Next.js computation engines with immutable audit logging.</li>
-          <li>Streamlined monthly branch audit preparation time from <strong>3 days to under 5 minutes</strong> by building high-throughput multi-sheet Excel/CSV data export engines and state persistence modules.</li>
-          <li>Accelerated sprint execution velocity by <strong>40%</strong> across 180+ Jira/GitHub issues as Intern Team Lead by delegating frontend/backend modules, conducting peer code reviews, and enforcing architectural standards.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Featured AI Projects -->
-    <section>
-      <div class="section-title">Featured AI Projects</div>
-
-      <!-- PLV eLib -->
-      <div class="item">
-        <div class="item-header">
-          <div class="item-title">
-            <span class="company">PLV eLib - Academic Library AI Sidecar</span>
-            <span class="sep">|</span>
-            <span class="tech">FastAPI, Laravel, LangChain, PostgreSQL, SQLite FTS5, Prometheus, Grafana</span>
-          </div>
-          <div class="item-date">2026</div>
-        </div>
-        <ul class="bullets">
-          <li>Architected decoupled dual-engine topology pairing a Laravel 11 monolith with an external FastAPI AI sidecar, lifting Top-1 retrieval accuracy from <strong>81.8% to 86.4%</strong> via SQLite FTS5 (BM25) and dense vectors fused with RRF (k=60).</li>
-          <li>Constructed bounded LangChain agentic retrieval loop with deterministic refusals on out-of-domain queries and automated LLM-as-judge verification, achieving a <strong>100% negative query pass rate</strong>.</li>
-          <li>Deployed Prometheus metrics and a 6-chart Dockerized Grafana dashboard to track production inference latency histograms and live query feedback streams.</li>
-        </ul>
-      </div>
-
-      <!-- AGOS -->
-      <div class="item">
-        <div class="item-header">
-          <div class="item-title">
-            <span class="company">AGOS - AI-Guided Overflow Surveillance</span>
-            <span class="sep">|</span>
-            <span class="tech">FastAPI, React, YOLOv8, OpenCV, Docker, Raspberry Pi</span>
-          </div>
-          <div class="item-date">2026</div>
-        </div>
-        <ul class="bullets">
-          <li>Fine-tuned custom YOLOv8 object detection model on <strong>5,000 CVAT-annotated</strong> drainage images, automating real-time floating debris and waterway blockage classification.</li>
-          <li>Developed automated OpenCV preprocessing pipeline to filter frame quality, mitigate glare, and eliminate motion blur prior to batch model inference.</li>
-          <li>Slashed cloud GPU compute overhead by <strong>92%</strong> by architecting a decoupled batch inference engine that evaluated camera streams on an optimized 3-minute inference cadence.</li>
-          <li>Formulated multi-modal hazard scoring engine fusing visual blockage, ultrasonic depth, and weather APIs to trigger 3-tier physical LEDs and queued emergency push/SMS alerts with a 30-minute deduplication cooldown.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Technical Skills -->
-    <section>
-      <div class="section-title">Technical Skills</div>
-      <div class="skills-grid">
-        <div class="skill-row">
-          <span class="skill-category">AI &amp; Machine Learning:</span> LangChain, LangGraph, RAG Pipelines, Vector Search (pgvector, Hybrid BM25/Dense RRF), Embeddings, YOLOv8, OpenCV, LLM-as-Judge Evaluation, Prompt Engineering, SSE Streaming, Prometheus &amp; Grafana Observability
-        </div>
-        <div class="skill-row">
-          <span class="skill-category">Languages:</span> Python, TypeScript, JavaScript, SQL, C#, Java, PHP
-        </div>
-        <div class="skill-row">
-          <span class="skill-category">Frameworks &amp; Full-Stack:</span> FastAPI, Next.js, React, Node.js, Laravel, Tailwind CSS
-        </div>
-        <div class="skill-row">
-          <span class="skill-category">Databases &amp; Cloud:</span> PostgreSQL, Redis, Supabase, Docker, AWS, GitHub Actions
-        </div>
-      </div>
-    </section>
-
-    <!-- Honors & Certifications -->
-    <section>
-      <div class="section-title">Honors &amp; Certifications</div>
-      <ul class="honors-list">
-        <li><strong>LLM Zoomcamp - Production LLM &amp; RAG Engineering Bootcamp</strong> | DataTalks.Club | Aug 2026</li>
-        <li><strong>Learn RAG (Retrieval-Augmented Generation)</strong> | Boot.dev | 2026</li>
-        <li><strong>Global Cyber Skills Benchmark (Project Nightfall)</strong> - Ranked 63/589 Global Teams | HackTheBox | May 2026</li>
-        <li><strong>Google Cybersecurity Professional Certificate</strong> | Google | Jan 2026</li>
-        <li><strong>Mastering REST APIs with FastAPI</strong> | Packt / Coursera | May 2026</li>
-        <li><strong>ITLympics 2026 - Silver Medal</strong> | Capture the Flag | Pamantasan ng Lungsod ng Valenzuela | Mar 2026</li>
-      </ul>
-    </section>
-  </div>
-</body>
+      </section>
+    </div>
+  </body>
 </html>
