@@ -3,102 +3,17 @@ import {
   ShieldCheck,
   BookOpen,
   Users,
-  X,
   ExternalLink,
   Sparkles,
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { credentialsData, type Credential } from '../data/credentials';
+import { VerificationModal, type VerificationItem } from './VerificationModal';
 
-export interface VerificationItem {
-  title: string;
-  imageUrl?: string;
-}
-
-// Fixed Responsive Verification Modal
-export function VerificationModal({
-  selectedCred,
-  onClose,
-}: {
-  selectedCred: VerificationItem | null;
-  onClose: () => void;
-}) {
-  useEffect(() => {
-    if (!selectedCred) return;
-    document.body.style.overflow = 'hidden';
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = 'auto';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selectedCred, onClose]);
-
-  if (!selectedCred) return null;
-  const isPdf = selectedCred.imageUrl?.toLowerCase().endsWith('.pdf');
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fade-in cursor-pointer"
-      onClick={onClose}
-    >
-      <div
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-cred-title"
-        className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center cursor-default bg-white dark:bg-[#0b101d] p-4 rounded-2xl border border-slate-300 dark:border-slate-800 shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-slate-800 px-1">
-          <div
-            className="text-sm font-bold text-slate-900 dark:text-white truncate pr-4"
-            id="modal-cred-title"
-          >
-            {selectedCred.title}
-          </div>
-          <button
-            onClick={onClose}
-            className="p-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-white rounded-full transition-colors cursor-pointer border border-slate-200 dark:border-slate-700"
-            aria-label="Close proof preview"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-
-        {selectedCred.imageUrl ? (
-          isPdf ? (
-            <iframe
-              src={selectedCred.imageUrl}
-              title={`Verification for ${selectedCred.title}`}
-              className="w-full h-[78vh] bg-white rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xl"
-            />
-          ) : (
-            <img
-              src={selectedCred.imageUrl}
-              alt={`Certificate proof for ${selectedCred.title}`}
-              loading="lazy"
-              decoding="async"
-              className="max-w-full max-h-[78vh] w-auto h-auto object-contain rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800"
-            />
-          )
-        ) : (
-          <div className="w-full max-w-md h-48 flex items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-sm text-slate-600 dark:text-slate-400">
-            Preview proof not available
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
+export { VerificationModal, type VerificationItem };
 
 // Unified Compact Credentials Component with Tabbed Filtering
 export function Credentials() {

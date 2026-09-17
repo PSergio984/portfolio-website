@@ -1,7 +1,7 @@
-import { Briefcase, ShieldCheck, ExternalLink } from 'lucide-react';
+import { Briefcase, ShieldCheck, Eye } from 'lucide-react';
 import { useState } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
-import { VerificationModal, type VerificationItem } from './Credentials';
+import { VerificationModal, type VerificationItem } from './VerificationModal';
 
 interface ExperienceProof {
   title: string;
@@ -10,7 +10,6 @@ interface ExperienceProof {
   date: string;
   timestamp: string;
   imageUrl: string;
-  verifyUrl?: string;
 }
 
 interface ExperienceEntry {
@@ -55,7 +54,6 @@ const experienceData: ExperienceEntry[] = [
         date: 'July 2026 — September 2026',
         timestamp: '[JUL – SEPT 2026]',
         imageUrl: '/assets/cohorts/flyrank-backend-ai.webp',
-        verifyUrl: 'https://internship.flyrank.ai/verify',
       },
       {
         title: 'AI Fluency Internship Program',
@@ -64,7 +62,6 @@ const experienceData: ExperienceEntry[] = [
         date: 'July 2026 — September 2026',
         timestamp: '[JUL – SEPT 2026]',
         imageUrl: '/assets/cohorts/flyrank-ai-fluency.webp',
-        verifyUrl: 'https://internship.flyrank.ai/verify',
       },
     ],
   },
@@ -173,62 +170,50 @@ export function Experience() {
               {/* Verified Program Proofs */}
               {exp.proofs && exp.proofs.length > 0 && (
                 <div className="pt-3.5 mt-3 border-t border-[var(--border)]">
-                  <div className="text-[11px] font-mono text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                  <div className="text-xs font-mono text-[var(--accent-text)] uppercase tracking-wider font-semibold mb-2.5 flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[var(--accent-bg)] border border-[var(--accent-border)] w-fit">
+                    <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Verified Program Proofs</span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {exp.proofs.map((proof) => (
                       <div
                         key={proof.code}
-                        className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex flex-col justify-between gap-2"
+                        className="p-4 rounded-2xl bg-[var(--card-bg)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all flex flex-col justify-between gap-2.5 shadow-[var(--shadow-card)]"
                       >
                         <div>
-                          <div className="flex items-center justify-between gap-1.5 mb-1">
-                            <span className="text-[10px] font-mono font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-800/50">
+                          <div className="flex items-center justify-between gap-1.5 mb-1.5">
+                            <span className="text-[10px] font-mono font-semibold text-[var(--accent-text)] bg-[var(--accent-bg)] px-2 py-0.5 rounded-md border border-[var(--accent-border)]">
                               {proof.award}
                             </span>
                             <span className="text-[10px] font-mono text-[var(--text-muted)]">
                               {proof.timestamp}
                             </span>
                           </div>
-                          <div className="text-xs font-bold text-[var(--text-h)] leading-snug">
+                          <div className="text-xs sm:text-sm font-bold text-[var(--text-h)] leading-snug">
                             {proof.title}
                           </div>
-                          <div className="text-[10px] font-mono text-[var(--text-muted)] mt-0.5">
+                          <div className="text-[10px] font-mono text-[var(--text-muted)] mt-1">
                             ID: {proof.code}
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between pt-2 border-t border-slate-200/80 dark:border-slate-800/80">
+                        <div className="flex items-center justify-between pt-2.5 border-t border-[var(--border)]">
                           <span className="text-[10px] font-mono text-[var(--text-muted)]">
                             {proof.date}
                           </span>
-                          <div className="flex items-center gap-1.5">
-                            {proof.verifyUrl && (
-                              <a
-                                href={proof.verifyUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-h)] px-2 py-1 rounded transition-colors"
-                              >
-                                Verify
-                              </a>
-                            )}
-                            <button
-                              type="button"
-                              onClick={() =>
-                                setSelectedProof({
-                                  title: `${proof.title} (${proof.code})`,
-                                  imageUrl: proof.imageUrl,
-                                })
-                              }
-                              className="text-xs font-bold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 cursor-pointer bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/40 dark:hover:bg-violet-900/60 px-2.5 py-1 rounded-lg transition-colors border border-violet-200 dark:border-violet-800/50 shadow-2xs"
-                            >
-                              <span>Proof</span>
-                              <ExternalLink className="w-3 h-3" />
-                            </button>
-                          </div>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setSelectedProof({
+                                title: `${proof.title} (${proof.code})`,
+                                imageUrl: proof.imageUrl,
+                              })
+                            }
+                            className="text-xs font-semibold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1.5 cursor-pointer bg-[var(--accent-bg)] hover:bg-[var(--card-hover)] px-2.5 py-1 rounded-lg transition-colors border border-[var(--accent-border)] shadow-2xs"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>Proof</span>
+                          </button>
                         </div>
                       </div>
                     ))}
@@ -240,7 +225,7 @@ export function Experience() {
         </div>
       </div>
 
-      <VerificationModal selectedCred={selectedProof} onClose={() => setSelectedProof(null)} />
+      <VerificationModal item={selectedProof} onClose={() => setSelectedProof(null)} />
     </section>
   );
 }

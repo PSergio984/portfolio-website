@@ -61,5 +61,15 @@ describe('Experience', () => {
     const closeBtn = screen.getByLabelText('Close proof preview');
     fireEvent.click(closeBtn);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+
+    // Edge case: test second proof and closing with Escape key
+    fireEvent.click(proofBtns[1]);
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(
+      screen.getByText(/AI Fluency Internship Program \(FR-D11-8C634-C586C\)/i),
+    ).toBeInTheDocument();
+
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 });

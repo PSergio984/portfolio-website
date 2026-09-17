@@ -70,4 +70,15 @@ describe('Credentials Component', () => {
     expect(screen.getByText('GCI 2026 Data Science Cohort')).toBeInTheDocument();
     expect(screen.getByText('AWS Community Day Philippines 2026')).toBeInTheDocument();
   });
+
+  it('resets visible count back to initial 6 when switching tabs', () => {
+    const showMoreBtn = screen.getByRole('button', { name: /show \d+ more/i });
+    fireEvent.click(showMoreBtn);
+    expect(screen.getByRole('button', { name: /show less/i })).toBeInTheDocument();
+
+    // Click another tab
+    fireEvent.click(screen.getByText('Certifications'));
+    // Tab switch should reset visible count to 6, so Show Less should disappear
+    expect(screen.queryByRole('button', { name: /show less/i })).not.toBeInTheDocument();
+  });
 });
