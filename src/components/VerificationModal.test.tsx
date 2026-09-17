@@ -103,4 +103,35 @@ describe('VerificationModal', () => {
     );
     expect(screen.getByText('Legacy Prop Test')).toBeInTheDocument();
   });
+
+  it('gracefully switches to fallback when image triggers an error event', () => {
+    render(
+      <VerificationModal
+        item={{ title: 'Broken Image Cert', imageUrl: '/assets/nonexistent.png' }}
+        onClose={vi.fn()}
+      />,
+    );
+
+    const img = screen.getByRole('img');
+    expect(img).toBeInTheDocument();
+
+    // Trigger error event on image
+    fireEvent.error(img);
+
+    expect(screen.getByText('Preview proof not available')).toBeInTheDocument();
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
+  });
+
+  it('detects uppercase .PDF extension and renders iframe', () => {
+    render(
+      <VerificationModal
+        item={{ title: 'Uppercase PDF Cert', imageUrl: '/assets/test.PDF' }}
+        onClose={vi.fn()}
+      />,
+    );
+
+    const iframe = document.querySelector('iframe');
+    expect(iframe).toBeInTheDocument();
+    expect(iframe).toHaveAttribute('src', '/assets/test.PDF');
+  });
 });

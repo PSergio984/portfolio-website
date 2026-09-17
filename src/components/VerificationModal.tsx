@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export interface VerificationItem {
   title: string;
@@ -15,6 +15,8 @@ export interface VerificationModalProps {
 
 export function VerificationModal({ item, selectedCred, onClose }: VerificationModalProps) {
   const activeItem = item ?? selectedCred ?? null;
+  const [failedImageUrl, setFailedImageUrl] = useState<string | null>(null);
+  const hasImageError = Boolean(activeItem?.imageUrl && failedImageUrl === activeItem.imageUrl);
 
   useEffect(() => {
     if (!activeItem) return;
@@ -46,7 +48,7 @@ export function VerificationModal({ item, selectedCred, onClose }: VerificationM
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-cred-title"
-        className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center cursor-default bg-white dark:bg-[#0b101d] p-4 rounded-2xl border border-[var(--border)] shadow-2xl"
+        className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center cursor-default bg-[var(--card-bg)] p-4 rounded-2xl border border-[var(--border)] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[var(--border)] px-1">
@@ -66,12 +68,12 @@ export function VerificationModal({ item, selectedCred, onClose }: VerificationM
           </button>
         </div>
 
-        {activeItem.imageUrl ? (
+        {activeItem.imageUrl && !hasImageError ? (
           isPdf ? (
             <iframe
               src={activeItem.imageUrl}
               title={`Verification for ${activeItem.title}`}
-              className="w-full h-[78vh] bg-white rounded-xl border border-[var(--border)] shadow-2xl"
+              className="w-full h-[78vh] bg-[var(--card-bg)] rounded-xl border border-[var(--border)] shadow-2xl"
             />
           ) : (
             <img
@@ -79,6 +81,7 @@ export function VerificationModal({ item, selectedCred, onClose }: VerificationM
               alt={`Certificate proof for ${activeItem.title}`}
               loading="lazy"
               decoding="async"
+              onError={() => setFailedImageUrl(activeItem.imageUrl ?? '')}
               className="max-w-full max-h-[78vh] w-auto h-auto object-contain rounded-xl shadow-2xl border border-[var(--border)]"
             />
           )

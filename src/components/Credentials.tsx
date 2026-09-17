@@ -167,7 +167,7 @@ export function Credentials() {
                   <button
                     type="button"
                     onClick={() => setSelectedCred(cred)}
-                    className="text-xs font-bold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 cursor-pointer bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/40 dark:hover:bg-violet-900/60 px-3 py-1.5 rounded-lg transition-colors border border-violet-200 dark:border-violet-800/50 shadow-2xs"
+                    className="text-xs font-semibold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 cursor-pointer bg-[var(--accent-bg)] hover:bg-[var(--card-hover)] px-3 py-1.5 rounded-lg transition-colors border border-[var(--accent-border)] shadow-2xs"
                   >
                     <span>Proof</span>
                     <ExternalLink className="w-3 h-3" />
@@ -177,7 +177,7 @@ export function Credentials() {
                     href={cred.profileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-bold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/40 dark:hover:bg-violet-900/60 px-3 py-1.5 rounded-lg transition-colors border border-violet-200 dark:border-violet-800/50 shadow-2xs"
+                    className="text-xs font-semibold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 bg-[var(--accent-bg)] hover:bg-[var(--card-hover)] px-3 py-1.5 rounded-lg transition-colors border border-[var(--accent-border)] shadow-2xs"
                   >
                     <span>View</span>
                     <ExternalLink className="w-3 h-3" />
@@ -195,7 +195,7 @@ export function Credentials() {
               <button
                 type="button"
                 onClick={() => setVisibleCount((prev) => prev + BATCH_SIZE)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--text-h)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all shadow-sm cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--text-h)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all shadow-sm cursor-pointer"
               >
                 <span>
                   Show {nextBatchCount} More ({remainingCount} remaining)
@@ -207,7 +207,7 @@ export function Credentials() {
               <button
                 type="button"
                 onClick={() => setVisibleCount(INITIAL_COUNT)}
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--text-muted)] hover:text-[var(--text-h)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all shadow-sm cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-semibold bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--text-muted)] hover:text-[var(--text-h)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all shadow-sm cursor-pointer"
               >
                 <ChevronUp className="w-4 h-4" />
                 <span>Show Less</span>
@@ -217,7 +217,7 @@ export function Credentials() {
         )}
       </div>
 
-      <VerificationModal selectedCred={selectedCred} onClose={() => setSelectedCred(null)} />
+      <VerificationModal item={selectedCred} onClose={() => setSelectedCred(null)} />
     </section>
   );
 }

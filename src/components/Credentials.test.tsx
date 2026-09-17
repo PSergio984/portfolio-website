@@ -81,4 +81,12 @@ describe('Credentials Component', () => {
     // Tab switch should reset visible count to 6, so Show Less should disappear
     expect(screen.queryByRole('button', { name: /show less/i })).not.toBeInTheDocument();
   });
+
+  it('hides both Show More and Show Less buttons for categories with fewer than or equal to 6 items', () => {
+    // Seminars category has 3 items (<= 6)
+    fireEvent.click(screen.getByText('Seminars'));
+
+    expect(screen.queryByRole('button', { name: /show \d+ more/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /show less/i })).not.toBeInTheDocument();
+  });
 });
