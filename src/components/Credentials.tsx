@@ -103,11 +103,6 @@ export function Credentials() {
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Reset expansion when switching categories
-  useEffect(() => {
-    setIsExpanded(false);
-  }, [activeTab]);
-
   const tabs = [
     { id: 'all', label: 'All Credentials', icon: Sparkles, count: credentialsData.length },
     {
@@ -176,7 +171,10 @@ export function Credentials() {
               <button
                 type="button"
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                onClick={() => {
+                  setActiveTab(tab.id as typeof activeTab);
+                  setIsExpanded(false);
+                }}
                 className={`px-3 py-1.5 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   isActive
                     ? 'bg-[var(--accent)] text-white shadow-sm font-semibold'
