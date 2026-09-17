@@ -36,6 +36,17 @@ export const credentialsData: Credential[] = [
     imageUrl: '/assets/certificates/HTB-Certificate-Sergio984.webp',
   },
   {
+    id: 'deans-list',
+    title: "Dean's List Academic Excellence",
+    institution: 'Pamantasan ng Lungsod ng Valenzuela — BS Information Technology',
+    date: '2023 - 2026',
+    timestamp: '[2023 - 2026]',
+    award: "Consistent Dean's Lister (1.03 Running GWA)",
+    category: 'awards',
+    iconType: 'gold',
+    imageUrl: '/assets/certificates/deans-list.webp',
+  },
+  {
     id: 'itlympics-2025',
     title: 'General IT & Systems Logic Quiz Bee',
     institution: 'Pamantasan ng Lungsod ng Valenzuela',
@@ -68,30 +79,8 @@ export const credentialsData: Credential[] = [
     iconType: 'bronze',
     imageUrl: '/assets/certificates/gamecon.webp',
   },
-  {
-    id: 'deans-list',
-    title: "Dean's List Academic Excellence",
-    institution: 'Pamantasan ng Lungsod ng Valenzuela — BS Information Technology',
-    date: '2023 - 2026',
-    timestamp: '[2023 - 2026]',
-    award: "Consistent Dean's Lister (1.03 Running GWA)",
-    category: 'awards',
-    iconType: 'gold',
-    imageUrl: '/assets/certificates/deans-list.webp',
-  },
 
   // CERTIFICATIONS & SPECIALIZATIONS
-  {
-    id: 'google-cybersecurity',
-    title: 'Google Cybersecurity Professional Certificate',
-    institution: 'Google / Coursera',
-    date: 'January 2026',
-    timestamp: '[JAN 2026]',
-    award: 'PROFESSIONAL CERTIFICATE',
-    category: 'certifications',
-    iconType: 'security',
-    imageUrl: '/assets/certificates/ggcyb.webp',
-  },
   {
     id: 'bootdev-rag',
     title: 'Learn RAG (Retrieval-Augmented Generation)',
@@ -102,6 +91,17 @@ export const credentialsData: Credential[] = [
     category: 'certifications',
     iconType: 'security',
     imageUrl: '/assets/certificates/rag_bootdev_certificate.webp',
+  },
+  {
+    id: 'google-cybersecurity',
+    title: 'Google Cybersecurity Professional Certificate',
+    institution: 'Google / Coursera',
+    date: 'January 2026',
+    timestamp: '[JAN 2026]',
+    award: 'PROFESSIONAL CERTIFICATE',
+    category: 'certifications',
+    iconType: 'security',
+    imageUrl: '/assets/certificates/ggcyb.webp',
   },
   {
     id: 'bootdev-docker',
@@ -326,6 +326,17 @@ export const credentialsData: Credential[] = [
 
   // PROGRAMS, FELLOWSHIPS & COHORTS
   {
+    id: 'gci-world-2026',
+    title: 'GCI 2026 Data Science Cohort',
+    institution: 'Matsuo Laboratory — The University of Tokyo',
+    date: 'September 2026',
+    timestamp: '[SEPT 2026]',
+    award: 'ACCEPTED SCHOLAR / DATA SCIENCE COHORT',
+    category: 'programs',
+    iconType: 'security',
+    imageUrl: '/assets/certificates/gci.webp',
+  },
+  {
     id: 'gcp-arcade',
     title: 'Google Cloud Arcade Facilitator Member',
     institution: 'Google Cloud Platform',
@@ -429,6 +440,17 @@ export const credentialsData: Credential[] = [
   },
 
   // SEMINARS
+  {
+    id: 'aws-community-day-2026',
+    title: 'AWS Community Day Philippines 2026',
+    institution: 'AWS User Group Philippines',
+    date: 'August 23, 2026',
+    timestamp: '[AUG 2026]',
+    award: 'CERTIFICATE OF PARTICIPATION ("Build, Break, Repeat")',
+    category: 'seminars',
+    iconType: 'design',
+    imageUrl: '/assets/certificates/awscommunity.webp',
+  },
   {
     id: 'seminar-cybersecurity',
     title: 'Securing Connections: Cybersecurity & Network Operations',

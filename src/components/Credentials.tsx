@@ -1,4 +1,13 @@
-import { Award, ShieldCheck, BookOpen, Users, X, ExternalLink, Sparkles } from 'lucide-react';
+import {
+  Award,
+  ShieldCheck,
+  BookOpen,
+  Users,
+  X,
+  ExternalLink,
+  Sparkles,
+  ChevronDown,
+} from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { credentialsData, type Credential } from '../data/credentials';
@@ -92,6 +101,12 @@ export function Credentials() {
     'all' | 'awards' | 'certifications' | 'programs' | 'seminars'
   >('all');
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Reset expansion when switching categories
+  useEffect(() => {
+    setIsExpanded(false);
+  }, [activeTab]);
 
   const tabs = [
     { id: 'all', label: 'All Credentials', icon: Sparkles, count: credentialsData.length },
@@ -123,6 +138,12 @@ export function Credentials() {
 
   const filteredCredentials =
     activeTab === 'all' ? credentialsData : credentialsData.filter((c) => c.category === activeTab);
+
+  const INITIAL_COUNT = 6;
+  const visibleCredentials = isExpanded
+    ? filteredCredentials
+    : filteredCredentials.slice(0, INITIAL_COUNT);
+  const remainingCount = filteredCredentials.length - INITIAL_COUNT;
 
   return (
     <section
@@ -180,7 +201,7 @@ export function Credentials() {
 
         {/* Credentials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredCredentials.map((cred) => (
+          {visibleCredentials.map((cred) => (
             <div
               key={cred.title}
               className="p-5 rounded-2xl bg-[var(--card-bg)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all duration-200 shadow-[var(--shadow-card)] flex flex-col justify-between"
@@ -245,6 +266,25 @@ export function Credentials() {
             </div>
           ))}
         </div>
+
+        {/* Progressive Disclosure (Show More / Show Less) */}
+        {filteredCredentials.length > INITIAL_COUNT && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--text-h)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all shadow-sm cursor-pointer"
+              aria-expanded={isExpanded}
+            >
+              <span>{isExpanded ? 'Show Less' : `Show More (${remainingCount} remaining)`}</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-200 ${
+                  isExpanded ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+          </div>
+        )}
       </div>
 
       <VerificationModal selectedCred={selectedCred} onClose={() => setSelectedCred(null)} />

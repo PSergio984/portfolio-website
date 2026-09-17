@@ -19,13 +19,20 @@ describe('Credentials Component', () => {
     expect(screen.getByText('Seminars')).toBeInTheDocument();
   });
 
-  it('renders credentials items in All view including Google Cybersecurity and Boot.dev RAG', () => {
+  it('renders initial credentials and expands all items when clicking Show More', () => {
     expect(screen.getByText('Capture The Flag (CTF)')).toBeInTheDocument();
     expect(screen.getByText(/Global Cyber Skills Benchmark/i)).toBeInTheDocument();
+
+    const showMoreBtn = screen.getByRole('button', { name: /show more/i });
+    expect(showMoreBtn).toBeInTheDocument();
+
+    fireEvent.click(showMoreBtn);
+
     expect(screen.getByText(/Google Cybersecurity Professional Certificate/i)).toBeInTheDocument();
     expect(screen.getByText(/Learn RAG/i)).toBeInTheDocument();
     expect(screen.getByText(/Mastering REST APIs with FastAPI/i)).toBeInTheDocument();
     expect(screen.getByText(/Google Cloud Arcade Facilitator/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /show less/i })).toBeInTheDocument();
   });
 
   it('filters items when clicking a tab', () => {
@@ -48,10 +55,21 @@ describe('Credentials Component', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('renders newly verified Anthropic MCP, Claude Code, and FlyRank credentials', () => {
+  it('renders newly verified Anthropic MCP, Claude Code, and FlyRank credentials when expanded', () => {
+    const showMoreBtn = screen.getByRole('button', { name: /show more/i });
+    fireEvent.click(showMoreBtn);
+
     expect(screen.getByText('Introduction to Model Context Protocol (MCP)')).toBeInTheDocument();
     expect(screen.getByText('Claude Code 101')).toBeInTheDocument();
     expect(screen.getByText('Learn Logging and Observability in Go')).toBeInTheDocument();
     expect(screen.getByText('Backend AI Engineering Internship Program')).toBeInTheDocument();
+  });
+
+  it('renders newly added GCI Data Science and AWS Community Day credentials when expanded', () => {
+    const showMoreBtn = screen.getByRole('button', { name: /show more/i });
+    fireEvent.click(showMoreBtn);
+
+    expect(screen.getByText('GCI 2026 Data Science Cohort')).toBeInTheDocument();
+    expect(screen.getByText('AWS Community Day Philippines 2026')).toBeInTheDocument();
   });
 });
