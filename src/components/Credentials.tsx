@@ -7,17 +7,23 @@ import {
   ExternalLink,
   Sparkles,
   ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { credentialsData, type Credential } from '../data/credentials';
+
+export interface VerificationItem {
+  title: string;
+  imageUrl?: string;
+}
 
 // Fixed Responsive Verification Modal
 export function VerificationModal({
   selectedCred,
   onClose,
 }: {
-  selectedCred: Credential | null;
+  selectedCred: VerificationItem | null;
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -101,7 +107,9 @@ export function Credentials() {
     'all' | 'awards' | 'certifications' | 'programs' | 'seminars'
   >('all');
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const INITIAL_COUNT = 6;
+  const BATCH_SIZE = 10;
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
   const tabs = [
     { id: 'all', label: 'All Credentials', icon: Sparkles, count: credentialsData.length },
@@ -134,11 +142,11 @@ export function Credentials() {
   const filteredCredentials =
     activeTab === 'all' ? credentialsData : credentialsData.filter((c) => c.category === activeTab);
 
-  const INITIAL_COUNT = 6;
-  const visibleCredentials = isExpanded
-    ? filteredCredentials
-    : filteredCredentials.slice(0, INITIAL_COUNT);
-  const remainingCount = filteredCredentials.length - INITIAL_COUNT;
+  const visibleCredentials = filteredCredentials.slice(0, visibleCount);
+  const remainingCount = Math.max(0, filteredCredentials.length - visibleCount);
+  const nextBatchCount = Math.min(BATCH_SIZE, remainingCount);
+  const canShowMore = remainingCount > 0;
+  const canShowLess = visibleCount > INITIAL_COUNT;
 
   return (
     <section
@@ -173,7 +181,7 @@ export function Credentials() {
                 key={tab.id}
                 onClick={() => {
                   setActiveTab(tab.id as typeof activeTab);
-                  setIsExpanded(false);
+                  setVisibleCount(INITIAL_COUNT);
                 }}
                 className={`px-3 py-1.5 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
                   isActive
@@ -265,22 +273,31 @@ export function Credentials() {
           ))}
         </div>
 
-        {/* Progressive Disclosure (Show More / Show Less) */}
-        {filteredCredentials.length > INITIAL_COUNT && (
-          <div className="mt-8 flex justify-center">
-            <button
-              type="button"
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--text-h)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all shadow-sm cursor-pointer"
-              aria-expanded={isExpanded}
-            >
-              <span>{isExpanded ? 'Show Less' : `Show More (${remainingCount} remaining)`}</span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform duration-200 ${
-                  isExpanded ? 'rotate-180' : ''
-                }`}
-              />
-            </button>
+        {/* Progressive Disclosure (Batch Show More / Show Less) */}
+        {(canShowMore || canShowLess) && (
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {canShowMore && (
+              <button
+                type="button"
+                onClick={() => setVisibleCount((prev) => prev + BATCH_SIZE)}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--text-h)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all shadow-sm cursor-pointer"
+              >
+                <span>
+                  Show {nextBatchCount} More ({remainingCount} remaining)
+                </span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            )}
+            {canShowLess && (
+              <button
+                type="button"
+                onClick={() => setVisibleCount(INITIAL_COUNT)}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--text-muted)] hover:text-[var(--text-h)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all shadow-sm cursor-pointer"
+              >
+                <ChevronUp className="w-4 h-4" />
+                <span>Show Less</span>
+              </button>
+            )}
           </div>
         )}
       </div>

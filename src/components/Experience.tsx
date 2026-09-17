@@ -1,5 +1,17 @@
-import { Briefcase } from 'lucide-react';
+import { Briefcase, ShieldCheck, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
+import { VerificationModal, type VerificationItem } from './Credentials';
+
+interface ExperienceProof {
+  title: string;
+  code: string;
+  award: string;
+  date: string;
+  timestamp: string;
+  imageUrl: string;
+  verifyUrl?: string;
+}
 
 interface ExperienceEntry {
   company: string;
@@ -9,6 +21,7 @@ interface ExperienceEntry {
   summary: string;
   bullets: string[];
   tags: string[];
+  proofs?: ExperienceProof[];
 }
 
 const experienceData: ExperienceEntry[] = [
@@ -33,6 +46,26 @@ const experienceData: ExperienceEntry[] = [
       'Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing retrieval accuracy from 81.8% to 86.4% Top-1 on ground-truth benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.',
       'Eliminated out-of-domain hallucinations to achieve a 100% negative query pass rate and 90% LLM-as-judge relevance score by designing a bounded 3-step agentic query loop with cosine similarity gating (<0.50 threshold) and inline numbered citations.',
       'Reduced time-to-first-token (TTFT) by ~65% and established real-time observability across production deployments by implementing asynchronous Server-Sent Events (SSE) streaming APIs, Prometheus /metrics latency histograms, and Grafana telemetry dashboards.',
+    ],
+    proofs: [
+      {
+        title: 'Backend AI Engineering Internship Program',
+        code: 'FR-D11-28D6B-6AC8A',
+        award: 'INTERNSHIP GRADUATION',
+        date: 'July 2026 — September 2026',
+        timestamp: '[JUL – SEPT 2026]',
+        imageUrl: '/assets/cohorts/flyrank-backend-ai.webp',
+        verifyUrl: 'https://internship.flyrank.ai/verify',
+      },
+      {
+        title: 'AI Fluency Internship Program',
+        code: 'FR-D11-8C634-C586C',
+        award: 'INTERNSHIP COMPLETION',
+        date: 'July 2026 — September 2026',
+        timestamp: '[JUL – SEPT 2026]',
+        imageUrl: '/assets/cohorts/flyrank-ai-fluency.webp',
+        verifyUrl: 'https://internship.flyrank.ai/verify',
+      },
     ],
   },
   {
@@ -65,6 +98,7 @@ const experienceData: ExperienceEntry[] = [
 
 export function Experience() {
   const { ref, fadeClass } = useFadeIn();
+  const [selectedProof, setSelectedProof] = useState<VerificationItem | null>(null);
 
   return (
     <section id="experience" aria-label="Professional Experience" className="py-10 overflow-hidden">
@@ -135,10 +169,78 @@ export function Experience() {
                   </li>
                 ))}
               </ul>
+
+              {/* Verified Program Proofs */}
+              {exp.proofs && exp.proofs.length > 0 && (
+                <div className="pt-3.5 mt-3 border-t border-[var(--border)]">
+                  <div className="text-[11px] font-mono text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                    <span>Verified Program Proofs</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {exp.proofs.map((proof) => (
+                      <div
+                        key={proof.code}
+                        className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex flex-col justify-between gap-2"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-1.5 mb-1">
+                            <span className="text-[10px] font-mono font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-800/50">
+                              {proof.award}
+                            </span>
+                            <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                              {proof.timestamp}
+                            </span>
+                          </div>
+                          <div className="text-xs font-bold text-[var(--text-h)] leading-snug">
+                            {proof.title}
+                          </div>
+                          <div className="text-[10px] font-mono text-[var(--text-muted)] mt-0.5">
+                            ID: {proof.code}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between pt-2 border-t border-slate-200/80 dark:border-slate-800/80">
+                          <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                            {proof.date}
+                          </span>
+                          <div className="flex items-center gap-1.5">
+                            {proof.verifyUrl && (
+                              <a
+                                href={proof.verifyUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-h)] px-2 py-1 rounded transition-colors"
+                              >
+                                Verify
+                              </a>
+                            )}
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setSelectedProof({
+                                  title: `${proof.title} (${proof.code})`,
+                                  imageUrl: proof.imageUrl,
+                                })
+                              }
+                              className="text-xs font-bold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 cursor-pointer bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/40 dark:hover:bg-violet-900/60 px-2.5 py-1 rounded-lg transition-colors border border-violet-200 dark:border-violet-800/50 shadow-2xs"
+                            >
+                              <span>Proof</span>
+                              <ExternalLink className="w-3 h-3" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </article>
           ))}
         </div>
       </div>
+
+      <VerificationModal selectedCred={selectedProof} onClose={() => setSelectedProof(null)} />
     </section>
   );
 }

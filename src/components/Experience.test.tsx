@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Experience } from './Experience';
 
 describe('Experience', () => {
@@ -39,5 +39,27 @@ describe('Experience', () => {
     expect(
       screen.getByText(/increasing retrieval accuracy from 81\.8% to 86\.4% Top-1/i),
     ).toBeInTheDocument();
+  });
+
+  it('renders verified program proofs with proof buttons and modal preview', () => {
+    expect(screen.getByText('Verified Program Proofs')).toBeInTheDocument();
+    expect(screen.getByText('Backend AI Engineering Internship Program')).toBeInTheDocument();
+    expect(screen.getByText('ID: FR-D11-28D6B-6AC8A')).toBeInTheDocument();
+    expect(screen.getByText('AI Fluency Internship Program')).toBeInTheDocument();
+    expect(screen.getByText('ID: FR-D11-8C634-C586C')).toBeInTheDocument();
+
+    const proofBtns = screen.getAllByRole('button', { name: /proof/i });
+    expect(proofBtns.length).toBeGreaterThanOrEqual(2);
+
+    // Click first proof button
+    fireEvent.click(proofBtns[0]);
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(
+      screen.getByText(/Backend AI Engineering Internship Program \(FR-D11-28D6B-6AC8A\)/i),
+    ).toBeInTheDocument();
+
+    const closeBtn = screen.getByLabelText('Close proof preview');
+    fireEvent.click(closeBtn);
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 });
