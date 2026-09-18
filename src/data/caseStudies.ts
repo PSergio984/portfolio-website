@@ -265,7 +265,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     imageUrl: '/assets/projects/agos.webp',
     links: {
-      demo: 'https://agos-app.vercel.app/',
+      demo: 'https://agos-platform.vercel.app/',
       github: 'https://github.com/PSergio984/agos-iot-flood-monitoring',
     },
     highlights: [

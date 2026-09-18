@@ -65,7 +65,7 @@ Short term: finish my BS Information Technology degree (2026, consistent Dean's 
 ## Skills & Tools
 
 - **Languages:** TypeScript, JavaScript, Python, PHP, Java, C# / .NET
-- **AI & RAG:** FastAPI AI Sidecars, LangChain / LangGraph, Hybrid BM25/Vector RRF, pgvector, YOLOv8, OpenCV, Prometheus, Grafana, LLM-as-Judge
+- **AI & RAG:** FastAPI AI Sidecars, LangChain / LangGraph, Hybrid BM25/Vector RRF, pgvector, Pinecone, ChromaDB, YOLOv8, OpenCV, Prometheus, Grafana, LLM-as-Judge
 - **Frontend:** Next.js (App Router), React 19, Tailwind CSS v4, shadcn/ui, MaryUI, Filament 4, Livewire 3, Alpine.js, Zustand, Figma
 - **Backend & DB:** FastAPI, Laravel 11/12, Node.js, PostgreSQL, Supabase, SQLite FTS5, Redis, MySQL, MongoDB
 - **Cloud & DevOps:** AWS, Google Cloud (GCP), Docker, Jenkins, GitHub Actions, Vercel, Cloudflare, Render, Railway

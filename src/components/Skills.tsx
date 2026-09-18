@@ -97,6 +97,11 @@ const skillGroups: SkillGroup[] = [
         icon: SiPostgresql,
         color: 'text-blue-600 dark:text-blue-400',
       },
+      {
+        name: 'Pinecone & ChromaDB',
+        icon: Database,
+        color: 'text-emerald-600 dark:text-emerald-400',
+      },
       { name: 'YOLOv8 & OpenCV', icon: SiOpencv, color: 'text-emerald-600 dark:text-green-400' },
       { name: 'LLM-as-Judge Evaluation', icon: Cpu, color: 'text-purple-600 dark:text-purple-400' },
       {
