@@ -2,7 +2,7 @@
 
 **FULL-STACK AI ENGINEER**
 
-eric.manabatseam@gmail.com | +63 962 844 5842 | [ericmanabat.is-a.dev](https://ericmanabat.is-a.dev) | [linkedin.com/in/eric-gabriel-manabat](https://linkedin.com/in/eric-gabriel-manabat) | [github.com/PSergio984](https://github.com/PSergio984)
+eric.manabatseam@gmail.com | +63 962 844 5842 | [ericmanabat.is-a.dev](https://ericmanabat.is-a.dev/) | [linkedin.com/in/eric-gabriel-manabat](https://linkedin.com/in/eric-gabriel-manabat) | [github.com/PSergio984](https://github.com/PSergio984)
 
 ---
 
@@ -29,8 +29,8 @@ _Full Stack Software Engineering Intern - Team Lead_ | Jun 2026 - Present
 
 - Engineered DOLE statutory compliance algorithms across 4 enterprise applications by designing interval-partitioned time calculations to isolate 10 PM - 6 AM night differentials from standard overtime multipliers.
 - Automated statutory deduction and 13th-month proration calculations across **500+ employee records** by developing modular TypeScript/Next.js computation engines with immutable audit logging.
-- Streamlined monthly branch audit preparation time from **3 days to under 5 minutes** by building high-throughput multi-sheet Excel/CSV data export engines and state persistence modules.
-- Accelerated sprint execution velocity by **40%** across 180+ Jira/GitHub issues as Intern Team Lead by delegating frontend/backend modules, conducting peer code reviews, and enforcing architectural standards.
+- Hardened multi-tenant PostgreSQL/Supabase data layers against cross-branch data leaks via row-level security (RLS), and cut monthly audit prep time from **3 days to under 5 minutes** via high-throughput Excel export engines.
+- Accelerated CI/CD test execution by **40% (~12m to ~7m)** via an offline mock testing daemon in GitHub Actions and Jenkins, and led sprint execution across 180+ Jira/GitHub issues as Intern Team Lead.
 
 ---
 
@@ -53,10 +53,11 @@ _Full Stack Software Engineering Intern - Team Lead_ | Jun 2026 - Present
 
 ## TECHNICAL SKILLS
 
-- **AI & Machine Learning:** LangChain, LangGraph, RAG Pipelines, Vector Search (pgvector, Hybrid BM25/Dense RRF), Embeddings, YOLOv8, Groq, OpenCV, LLM-as-Judge Evaluation, Prompt Engineering, SSE Streaming, Prometheus & Grafana Observability
-- **Languages:** Python, TypeScript, JavaScript, SQL, C#, Java, PHP
-- **Frameworks & Full-Stack:** FastAPI, Next.js, React, Node.js, Laravel, Tailwind CSS
-- **Databases & Cloud:** PostgreSQL, Redis, Supabase, Docker, AWS, GitHub Actions
+- **AI & Machine Learning:** LangChain, LangGraph, RAG Pipelines, Vector Search (pgvector, Pinecone, ChromaDB, SQLite FTS5 BM25, Hybrid RRF), Embeddings, YOLOv8, Groq, OpenCV, LLM-as-Judge Evaluation, Prompt Engineering, SSE Streaming, Prometheus & Grafana Observability
+- **Languages:** Python, TypeScript, JavaScript, SQL, PHP, C# / .NET, Java
+- **Frameworks & Full-Stack:** FastAPI, Next.js, React 19, Node.js, Laravel 11/12, Tailwind CSS v4, Livewire 3
+- **Databases & Cloud:** PostgreSQL, Supabase, Redis, Docker, AWS, Google Cloud (GCP), GitHub Actions, Jenkins
+- **Cybersecurity & Tools:** Burp Suite, Wireshark, Kali Linux, Role-Based Access Control (RBAC), Row-Level Security (RLS)
 
 ---
 

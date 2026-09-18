@@ -22,6 +22,8 @@ def test_system_prompt_includes_framing_and_knowledge():
 def test_system_prompt_loads_real_knowledge_file():
     knowledge = build_system_prompt()
     assert "Full-Stack AI Engineer" in knowledge  # authored fact from ticket #5
+    assert "Pinecone" in knowledge
+    assert "ChromaDB" in knowledge
     assert "## Boundaries" in knowledge
 
 

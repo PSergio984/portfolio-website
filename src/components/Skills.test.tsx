@@ -39,4 +39,17 @@ describe('Skills', () => {
     expect(screen.getByText('Railway')).toBeInTheDocument();
     expect(screen.getByText('Model Context Protocol (MCP)')).toBeInTheDocument();
   });
+
+  it('renders vector database and AI retrieval skills including Pinecone & ChromaDB', () => {
+    expect(screen.getByText('Pinecone & ChromaDB')).toBeInTheDocument();
+    expect(screen.getByText('pgvector Embeddings')).toBeInTheDocument();
+    expect(screen.getByText('Hybrid RRF Search')).toBeInTheDocument();
+    expect(screen.getByText('FastAPI AI Sidecars')).toBeInTheDocument();
+  });
+
+  it('renders custom icon elements without error', () => {
+    const shadcnElement = screen.getByAltText('shadcn/ui');
+    expect(shadcnElement).toBeInTheDocument();
+    expect(screen.getByText('shadcn/ui')).toBeInTheDocument();
+  });
 });
