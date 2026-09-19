@@ -89,4 +89,45 @@ describe('Credentials Component', () => {
     expect(screen.queryByRole('button', { name: /show \d+ more/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /show less/i })).not.toBeInTheDocument();
   });
+
+  it('renders topic filter buttons with labels', () => {
+    expect(screen.getByRole('button', { name: /all topics/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /ai & machine learning/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /cybersecurity/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /cloud & devops/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /academic & honors/i })).toBeInTheDocument();
+  });
+
+  it('filters credentials when selecting a topic', () => {
+    fireEvent.click(screen.getByRole('button', { name: /ai & machine learning/i }));
+    expect(screen.getByText('Learn RAG (Retrieval-Augmented Generation)')).toBeInTheDocument();
+    expect(screen.queryByText('Capture The Flag (CTF)')).not.toBeInTheDocument();
+  });
+
+  it('combines category tab and topic filter', () => {
+    fireEvent.click(screen.getByRole('button', { name: /^certifications/i }));
+    fireEvent.click(screen.getByRole('button', { name: /cybersecurity/i }));
+
+    expect(screen.getByText('Google Cybersecurity Professional Certificate')).toBeInTheDocument();
+    expect(
+      screen.queryByText('Learn RAG (Retrieval-Augmented Generation)'),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText('Capture The Flag (CTF)')).not.toBeInTheDocument();
+  });
+
+  it('disables topic filter button when a category has 0 items for that topic', () => {
+    // Seminars category has 0 AI items
+    fireEvent.click(screen.getByRole('button', { name: /^seminars/i }));
+    const aiTopicBtn = screen.getByRole('button', { name: /ai & machine learning/i });
+    expect(aiTopicBtn).toBeDisabled();
+  });
+
+  it('resets visible count when switching topics', () => {
+    const showMoreBtn = screen.getByRole('button', { name: /show \d+ more/i });
+    fireEvent.click(showMoreBtn);
+    expect(screen.getByRole('button', { name: /show less/i })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /cybersecurity/i }));
+    expect(screen.queryByRole('button', { name: /show less/i })).not.toBeInTheDocument();
+  });
 });

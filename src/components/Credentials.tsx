@@ -7,20 +7,26 @@ import {
   Sparkles,
   ChevronDown,
   ChevronUp,
+  Cpu,
+  Cloud,
+  GraduationCap,
+  Layers,
+  RotateCcw,
 } from 'lucide-react';
 import { useState } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
-import { credentialsData, type Credential } from '../data/credentials';
+import { credentialsData, type Credential, type CredentialTopic } from '../data/credentials';
 import { VerificationModal, type VerificationItem } from './VerificationModal';
 
 export { VerificationModal, type VerificationItem };
 
-// Unified Compact Credentials Component with Tabbed Filtering
+// Unified Compact Credentials Component with Tabbed & Topic Filtering
 export function Credentials() {
   const { ref, fadeClass } = useFadeIn();
   const [activeTab, setActiveTab] = useState<
     'all' | 'awards' | 'certifications' | 'programs' | 'seminars'
   >('all');
+  const [activeTopic, setActiveTopic] = useState<'all' | CredentialTopic>('all');
   const [selectedCred, setSelectedCred] = useState<Credential | null>(null);
   const INITIAL_COUNT = 6;
   const BATCH_SIZE = 10;
@@ -54,8 +60,27 @@ export function Credentials() {
     },
   ] as const;
 
-  const filteredCredentials =
-    activeTab === 'all' ? credentialsData : credentialsData.filter((c) => c.category === activeTab);
+  const topicFilters = [
+    { id: 'all', label: 'All Topics', icon: Sparkles },
+    { id: 'ai', label: 'AI & Machine Learning', icon: Cpu },
+    { id: 'security', label: 'Cybersecurity', icon: ShieldCheck },
+    { id: 'cloud', label: 'Cloud & DevOps', icon: Cloud },
+    { id: 'academic', label: 'Academic & Honors', icon: GraduationCap },
+  ] as const;
+
+  const filteredCredentials = credentialsData.filter((c) => {
+    const matchesCategory = activeTab === 'all' || c.category === activeTab;
+    const matchesTopic = activeTopic === 'all' || c.topic === activeTopic;
+    return matchesCategory && matchesTopic;
+  });
+
+  const getTopicCount = (topicId: 'all' | CredentialTopic) => {
+    return credentialsData.filter((c) => {
+      const matchesCategory = activeTab === 'all' || c.category === activeTab;
+      const matchesTopic = topicId === 'all' || c.topic === topicId;
+      return matchesCategory && matchesTopic;
+    }).length;
+  };
 
   const visibleCredentials = filteredCredentials.slice(0, visibleCount);
   const remainingCount = Math.max(0, filteredCredentials.length - visibleCount);
@@ -86,7 +111,7 @@ export function Credentials() {
         </div>
 
         {/* Tab Selection Filter */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-6 scrollbar-none border-b border-[var(--border)]">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-3 scrollbar-none border-b border-[var(--border)]">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -120,73 +145,164 @@ export function Credentials() {
           })}
         </div>
 
-        {/* Credentials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {visibleCredentials.map((cred) => (
-            <div
-              key={cred.title}
-              className="p-5 rounded-2xl bg-[var(--card-bg)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all duration-200 shadow-[var(--shadow-card)] flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span
-                    className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded-md font-semibold ${
-                      cred.category === 'awards'
-                        ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60'
-                        : cred.category === 'certifications'
-                          ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-800 dark:text-violet-300 border border-violet-300 dark:border-violet-800/60'
-                          : cred.category === 'programs'
-                            ? 'bg-cyan-100 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800/60'
-                            : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700'
-                    }`}
-                  >
-                    {cred.category}
-                  </span>
-                  <span className="text-[11px] font-mono text-[var(--text-muted)]">
-                    {cred.timestamp}
-                  </span>
-                </div>
+        {/* Topic Sub-Filters */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-6 scrollbar-none">
+          <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider mr-1 shrink-0 flex items-center gap-1">
+            <Layers className="w-3 h-3 text-[var(--accent-text)]" />
+            <span>Topic:</span>
+          </span>
+          {topicFilters.map((topic) => {
+            const Icon = topic.icon;
+            const count = getTopicCount(topic.id);
+            const isActive = activeTopic === topic.id;
+            const isDisabled = count === 0 && !isActive;
 
-                <h3 className="text-sm font-bold text-[var(--text-h)] mb-1 leading-snug">
-                  {cred.title}
-                </h3>
-                <div className="text-xs font-medium text-[var(--accent-text)] mb-2">
-                  {cred.institution}
-                </div>
-                {cred.award && (
-                  <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 font-mono mb-2">
-                    {cred.award}
-                  </div>
-                )}
-              </div>
-
-              <div className="pt-3 mt-3 border-t border-[var(--border)] flex items-center justify-between">
-                <span className="text-[10px] font-mono text-[var(--text-muted)]">{cred.date}</span>
-
-                {cred.imageUrl ? (
-                  <button
-                    type="button"
-                    onClick={() => setSelectedCred(cred)}
-                    className="text-xs font-semibold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 cursor-pointer bg-[var(--accent-bg)] hover:bg-[var(--card-hover)] px-3 py-1.5 rounded-lg transition-colors border border-[var(--accent-border)] shadow-2xs"
-                  >
-                    <span>Proof</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </button>
-                ) : cred.profileUrl ? (
-                  <a
-                    href={cred.profileUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-semibold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 bg-[var(--accent-bg)] hover:bg-[var(--card-hover)] px-3 py-1.5 rounded-lg transition-colors border border-[var(--accent-border)] shadow-2xs"
-                  >
-                    <span>View</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                ) : null}
-              </div>
-            </div>
-          ))}
+            return (
+              <button
+                type="button"
+                key={topic.id}
+                disabled={isDisabled}
+                onClick={() => {
+                  setActiveTopic(topic.id);
+                  setVisibleCount(INITIAL_COUNT);
+                }}
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-medium inline-flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer shrink-0 ${
+                  isActive
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-semibold shadow-xs'
+                    : isDisabled
+                      ? 'opacity-35 cursor-not-allowed bg-transparent border border-dashed border-[var(--border)] text-[var(--text-muted)]'
+                      : 'bg-[var(--card-bg)] text-[var(--text-muted)] hover:text-[var(--text-h)] hover:bg-[var(--card-hover)] border border-[var(--border)]'
+                }`}
+              >
+                <Icon className="w-3 h-3" />
+                <span>{topic.label}</span>
+                <span
+                  className={`text-[9px] font-mono px-1.5 py-0.2 rounded-full ${
+                    isActive
+                      ? 'bg-white/20 text-white dark:bg-slate-950/20 dark:text-slate-950'
+                      : 'bg-slate-200 dark:bg-slate-800 text-[var(--text-muted)]'
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
+
+        {/* Credentials Grid or Empty State */}
+        {visibleCredentials.length === 0 ? (
+          <div className="text-center py-12 px-4 rounded-2xl bg-[var(--card-bg)] border border-[var(--border)] mb-4">
+            <p className="text-sm font-bold text-[var(--text-h)] mb-1">
+              No credentials found for this topic under{' '}
+              {tabs.find((t) => t.id === activeTab)?.label}
+            </p>
+            <p className="text-xs text-[var(--text-muted)] mb-4 max-w-sm mx-auto">
+              Try selecting another domain or reset the filter to view all verified credentials.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setActiveTopic('all');
+                setVisibleCount(INITIAL_COUNT);
+              }}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[var(--accent)] text-white hover:opacity-90 transition-opacity cursor-pointer shadow-xs"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset Topic Filter</span>
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {visibleCredentials.map((cred) => (
+              <div
+                key={cred.title}
+                className="p-5 rounded-2xl bg-[var(--card-bg)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all duration-200 shadow-[var(--shadow-card)] flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span
+                        className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded-md font-semibold ${
+                          cred.category === 'awards'
+                            ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60'
+                            : cred.category === 'certifications'
+                              ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-800 dark:text-violet-300 border border-violet-300 dark:border-violet-800/60'
+                              : cred.category === 'programs'
+                                ? 'bg-cyan-100 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800/60'
+                                : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700'
+                        }`}
+                      >
+                        {cred.category}
+                      </span>
+                      <span
+                        className={`text-[10px] font-mono px-2 py-0.5 rounded-md font-medium ${
+                          cred.topic === 'ai'
+                            ? 'bg-purple-100 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/50'
+                            : cred.topic === 'security'
+                              ? 'bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50'
+                              : cred.topic === 'cloud'
+                                ? 'bg-sky-100 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/50'
+                                : 'bg-amber-100 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50'
+                        }`}
+                      >
+                        {cred.topic === 'ai'
+                          ? 'AI & ML'
+                          : cred.topic === 'security'
+                            ? 'Cybersecurity'
+                            : cred.topic === 'cloud'
+                              ? 'Cloud & DevOps'
+                              : 'Academic'}
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-mono text-[var(--text-muted)]">
+                      {cred.timestamp}
+                    </span>
+                  </div>
+
+                  <h3 className="text-sm font-bold text-[var(--text-h)] mb-1 leading-snug">
+                    {cred.title}
+                  </h3>
+                  <div className="text-xs font-medium text-[var(--accent-text)] mb-2">
+                    {cred.institution}
+                  </div>
+                  {cred.award && (
+                    <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 font-mono mb-2">
+                      {cred.award}
+                    </div>
+                  )}
+                </div>
+
+                <div className="pt-3 mt-3 border-t border-[var(--border)] flex items-center justify-between">
+                  <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                    {cred.date}
+                  </span>
+
+                  {cred.imageUrl ? (
+                    <button
+                      type="button"
+                      onClick={() => setSelectedCred(cred)}
+                      className="text-xs font-semibold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 cursor-pointer bg-[var(--accent-bg)] hover:bg-[var(--card-hover)] px-3 py-1.5 rounded-lg transition-colors border border-[var(--accent-border)] shadow-2xs"
+                    >
+                      <span>Proof</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </button>
+                  ) : cred.profileUrl ? (
+                    <a
+                      href={cred.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-[var(--accent-text)] hover:underline inline-flex items-center gap-1 bg-[var(--accent-bg)] hover:bg-[var(--card-hover)] px-3 py-1.5 rounded-lg transition-colors border border-[var(--accent-border)] shadow-2xs"
+                    >
+                      <span>View</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Progressive Disclosure (Batch Show More / Show Less) */}
         {(canShowMore || canShowLess) && (
