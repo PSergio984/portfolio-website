@@ -130,4 +130,44 @@ describe('Credentials Component', () => {
     fireEvent.click(screen.getByRole('button', { name: /cybersecurity/i }));
     expect(screen.queryByRole('button', { name: /show less/i })).not.toBeInTheDocument();
   });
+
+  it('displays empty state and restores credentials when clicking Reset Topic Filter', () => {
+    // Select AI first, then switch to Seminars which has 0 AI items
+    fireEvent.click(screen.getByRole('button', { name: /ai & machine learning/i }));
+    fireEvent.click(screen.getByRole('button', { name: /^seminars/i }));
+
+    expect(
+      screen.getByText(/no credentials found for this topic under seminars/i),
+    ).toBeInTheDocument();
+    const resetBtn = screen.getByRole('button', { name: /reset topic filter/i });
+    expect(resetBtn).toBeInTheDocument();
+
+    // Clicking reset should revert topic filter to all and show seminar items
+    fireEvent.click(resetBtn);
+    expect(screen.getByText('AWS Community Day Philippines 2026')).toBeInTheDocument();
+    expect(screen.queryByText(/no credentials found for this topic/i)).not.toBeInTheDocument();
+  });
+
+  it('toggles topic filter off when clicking the active topic button again', () => {
+    const aiBtn = screen.getByRole('button', { name: /ai & machine learning/i });
+    fireEvent.click(aiBtn);
+    expect(screen.getByText('Learn RAG (Retrieval-Augmented Generation)')).toBeInTheDocument();
+    expect(screen.queryByText('Capture The Flag (CTF)')).not.toBeInTheDocument();
+
+    // Clicking AI again toggles back to All Topics
+    fireEvent.click(aiBtn);
+    expect(screen.getByText('Capture The Flag (CTF)')).toBeInTheDocument();
+  });
+
+  it('sets aria-pressed and accessible labels on topic filter buttons', () => {
+    const allTopicsBtn = screen.getByRole('button', { name: /all topics/i });
+    const aiBtn = screen.getByRole('button', { name: /ai & machine learning/i });
+
+    expect(allTopicsBtn).toHaveAttribute('aria-pressed', 'true');
+    expect(aiBtn).toHaveAttribute('aria-pressed', 'false');
+
+    fireEvent.click(aiBtn);
+    expect(allTopicsBtn).toHaveAttribute('aria-pressed', 'false');
+    expect(aiBtn).toHaveAttribute('aria-pressed', 'true');
+  });
 });

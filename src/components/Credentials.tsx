@@ -20,6 +20,41 @@ import { VerificationModal, type VerificationItem } from './VerificationModal';
 
 export { VerificationModal, type VerificationItem };
 
+interface TopicConfig {
+  label: string;
+  badgeLabel: string;
+  icon: typeof Cpu;
+}
+
+const TOPIC_CONFIG: Record<CredentialTopic, TopicConfig> = {
+  ai: {
+    label: 'AI & Machine Learning',
+    badgeLabel: 'AI & ML',
+    icon: Cpu,
+  },
+  security: {
+    label: 'Cybersecurity',
+    badgeLabel: 'Cybersecurity',
+    icon: ShieldCheck,
+  },
+  cloud: {
+    label: 'Cloud & DevOps',
+    badgeLabel: 'Cloud & DevOps',
+    icon: Cloud,
+  },
+  academic: {
+    label: 'Academic & Honors',
+    badgeLabel: 'Academic & Honors',
+    icon: GraduationCap,
+  },
+};
+
+function matchesCredentialFilters(cred: Credential, category: string, topic: string): boolean {
+  const matchesCategory = category === 'all' || cred.category === category;
+  const matchesTopic = topic === 'all' || cred.topic === topic;
+  return matchesCategory && matchesTopic;
+}
+
 // Unified Compact Credentials Component with Tabbed & Topic Filtering
 export function Credentials() {
   const { ref, fadeClass } = useFadeIn();
@@ -60,26 +95,25 @@ export function Credentials() {
     },
   ] as const;
 
-  const topicFilters = [
+  const topicFilters: Array<{
+    id: 'all' | CredentialTopic;
+    label: string;
+    icon: typeof Sparkles;
+  }> = [
     { id: 'all', label: 'All Topics', icon: Sparkles },
-    { id: 'ai', label: 'AI & Machine Learning', icon: Cpu },
-    { id: 'security', label: 'Cybersecurity', icon: ShieldCheck },
-    { id: 'cloud', label: 'Cloud & DevOps', icon: Cloud },
-    { id: 'academic', label: 'Academic & Honors', icon: GraduationCap },
-  ] as const;
+    ...(Object.entries(TOPIC_CONFIG) as [CredentialTopic, TopicConfig][]).map(([id, config]) => ({
+      id,
+      label: config.label,
+      icon: config.icon,
+    })),
+  ];
 
-  const filteredCredentials = credentialsData.filter((c) => {
-    const matchesCategory = activeTab === 'all' || c.category === activeTab;
-    const matchesTopic = activeTopic === 'all' || c.topic === activeTopic;
-    return matchesCategory && matchesTopic;
-  });
+  const filteredCredentials = credentialsData.filter((c) =>
+    matchesCredentialFilters(c, activeTab, activeTopic),
+  );
 
   const getTopicCount = (topicId: 'all' | CredentialTopic) => {
-    return credentialsData.filter((c) => {
-      const matchesCategory = activeTab === 'all' || c.category === activeTab;
-      const matchesTopic = topicId === 'all' || c.topic === topicId;
-      return matchesCategory && matchesTopic;
-    }).length;
+    return credentialsData.filter((c) => matchesCredentialFilters(c, activeTab, topicId)).length;
   };
 
   const visibleCredentials = filteredCredentials.slice(0, visibleCount);
@@ -146,7 +180,11 @@ export function Credentials() {
         </div>
 
         {/* Topic Sub-Filters */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-6 scrollbar-none">
+        <div
+          role="group"
+          aria-label="Filter credentials by topic"
+          className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-6 scrollbar-none"
+        >
           <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider mr-1 shrink-0 flex items-center gap-1">
             <Layers className="w-3 h-3 text-[var(--accent-text)]" />
             <span>Topic:</span>
@@ -162,13 +200,15 @@ export function Credentials() {
                 type="button"
                 key={topic.id}
                 disabled={isDisabled}
+                aria-pressed={isActive}
+                aria-label={`${topic.label} (${count} items)`}
                 onClick={() => {
-                  setActiveTopic(topic.id);
+                  setActiveTopic(activeTopic === topic.id ? 'all' : topic.id);
                   setVisibleCount(INITIAL_COUNT);
                 }}
                 className={`px-2.5 py-1 rounded-lg text-[11px] font-medium inline-flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer shrink-0 ${
                   isActive
-                    ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-semibold shadow-xs'
+                    ? 'bg-[var(--accent)] text-white font-semibold shadow-xs'
                     : isDisabled
                       ? 'opacity-35 cursor-not-allowed bg-transparent border border-dashed border-[var(--border)] text-[var(--text-muted)]'
                       : 'bg-[var(--card-bg)] text-[var(--text-muted)] hover:text-[var(--text-h)] hover:bg-[var(--card-hover)] border border-[var(--border)]'
@@ -179,7 +219,7 @@ export function Credentials() {
                 <span
                   className={`text-[9px] font-mono px-1.5 py-0.2 rounded-full ${
                     isActive
-                      ? 'bg-white/20 text-white dark:bg-slate-950/20 dark:text-slate-950'
+                      ? 'bg-white/20 text-white'
                       : 'bg-slate-200 dark:bg-slate-800 text-[var(--text-muted)]'
                   }`}
                 >
@@ -198,7 +238,7 @@ export function Credentials() {
               {tabs.find((t) => t.id === activeTab)?.label}
             </p>
             <p className="text-xs text-[var(--text-muted)] mb-4 max-w-sm mx-auto">
-              Try selecting another domain or reset the filter to view all verified credentials.
+              Try choosing a different topic or resetting to view all records in this category.
             </p>
             <button
               type="button"
@@ -206,7 +246,7 @@ export function Credentials() {
                 setActiveTopic('all');
                 setVisibleCount(INITIAL_COUNT);
               }}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[var(--accent)] text-white hover:opacity-90 transition-opacity cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--accent-text)] bg-[var(--accent-bg)] hover:bg-[var(--card-hover)] border border-[var(--accent-border)] transition-colors cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset Topic Filter</span>
@@ -235,24 +275,8 @@ export function Credentials() {
                       >
                         {cred.category}
                       </span>
-                      <span
-                        className={`text-[10px] font-mono px-2 py-0.5 rounded-md font-medium ${
-                          cred.topic === 'ai'
-                            ? 'bg-purple-100 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/50'
-                            : cred.topic === 'security'
-                              ? 'bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50'
-                              : cred.topic === 'cloud'
-                                ? 'bg-sky-100 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/50'
-                                : 'bg-amber-100 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50'
-                        }`}
-                      >
-                        {cred.topic === 'ai'
-                          ? 'AI & ML'
-                          : cred.topic === 'security'
-                            ? 'Cybersecurity'
-                            : cred.topic === 'cloud'
-                              ? 'Cloud & DevOps'
-                              : 'Academic'}
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-md font-medium bg-[var(--code-bg)] text-[var(--text-muted)] border border-[var(--border)]">
+                        {TOPIC_CONFIG[cred.topic].badgeLabel}
                       </span>
                     </div>
                     <span className="text-[11px] font-mono text-[var(--text-muted)]">
