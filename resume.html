@@ -250,8 +250,8 @@
               Eliminated out-of-domain hallucinations to achieve a
               <strong>100% negative query pass rate</strong> and
               <strong>90% LLM-as-judge relevance score</strong> by designing a bounded 3-step
-              Function Calling &amp; Tool Use agentic loop with cosine similarity gating (&lt;0.50
-              threshold) and inline citation grounding.
+              agentic query loop with function calling and tool use, cosine similarity gating
+              (&lt;0.50 threshold), and inline citation grounding.
             </li>
             <li>
               Reduced time-to-first-token (TTFT) by <strong>~65%</strong> and established real-time
@@ -327,9 +327,9 @@
               RRF (k=60).
             </li>
             <li>
-              Constructed bounded Function Calling &amp; Tool Use retrieval loop with deterministic
-              refusals on out-of-domain queries and automated LLM-as-judge verification, achieving a
-              <strong>100% negative query pass rate</strong>.
+              Constructed bounded agentic retrieval loop with function calling and tool use,
+              deterministic refusals on out-of-domain queries, and automated LLM-as-judge
+              verification, achieving a <strong>100% negative query pass rate</strong>.
             </li>
             <li>
               Deployed Prometheus metrics and a 6-chart Dockerized Grafana dashboard to track
