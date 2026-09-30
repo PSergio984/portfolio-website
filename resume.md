@@ -17,7 +17,7 @@ Honors: Consistent Dean's Lister (1.03 Running GWA)
 ## PROFESSIONAL EXPERIENCE
 
 **FlyRank AI** | Remote  
-_Full-Stack AI Engineer Intern (Graduated with Distinction)_ | Jun 2026 - Sep 2026
+_Full-Stack AI Engineer Intern_ | Jul 2026 - Sep 2026
 
 - Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing retrieval accuracy from **81.8% to 86.4% Top-1** on ground-truth benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.
 - Eliminated out-of-domain hallucinations to achieve a **100% negative query pass rate** and **90% LLM-as-judge relevance score** by designing a bounded 3-step agentic query loop with function calling and tool use, cosine similarity gating (<0.50 threshold), and inline citation grounding.
@@ -25,7 +25,7 @@ _Full-Stack AI Engineer Intern (Graduated with Distinction)_ | Jun 2026 - Sep 20
 - Delivered full-stack streaming chat interfaces validated across **78 pytest integration tests** and a **27-case golden-set evaluation suite**, eliminating regression failures across synthetic edge cases.
 
 **Nexvision Innovations Inc.** | Marikina, Philippines (Hybrid)  
-_Full Stack Engineer (Lead Intern)_ | Jun 2026 - Sep 2026
+_Full Stack Engineer (Lead Intern)_ | Jul 2026 - Sep 2026
 
 - Engineered DOLE statutory compliance algorithms across 4 enterprise applications by designing interval-partitioned time calculations to isolate 10 PM - 6 AM night differentials from standard overtime multipliers.
 - Automated statutory deduction and 13th-month proration calculations across **500+ employee records** by developing modular TypeScript/Next.js computation engines with immutable audit logging.

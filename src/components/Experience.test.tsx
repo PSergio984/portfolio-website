@@ -13,7 +13,7 @@ describe('Experience', () => {
   it('renders both roles with companies and timestamps', () => {
     expect(screen.getByText('Full-Stack AI Engineer Intern')).toBeInTheDocument();
     expect(screen.getByText('FlyRank AI')).toBeInTheDocument();
-    expect(screen.getAllByText('[JUN – SEPT 2026]')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('[JUL – SEPT 2026]')[0]).toBeInTheDocument();
 
     expect(screen.getByText('Full Stack Engineer (Lead Intern)')).toBeInTheDocument();
     expect(screen.getByText('Nexvision Innovations Inc.')).toBeInTheDocument();
