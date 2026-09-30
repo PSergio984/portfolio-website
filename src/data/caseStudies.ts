@@ -473,7 +473,7 @@ export const caseStudies: CaseStudy[] = [
     decisions: [
       {
         decision: 'Unified PostgreSQL with pgvector on Supabase',
-        alternative: 'External standalone vector database service',
+        alternative: 'External standalone vector databases (e.g., Qdrant)',
         rationale:
           'Kept relational task state and vector embeddings in one database, eliminating split-brain data synchronization.',
       },

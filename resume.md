@@ -17,7 +17,7 @@ Honors: Consistent Dean's Lister (1.03 Running GWA)
 ## PROFESSIONAL EXPERIENCE
 
 **FlyRank AI** | Remote  
-_Full-Stack AI Engineer Intern_ | Jun 2026 - Sep 2026
+_Full-Stack AI Engineer Intern (Graduated with Distinction)_ | Jun 2026 - Sep 2026
 
 - Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing retrieval accuracy from **81.8% to 86.4% Top-1** on ground-truth benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.
 - Eliminated out-of-domain hallucinations to achieve a **100% negative query pass rate** and **90% LLM-as-judge relevance score** by designing a bounded 3-step Function Calling & Tool Use agentic loop with cosine similarity gating (<0.50 threshold) and inline citation grounding.
