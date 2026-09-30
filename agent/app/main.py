@@ -28,7 +28,7 @@ class ChatRequest(BaseModel):
 
 def _allowed_origins() -> list[str]:
     raw = os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173")
-    return [o.strip() for o in raw.split(",") if o.strip()]
+    return [o.strip().rstrip("/") for o in raw.split(",") if o.strip()]
 
 
 def create_app(
@@ -49,6 +49,10 @@ def create_app(
             "Knowledge File exceeds ~8K-token budget (%d chars); trim knowledge/digital-eric.md",
             len(system_prompt),
         )
+
+    @app.get("/")
+    async def root() -> dict[str, str]:
+        return {"status": "ok", "service": "digital-eric-agent"}
 
     @app.get("/health")
     async def health() -> dict[str, str]:

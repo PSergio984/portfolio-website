@@ -76,3 +76,22 @@ def test_notify_called_after_stream():
             "".join(chunk for chunk in resp.iter_text())
     assert captured["q"] == "who are you?"
     assert captured["a"].startswith("Answer")
+
+
+def test_root():
+    with client() as c:
+        assert c.get("/").json() == {"status": "ok", "service": "digital-eric-agent"}
+
+
+def test_allowed_origins_normalization(monkeypatch):
+    from agent.app.main import _allowed_origins
+
+    monkeypatch.setenv(
+        "ALLOWED_ORIGINS",
+        "https://ericmanabat-dev.vercel.app/, https://ericmanabat.is-a.dev/, http://localhost:5173",
+    )
+    assert _allowed_origins() == [
+        "https://ericmanabat-dev.vercel.app",
+        "https://ericmanabat.is-a.dev",
+        "http://localhost:5173",
+    ]
