@@ -17,15 +17,15 @@ Honors: Consistent Dean's Lister (1.03 Running GWA)
 ## PROFESSIONAL EXPERIENCE
 
 **FlyRank AI** | Remote  
-_Full-Stack AI Engineer Intern_ | Jun 2026 - Present
+_Full-Stack AI Engineer Intern (Graduated with Distinction)_ | Jun 2026 - Sep 2026
 
 - Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing retrieval accuracy from **81.8% to 86.4% Top-1** on ground-truth benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.
-- Eliminated out-of-domain hallucinations to achieve a **100% negative query pass rate** and **90% LLM-as-judge relevance score** by designing a bounded 3-step LangChain agentic query loop with cosine similarity gating (<0.50 threshold) and inline citation grounding.
+- Eliminated out-of-domain hallucinations to achieve a **100% negative query pass rate** and **90% LLM-as-judge relevance score** by designing a bounded 3-step Function Calling & Tool Use agentic loop with cosine similarity gating (<0.50 threshold) and inline citation grounding.
 - Reduced time-to-first-token (TTFT) by **~65%** and established real-time operational observability by implementing asynchronous Server-Sent Events (SSE) token streaming APIs, Prometheus /metrics latency histograms, and Grafana telemetry dashboards.
 - Delivered full-stack streaming chat interfaces validated across **78 pytest integration tests** and a **27-case golden-set evaluation suite**, eliminating regression failures across synthetic edge cases.
 
 **Nexvision Innovations Inc.** | Marikina, Philippines (Hybrid)  
-_Full Stack Software Engineering Intern - Team Lead_ | Jun 2026 - Present
+_Full Stack Software Engineering Intern - Team Lead_ | Jun 2026 - Sep 2026
 
 - Engineered DOLE statutory compliance algorithms across 4 enterprise applications by designing interval-partitioned time calculations to isolate 10 PM - 6 AM night differentials from standard overtime multipliers.
 - Automated statutory deduction and 13th-month proration calculations across **500+ employee records** by developing modular TypeScript/Next.js computation engines with immutable audit logging.
@@ -36,10 +36,10 @@ _Full Stack Software Engineering Intern - Team Lead_ | Jun 2026 - Present
 
 ## FEATURED AI PROJECTS
 
-**PLV eLib - Academic Library AI Sidecar** | _FastAPI, Laravel, LangChain, PostgreSQL, SQLite FTS5, Prometheus, Grafana_
+**PLV eLib - Academic Library AI Sidecar** | _FastAPI, Laravel, PostgreSQL, SQLite FTS5, Prometheus, Grafana_
 
 - Architected decoupled dual-engine topology pairing a Laravel 11 monolith with an external FastAPI AI sidecar, lifting Top-1 retrieval accuracy from **81.8% to 86.4%** via SQLite FTS5 (BM25) and dense vectors fused with RRF (k=60).
-- Constructed bounded LangChain agentic retrieval loop with deterministic refusals on out-of-domain queries and automated LLM-as-judge verification, achieving a **100% negative query pass rate**.
+- Constructed bounded Function Calling & Tool Use retrieval loop with deterministic refusals on out-of-domain queries and automated LLM-as-judge verification, achieving a **100% negative query pass rate**.
 - Deployed Prometheus metrics and a 6-chart Dockerized Grafana dashboard to track production inference latency histograms and live query feedback streams.
 
 **AGOS - AI-Guided Overflow Surveillance** | _FastAPI, React, YOLOv8, Groq, Docker, Raspberry Pi_
@@ -53,7 +53,7 @@ _Full Stack Software Engineering Intern - Team Lead_ | Jun 2026 - Present
 
 ## TECHNICAL SKILLS
 
-- **AI & Machine Learning:** LangChain, LangGraph, RAG Pipelines, Vector Search (pgvector, Pinecone, ChromaDB, SQLite FTS5 BM25, Hybrid RRF), Embeddings, YOLOv8, Groq, OpenCV, LLM-as-Judge Evaluation, Prompt Engineering, SSE Streaming, Prometheus & Grafana Observability
+- **AI & Machine Learning:** Function Calling & Tool Use, RAG Pipelines, Vector Search (pgvector, SQLite FTS5 (BM25), Hybrid RRF), Embeddings, YOLOv8, Groq, OpenCV, LLM-as-Judge Evaluation, Prompt Engineering, SSE Streaming, Prometheus & Grafana Observability
 - **Languages:** Python, TypeScript, JavaScript, SQL, PHP, C# / .NET, Java
 - **Frameworks & Full-Stack:** FastAPI, Next.js, React 19, Node.js, Laravel 11/12, Tailwind CSS v4, Livewire 3
 - **Databases & Cloud:** PostgreSQL, Supabase, Redis, Docker, AWS, Google Cloud (GCP), GitHub Actions, Jenkins
