@@ -54,8 +54,8 @@
   - 146 automated tests with 5,856 assertions.
 
 ## Experience Highlights
-- **FlyRank AI** — Full-Stack AI Engineer Intern (Jun 2026 – Sep 2026): Graduated with verified distinction from the Backend AI Engineering and AI Fluency programs; engineered hybrid RAG pipelines, FastAPI AI microservices, SSE token streaming, and Prometheus/Grafana observability.
-- **Nexvision Innovations Inc.** — Full Stack Software Engineering Intern / Team Lead (Jun 2026 – Sep 2026): Led engineering on statutory multi-tier payroll calculation engines, interval-partitioned time algorithms, and branch-scoped row-level data isolation.
+- **FlyRank AI** — Full-Stack AI Engineer Intern (Jul 2026 – Sep 2026): Graduated with verified distinction from the Backend AI Engineering and AI Fluency programs; engineered hybrid RAG pipelines, FastAPI AI microservices, SSE token streaming, and Prometheus/Grafana observability.
+- **Nexvision Innovations Inc.** — Full Stack Engineer (Lead Intern) (Jul 2026 – Sep 2026): Led engineering on statutory multi-tier payroll calculation engines, interval-partitioned time algorithms, and branch-scoped row-level data isolation.
 
 ## Technical Skills Summary
 - **AI Engineering**: Retrieval-Augmented Generation (RAG), Bounded Agentic Loops, Function Calling & Tool Use, Hybrid Search (SQLite FTS5 BM25 + Dense Vectors), Reciprocal Rank Fusion (RRF), Reranking, Vector Databases (pgvector), LLM-as-Judge Evals, YOLOv8, OpenCV, Gemini API, Groq.

@@ -27,7 +27,7 @@ const experienceData: ExperienceEntry[] = [
   {
     company: 'FlyRank AI',
     role: 'Full-Stack AI Engineer Intern',
-    timestamp: '[JUN – SEPT 2026]',
+    timestamp: '[JUL – SEPT 2026]',
     location: 'Remote',
     summary:
       'Completed Backend AI Engineering and AI Fluency internship programs with verified distinction (Sept 2026); engineered decoupled AI microservices, autonomous RAG pipelines, and hybrid neural retrieval architectures with end-to-end telemetry and LLM-as-judge evaluation.',
@@ -67,8 +67,8 @@ const experienceData: ExperienceEntry[] = [
   },
   {
     company: 'Nexvision Innovations Inc.',
-    role: 'Full Stack Software Engineering Intern — Team Lead',
-    timestamp: '[JUN – SEPT 2026]',
+    role: 'Full Stack Engineer (Lead Intern)',
+    timestamp: '[JUL – SEPT 2026]',
     location: 'Marikina (Hybrid)',
     summary:
       'Promoted to Intern Team Lead across a 12-week lifecycle; led sprint execution, audited payroll compliance against DOLE labor standards, and delivered mission-critical enterprise HRIS features under NDA.',
