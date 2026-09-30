@@ -15,7 +15,7 @@ import httpx
 
 logger = logging.getLogger("digital-eric")
 
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.1-8b-instant")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
@@ -31,7 +31,13 @@ async def stream_gemini(
     from google.genai import types as gtypes
 
     client = genai.Client(api_key=api_key)
-    config = gtypes.GenerateContentConfig(system_instruction=system_prompt)
+    try:
+        config = gtypes.GenerateContentConfig(
+            system_instruction=system_prompt,
+            automatic_function_calling=gtypes.AutomaticFunctionCallingConfig(disable=True),
+        )
+    except (AttributeError, TypeError):
+        config = gtypes.GenerateContentConfig(system_instruction=system_prompt)
     result = client.aio.models.generate_content_stream(
         model=GEMINI_MODEL, contents=contents, config=config  # type: ignore[arg-type]
     )
@@ -47,13 +53,22 @@ async def stream_gemini(
 async def stream_groq(
     system_prompt: str, contents: list[dict], api_key: str
 ) -> AsyncIterator[str]:
-    messages = [{"role": "system", "content": system_prompt}]
-    messages += [{"role": c["role"], "content": c["parts"][0]["text"]} for c in contents]
+    messages: list[dict[str, str]] = [{"role": "system", "content": system_prompt}]
+    for c in contents:
+        role = "assistant" if c["role"] == "model" else c["role"]
+        messages.append({"role": role, "content": c["parts"][0]["text"]})
     payload = {"model": GROQ_MODEL, "messages": messages, "stream": True}
     headers = {"Authorization": f"Bearer {api_key}"}
     async with httpx.AsyncClient(timeout=60) as http:
         async with http.stream("POST", GROQ_URL, json=payload, headers=headers) as resp:
-            resp.raise_for_status()
+            if resp.status_code >= 400:
+                err_body = await resp.aread()
+                logger.error(
+                    "Groq API error (%s): %s",
+                    resp.status_code,
+                    err_body.decode("utf-8", errors="replace"),
+                )
+                resp.raise_for_status()
             async for line in resp.aiter_lines():
                 if not line.startswith("data: "):
                     continue
