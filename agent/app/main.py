@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 
 from .notify import notify_conversation
 from .prompt import build_contents, build_system_prompt
-from .providers import ProviderChain, sse_format
+from .providers import GEMINI_MODEL, GROQ_MODEL, ProviderChain, sse_format
 from .ratelimit import SlidingWindowLimiter
 
 MAX_QUESTION_CHARS = 500
@@ -44,6 +44,7 @@ def create_app(
     )
     rate_limiter = limiter or SlidingWindowLimiter(max_requests=10, window_seconds=300)
     system_prompt = build_system_prompt()
+    logger.info("Configured models: Gemini=%s, Groq=%s", GEMINI_MODEL, GROQ_MODEL)
     if len(system_prompt) > KNOWLEDGE_CHAR_CAP:
         logger.warning(
             "Knowledge File exceeds ~8K-token budget (%d chars); trim knowledge/digital-eric.md",
