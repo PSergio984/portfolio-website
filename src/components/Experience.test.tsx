@@ -15,9 +15,7 @@ describe('Experience', () => {
     expect(screen.getByText('FlyRank AI')).toBeInTheDocument();
     expect(screen.getAllByText('[JUN – SEPT 2026]')[0]).toBeInTheDocument();
 
-    expect(
-      screen.getByText('Full Stack Software Engineering Intern — Team Lead'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Full Stack Engineer (Lead Intern)')).toBeInTheDocument();
     expect(screen.getByText('Nexvision Innovations Inc.')).toBeInTheDocument();
   });
 

@@ -25,7 +25,7 @@ _Full-Stack AI Engineer Intern (Graduated with Distinction)_ | Jun 2026 - Sep 20
 - Delivered full-stack streaming chat interfaces validated across **78 pytest integration tests** and a **27-case golden-set evaluation suite**, eliminating regression failures across synthetic edge cases.
 
 **Nexvision Innovations Inc.** | Marikina, Philippines (Hybrid)  
-_Full Stack Software Engineering Intern - Team Lead_ | Jun 2026 - Sep 2026
+_Full Stack Engineer (Lead Intern)_ | Jun 2026 - Sep 2026
 
 - Engineered DOLE statutory compliance algorithms across 4 enterprise applications by designing interval-partitioned time calculations to isolate 10 PM - 6 AM night differentials from standard overtime multipliers.
 - Automated statutory deduction and 13th-month proration calculations across **500+ employee records** by developing modular TypeScript/Next.js computation engines with immutable audit logging.

@@ -91,7 +91,7 @@ The focal point of Eric's work is **AI Engineering**: designing, deploying, eval
 - Accomplished elimination of out-of-domain hallucinations, as measured by a 100% negative query pass rate and 90% LLM-as-judge relevance score, by designing a bounded 3-step agentic query loop with cosine similarity gating (<0.50 threshold) and inline numbered citations.
 - Accomplished ~65% reduction in time-to-first-token (TTFT) and real-time observability across production deployments, by implementing asynchronous Server-Sent Events (SSE) streaming APIs, Prometheus `/metrics` latency histograms, and Grafana telemetry dashboards.
 
-### Nexvision Innovations Inc. — Full Stack Software Engineering Intern (Team Lead) [JUN – SEPT 2026]
+### Nexvision Innovations Inc. — Full Stack Engineer (Lead Intern) [JUN – SEPT 2026]
 - Accomplished 100% compliance with Department of Labor and Employment (DOLE) statutory standards across 4 enterprise HRIS applications, by auditing payroll calculation engines and implementing interval-partitioned time algorithms to isolate 10 PM – 6 AM night differentials from standard overtime multipliers.
 - Accomplished automation of statutory multi-tier payroll deductions and 13th-month proration across 500+ employee records, by developing TypeScript/Next.js calculation modules for progressive SSS/WISP, PhilHealth, and Pag-IBIG regular/MP2 brackets with immutable audit logging.
 - Accomplished prevention of cross-branch data leaks and strengthened multi-tenant data isolation, by auditing Supabase and PostgreSQL data-access layers and implementing strict branch-scoped row-level query constraints.

@@ -67,7 +67,7 @@ const experienceData: ExperienceEntry[] = [
   },
   {
     company: 'Nexvision Innovations Inc.',
-    role: 'Full Stack Software Engineering Intern — Team Lead',
+    role: 'Full Stack Engineer (Lead Intern)',
     timestamp: '[JUN – SEPT 2026]',
     location: 'Marikina (Hybrid)',
     summary:
