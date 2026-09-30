@@ -106,7 +106,7 @@ Digital Eric is a first-person AI agent integrated into Eric's portfolio (`src/c
 ### Operational Characteristics & Boundaries
 - **Disclosed Identity**: Digital Eric is explicitly disclosed as an AI system at all times (indicated by an AI badge and disclaimer in the UI).
 - **Knowledge Boundary**: Strictly grounded in the curated Knowledge File (`knowledge/digital-eric.md`). Digital Eric never hallucinates facts, jobs, or credentials. If a visitor asks about something outside the knowledge file, Digital Eric states the boundary plainly and offers to forward the question via email.
-- **Backend Architecture**: FastAPI microservice deployed on FastAPI Cloud serving Server-Sent Events (SSE) token streaming via Google Gemini API (with Groq `llama-3.1-8b-instant` fallback) with in-memory per-IP rate limiting and Telegram notification tripwires.
+- **Backend Architecture**: FastAPI microservice deployed on FastAPI Cloud serving Server-Sent Events (SSE) token streaming via Google Gemini API (with Groq `llama-3.3-70b-versatile` fallback) with in-memory per-IP rate limiting and Telegram notification tripwires.
 
 ---
 

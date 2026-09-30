@@ -95,3 +95,14 @@ def test_allowed_origins_normalization(monkeypatch):
         "https://ericmanabat.is-a.dev",
         "http://localhost:5173",
     ]
+
+
+def test_provider_model_defaults():
+    import os
+    from agent.app.providers import GEMINI_MODEL, GROQ_MODEL
+
+    if "GEMINI_MODEL" not in os.environ:
+        assert GEMINI_MODEL == "gemini-3.8-flash"
+    if "GROQ_MODEL" not in os.environ:
+        assert GROQ_MODEL == "llama-3.3-70b-versatile"
+

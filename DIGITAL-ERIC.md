@@ -14,13 +14,13 @@ Visitor browser
        └─ FastAPI on FastAPI Cloud (Hobby, scale-to-zero)   https://portfolio-website-1e1b9d48.fastapicloud.dev
             ├─ POST /chat → SSE token stream
             ├─ System prompt = persona framing + knowledge/digital-eric.md (stuffed whole, ~2K tokens)
-            ├─ Gemini 3.6 Flash (free tier) ── on failure ──▶ Groq llama-3.1-8b-instant (if key set)
+            ├─ Gemini 3.8 Flash (free tier) ── on failure ──▶ Groq llama-3.3-70b-versatile (if key set)
             ├─ Per-IP rate limit: 10 msgs / 5 min, in-memory
             └─ Telegram push per conversation (if keys set) = the abuse tripwire
 ```
 
 - Frontend widget: `src/components/DigitalEricChat.tsx` (AI badge always visible, cold-start copy, starter chips, graceful offline/error copy)
-- Backend: `agent/` (FastAPI; tests in `agent/tests/`, 12 passing)
+- Backend: `agent/` (FastAPI; tests in `agent/tests/`, 15 passing)
 - Brain: `knowledge/digital-eric.md` (canonical) mirrored to `agent/knowledge/` (CI test fails if they drift)
 
 ## Operating manual
@@ -28,7 +28,7 @@ Visitor browser
 | Task                                 | How                                                                                                                                                |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Teach Digital Eric something new** | Edit `knowledge/digital-eric.md`, copy it to `agent/knowledge/digital-eric.md`, commit, push. Auto-deploys.                                        |
-| **Change the model**                 | FastAPI Cloud env `GEMINI_MODEL` (default `gemini-3.6-flash` — Google retires names often; check AI Studio when answers 404)                       |
+| **Change the model**                 | FastAPI Cloud env `GEMINI_MODEL` (default `gemini-3.8-flash` — Google retires names often; check AI Studio when answers 404)                       |
 | **Deploy manually**                  | `cd agent && fastapi deploy` (normally automatic on push to `main`)                                                                                |
 | **Read a conversation**              | Your Telegram chat (one push per exchange)                                                                                                         |
 | **See errors**                       | FastAPI Cloud dashboard logs — provider failures log as `provider gemini failed: …`                                                                |
@@ -40,7 +40,7 @@ Visitor browser
 - **Cold start**: first message after idle waits a few seconds (Hobby tier forces scale-to-zero). The widget says "waking Digital Eric up…"
 - **In-memory rate limit**: resets on redeploy; one instance only. Fine at portfolio traffic.
 - **Free-tier data**: Gemini free tier may train on prompts — the Knowledge File contains public info only, enforced by review.
-- **Model churn**: Google retired 2.0/2.5 Flash for new users mid-project; expect to bump `GEMINI_MODEL` occasionally.
+- **Model churn**: Providers retire model versions periodically; expect to bump `GEMINI_MODEL` / `GROQ_MODEL` occasionally.
 
 ## Roadmap (from the map's runner-up concepts)
 
