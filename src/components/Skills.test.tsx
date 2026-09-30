@@ -40,8 +40,9 @@ describe('Skills', () => {
     expect(screen.getByText('Model Context Protocol (MCP)')).toBeInTheDocument();
   });
 
-  it('renders vector database and AI retrieval skills including Pinecone & ChromaDB', () => {
-    expect(screen.getByText('Pinecone & ChromaDB')).toBeInTheDocument();
+  it('renders vector database and AI retrieval skills including SQLite FTS5 (BM25) and Function Calling', () => {
+    expect(screen.getByText('Function Calling & Tool Use')).toBeInTheDocument();
+    expect(screen.getByText('SQLite FTS5 (BM25)')).toBeInTheDocument();
     expect(screen.getByText('pgvector Embeddings')).toBeInTheDocument();
     expect(screen.getByText('Hybrid RRF Search')).toBeInTheDocument();
     expect(screen.getByText('FastAPI AI Sidecars')).toBeInTheDocument();

@@ -44,7 +44,6 @@ import {
   SiTrello,
   SiJira,
   SiOpencv,
-  SiLangchain,
   SiNodedotjs,
   SiGooglecloud,
   SiAnthropic,
@@ -86,9 +85,9 @@ const skillGroups: SkillGroup[] = [
     icon: <Cpu className="w-4 h-4 text-purple-600 dark:text-purple-400" />,
     skills: [
       {
-        name: 'LangChain / LangGraph',
-        icon: SiLangchain,
-        color: 'text-emerald-600 dark:text-emerald-400',
+        name: 'Function Calling & Tool Use',
+        icon: Code2,
+        color: 'text-[var(--text-muted)]',
       },
       { name: 'Hybrid RRF Search', icon: Database, color: 'text-cyan-600 dark:text-cyan-400' },
       { name: 'FastAPI AI Sidecars', icon: SiFastapi, color: 'text-teal-600 dark:text-teal-400' },
@@ -98,9 +97,9 @@ const skillGroups: SkillGroup[] = [
         color: 'text-blue-600 dark:text-blue-400',
       },
       {
-        name: 'Pinecone & ChromaDB',
-        icon: Database,
-        color: 'text-emerald-600 dark:text-emerald-400',
+        name: 'SQLite FTS5 (BM25)',
+        icon: SiSqlite,
+        color: 'text-[var(--text-muted)]',
       },
       { name: 'YOLOv8 & OpenCV', icon: SiOpencv, color: 'text-emerald-600 dark:text-green-400' },
       { name: 'LLM-as-Judge Evaluation', icon: Cpu, color: 'text-purple-600 dark:text-purple-400' },

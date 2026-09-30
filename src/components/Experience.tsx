@@ -27,10 +27,10 @@ const experienceData: ExperienceEntry[] = [
   {
     company: 'FlyRank AI',
     role: 'Full-Stack AI Engineer Intern',
-    timestamp: '[JUN 2026 – PRESENT]',
+    timestamp: '[JUN – SEPT 2026]',
     location: 'Remote',
     summary:
-      'Completed Backend AI Engineering internship (Sept 2026) and currently progressing through Frontend AI Engineering; engineered decoupled AI microservices, autonomous RAG pipelines, and hybrid neural retrieval architectures with end-to-end telemetry and LLM-as-judge evaluation.',
+      'Completed Backend AI Engineering and AI Fluency internship programs with verified distinction (Sept 2026); engineered decoupled AI microservices, autonomous RAG pipelines, and hybrid neural retrieval architectures with end-to-end telemetry and LLM-as-judge evaluation.',
     tags: [
       'FastAPI',
       'Python',
@@ -41,7 +41,7 @@ const experienceData: ExperienceEntry[] = [
       'LLM-as-Judge',
     ],
     bullets: [
-      'Graduated from the Backend AI Engineering Internship Program (Certificate ID: FR-D11-28D6B-6AC8A, Sept 2026) with verified distinction and continued directly into the Frontend AI Engineering internship track.',
+      'Graduated from the Backend AI Engineering and AI Fluency Internship Programs (Certificate IDs: FR-D11-28D6B-6AC8A, FR-D11-8C634-C586C, Sept 2026) with verified distinction.',
       'Architected and deployed an autonomous FastAPI AI sidecar microservice, increasing retrieval accuracy from 81.8% to 86.4% Top-1 on ground-truth benchmarks by engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.',
       'Eliminated out-of-domain hallucinations to achieve a 100% negative query pass rate and 90% LLM-as-judge relevance score by designing a bounded 3-step agentic query loop with cosine similarity gating (<0.50 threshold) and inline numbered citations.',
       'Reduced time-to-first-token (TTFT) by ~65% and established real-time observability across production deployments by implementing asynchronous Server-Sent Events (SSE) streaming APIs, Prometheus /metrics latency histograms, and Grafana telemetry dashboards.',
@@ -68,7 +68,7 @@ const experienceData: ExperienceEntry[] = [
   {
     company: 'Nexvision Innovations Inc.',
     role: 'Full Stack Software Engineering Intern — Team Lead',
-    timestamp: '[JUN 2026 – PRESENT]',
+    timestamp: '[JUN – SEPT 2026]',
     location: 'Marikina (Hybrid)',
     summary:
       'Promoted to Intern Team Lead across a 12-week lifecycle; led sprint execution, audited payroll compliance against DOLE labor standards, and delivered mission-critical enterprise HRIS features under NDA.',

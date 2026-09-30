@@ -47,13 +47,14 @@ Short term: finish my BS Information Technology degree (2026, consistent Dean's 
 
 ## Work Experience & Internships (Google XYZ Format)
 
-### 1. FlyRank AI — Full-Stack AI Engineer Intern [JUN 2026 – PRESENT]
+### 1. FlyRank AI — Full-Stack AI Engineer Intern [JUN – SEPT 2026]
 
+- **Accomplished** graduation with verified distinction from the Backend AI Engineering and AI Fluency Internship Programs (Certificate IDs: FR-D11-28D6B-6AC8A, FR-D11-8C634-C586C, Sept 2026).
 - **Accomplished** autonomous FastAPI AI sidecar microservice deployment, **as measured by** increasing retrieval accuracy from 81.8% to 86.4% Top-1 on ground-truth benchmarks, **by** engineering hybrid BM25 + dense vector search with Reciprocal Rank Fusion (RRF k=60) and deterministic blend reranking.
 - **Accomplished** elimination of out-of-domain hallucinations, **as measured by** a 100% negative query pass rate and 90% LLM-as-judge relevance score, **by** designing a bounded 3-step agentic query loop with cosine similarity gating (<0.50 threshold) and inline numbered citations.
 - **Accomplished** ~65% reduction in time-to-first-token (TTFT) and real-time observability across production deployments, **by** implementing asynchronous Server-Sent Events (SSE) streaming APIs, Prometheus `/metrics` latency histograms, and Grafana telemetry dashboards.
 
-### 2. Nexvision Innovations Inc. — Full Stack Software Engineering Intern (Team Lead) [JUN 2026 – PRESENT]
+### 2. Nexvision Innovations Inc. — Full Stack Software Engineering Intern (Team Lead) [JUN – SEPT 2026]
 
 - **Accomplished** 100% compliance with Department of Labor and Employment (DOLE) statutory standards across 4 enterprise HRIS applications, **by** auditing payroll calculation engines and implementing interval-partitioned time algorithms to isolate 10 PM – 6 AM night differentials from standard overtime multipliers.
 - **Accomplished** automation of statutory multi-tier payroll deductions and 13th-month proration across 500+ employee records, **by** developing TypeScript/Next.js calculation modules for progressive SSS/WISP, PhilHealth, and Pag-IBIG regular/MP2 brackets with immutable audit logging.
@@ -65,7 +66,7 @@ Short term: finish my BS Information Technology degree (2026, consistent Dean's 
 ## Skills & Tools
 
 - **Languages:** TypeScript, JavaScript, Python, PHP, Java, C# / .NET
-- **AI & RAG:** FastAPI AI Sidecars, LangChain / LangGraph, Hybrid BM25/Vector RRF, pgvector, Pinecone, ChromaDB, YOLOv8, OpenCV, Prometheus, Grafana, LLM-as-Judge
+- **AI & RAG:** FastAPI AI Sidecars, Function Calling & Tool Use, Hybrid BM25/Vector RRF, pgvector, SQLite FTS5 (BM25), YOLOv8, OpenCV, Prometheus, Grafana, LLM-as-Judge
 - **Frontend:** Next.js (App Router), React 19, Tailwind CSS v4, shadcn/ui, MaryUI, Filament 4, Livewire 3, Alpine.js, Zustand, Figma
 - **Backend & DB:** FastAPI, Laravel 11/12, Node.js, PostgreSQL, Supabase, SQLite FTS5, Redis, MySQL, MongoDB
 - **Cloud & DevOps:** AWS, Google Cloud (GCP), Docker, Jenkins, GitHub Actions, Vercel, Cloudflare, Render, Railway
