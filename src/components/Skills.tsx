@@ -44,6 +44,9 @@ import {
   SiTrello,
   SiJira,
   SiOpencv,
+  SiLangchain,
+  SiPrisma,
+  SiDrizzle,
   SiNodedotjs,
   SiGooglecloud,
   SiAnthropic,
@@ -92,6 +95,16 @@ const skillGroups: SkillGroup[] = [
       { name: 'Hybrid RRF Search', icon: Database, color: 'text-cyan-600 dark:text-cyan-400' },
       { name: 'FastAPI AI Sidecars', icon: SiFastapi, color: 'text-teal-600 dark:text-teal-400' },
       {
+        name: 'LangChain / LangGraph',
+        icon: SiLangchain,
+        color: 'text-emerald-600 dark:text-emerald-400',
+      },
+      {
+        name: 'Pinecone & ChromaDB',
+        icon: Database,
+        color: 'text-emerald-600 dark:text-emerald-400',
+      },
+      {
         name: 'pgvector Embeddings',
         icon: SiPostgresql,
         color: 'text-blue-600 dark:text-blue-400',
@@ -139,6 +152,16 @@ const skillGroups: SkillGroup[] = [
       { name: 'Node.js', icon: SiNodedotjs, color: 'text-emerald-600 dark:text-emerald-400' },
       { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-indigo-600 dark:text-indigo-400' },
       { name: 'Supabase', icon: SiSupabase, color: 'text-emerald-600 dark:text-emerald-400' },
+      {
+        name: 'Prisma ORM',
+        icon: SiPrisma,
+        color: 'text-teal-600 dark:text-teal-400',
+      },
+      {
+        name: 'Drizzle ORM',
+        icon: SiDrizzle,
+        color: 'text-amber-500 dark:text-yellow-400',
+      },
       { name: 'SQLite FTS5', icon: SiSqlite, color: 'text-sky-600 dark:text-sky-400' },
       { name: 'Redis', icon: SiRedis, color: 'text-red-600 dark:text-red-500' },
       { name: 'MySQL', icon: SiMysql, color: 'text-orange-600 dark:text-orange-400' },

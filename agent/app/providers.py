@@ -20,6 +20,29 @@ GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 CUT_OFF_NOTICE = " …(my connection dropped mid-answer — ask again and I'll continue)"
+SAFETY_REFUSAL = (
+    "As Digital Eric, I'm focused on ethical software and defensive security, "
+    "so I can't generate malicious code or exploit tools. "
+    "What engineering challenge can I help you build?"
+)
+
+
+def _is_safety_exception(exc: Exception) -> bool:
+    msg = str(exc).lower()
+    return any(
+        k in msg
+        for k in (
+            "safety",
+            "harm_category",
+            "content_filter",
+            "hate_speech",
+            "harassment",
+            "sexually_explicit",
+            "dangerous_content",
+            "blocked",
+            "moderation",
+        )
+    )
 
 
 async def stream_gemini(
@@ -59,16 +82,17 @@ async def stream_groq(
         messages.append({"role": role, "content": c["parts"][0]["text"]})
     payload = {"model": GROQ_MODEL, "messages": messages, "stream": True}
     headers = {"Authorization": f"Bearer {api_key}"}
-    async with httpx.AsyncClient(timeout=60) as http:
+    async with httpx.AsyncClient(timeout=15) as http:
         async with http.stream("POST", GROQ_URL, json=payload, headers=headers) as resp:
             if resp.status_code >= 400:
                 err_body = await resp.aread()
+                err_text = err_body.decode("utf-8", errors="replace")[:300]
                 logger.error(
                     "Groq API error (%s): %s",
                     resp.status_code,
-                    err_body.decode("utf-8", errors="replace"),
+                    err_text,
                 )
-                resp.raise_for_status()
+                raise RuntimeError(f"Groq API error ({resp.status_code}): {err_text}")
             async for line in resp.aiter_lines():
                 if not line.startswith("data: "):
                     continue
@@ -105,6 +129,9 @@ class ProviderChain:
                 return
             except Exception as exc:  # noqa: BLE001 - fallback is the whole point
                 logger.warning("provider %s failed: %s: %s", name, type(exc).__name__, exc)
+                if _is_safety_exception(exc):
+                    yield SAFETY_REFUSAL
+                    return
                 if emitted:
                     # Mid-stream failure: keep the partial answer, stop cleanly.
                     yield CUT_OFF_NOTICE

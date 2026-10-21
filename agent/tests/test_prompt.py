@@ -24,6 +24,8 @@ def test_system_prompt_loads_real_knowledge_file():
     assert "Full-Stack AI Engineer" in knowledge  # authored fact from ticket #5
     assert "Function Calling & Tool Use" in knowledge
     assert "SQLite FTS5" in knowledge
+    assert "Pinecone" in knowledge
+    assert "Prisma ORM" in knowledge
     assert "## Boundaries" in knowledge
 
 

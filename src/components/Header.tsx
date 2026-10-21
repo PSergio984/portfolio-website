@@ -25,7 +25,7 @@ export function Header() {
     }`;
 
   return (
-    <header className="border-b border-[var(--border)] sticky top-0 z-50 backdrop-blur-md bg-[var(--bg)]/90 w-full overflow-hidden">
+    <header className="border-b border-[var(--border)] sticky top-0 z-50 backdrop-blur-md bg-[var(--bg)]/90 w-full">
       <div className="max-w-6xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2">
         <a
           href="#about"
