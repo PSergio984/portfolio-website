@@ -39,6 +39,8 @@ def _is_safety_exception(exc: Exception) -> bool:
             "harassment",
             "sexually_explicit",
             "dangerous_content",
+            "blocked",
+            "moderation",
         )
     )
 
@@ -84,7 +86,7 @@ async def stream_groq(
         async with http.stream("POST", GROQ_URL, json=payload, headers=headers) as resp:
             if resp.status_code >= 400:
                 err_body = await resp.aread()
-                err_text = err_body.decode("utf-8", errors="replace")
+                err_text = err_body.decode("utf-8", errors="replace")[:300]
                 logger.error(
                     "Groq API error (%s): %s",
                     resp.status_code,
