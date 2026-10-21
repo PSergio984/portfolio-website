@@ -256,7 +256,7 @@ export function Credentials() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {visibleCredentials.map((cred) => (
               <div
-                key={cred.title}
+                key={cred.id}
                 className="p-5 rounded-2xl bg-[var(--card-bg)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-[var(--accent-border)] transition-all duration-200 shadow-[var(--shadow-card)] flex flex-col justify-between"
               >
                 <div>
