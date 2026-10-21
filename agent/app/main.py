@@ -3,12 +3,13 @@
 import logging
 import os
 from collections.abc import AsyncIterator
+from typing import Annotated, Literal
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from fastapi.sse import EventSourceResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, StringConstraints
 
 from .notify import notify_conversation
 from .prompt import build_contents, build_system_prompt
@@ -20,15 +21,47 @@ KNOWLEDGE_CHAR_CAP = 32_000  # ~8K tokens, the wayfinder stuffing budget
 
 logger = logging.getLogger("digital-eric")
 
+SSE_HEADERS = {
+    "Cache-Control": "no-cache, no-transform",
+    "Connection": "keep-alive",
+    "X-Accel-Buffering": "no",
+}
+
+
+class ChatTurn(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str = Field(min_length=1, max_length=2000)
+
 
 class ChatRequest(BaseModel):
-    message: str = Field(min_length=1, max_length=MAX_QUESTION_CHARS)
-    history: list[dict[str, str]] = Field(default_factory=list)
+    message: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1, max_length=MAX_QUESTION_CHARS),
+    ]
+    history: list[ChatTurn] = Field(default_factory=list)
+
+
+def _get_client_ip(request: Request) -> str:
+    cf_ip = request.headers.get("cf-connecting-ip")
+    if cf_ip:
+        return cf_ip.strip()
+    real_ip = request.headers.get("x-real-ip")
+    if real_ip:
+        return real_ip.strip()
+    return request.client.host if request.client else "unknown"
 
 
 def _allowed_origins() -> list[str]:
-    raw = os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173")
+    is_prod = os.environ.get("ENVIRONMENT", "").lower() in ("production", "prod")
+    raw = os.environ.get("ALLOWED_ORIGINS")
+    if not raw:
+        if is_prod:
+            raise RuntimeError(
+                "ALLOWED_ORIGINS environment variable must be set in production"
+            )
+        raw = "http://localhost:5173"
     return [o.strip().rstrip("/") for o in raw.split(",") if o.strip()]
+
 
 
 def create_app(
@@ -61,10 +94,11 @@ def create_app(
 
     @app.post("/chat")
     async def chat(req: ChatRequest, request: Request) -> StreamingResponse:
-        client_ip = request.client.host if request.client else "unknown"
+        client_ip = _get_client_ip(request)
         if not rate_limiter.allow(client_ip):
             return EventSourceResponse(
-                iter([sse_format("You've hit the message limit for now - try again in a few minutes.")])
+                iter([sse_format("You've hit the message limit for now - try again in a few minutes.")]),
+                headers=SSE_HEADERS,
             )
 
         contents = build_contents(req.history, req.message)
@@ -83,7 +117,7 @@ def create_app(
             finally:
                 await notify_conversation(req.message, "".join(tokens)[:400])
 
-        return EventSourceResponse(generate())
+        return EventSourceResponse(generate(), headers=SSE_HEADERS)
 
     return app
 

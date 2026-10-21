@@ -57,11 +57,13 @@ def build_system_prompt(knowledge: str | None = None) -> str:
     return _PERSONA_FRAMING + _KNOWLEDGE_HEADER + knowledge
 
 
-def build_contents(history: list[dict[str, str]], message: str) -> list[dict[str, str]]:
+def build_contents(history: list, message: str) -> list[dict[str, str]]:
     """Gemini-style contents list: last HISTORY_CAP turns then the new question."""
-    turns = [
-        {"role": ("model" if h["role"] == "assistant" else "user"), "parts": [{"text": h["content"]}]}
-        for h in history[-HISTORY_CAP:]
-    ]
+    turns = []
+    for h in history[-HISTORY_CAP:]:
+        role = getattr(h, "role", None) or (h.get("role") if isinstance(h, dict) else "user")
+        content = getattr(h, "content", None) or (h.get("content") if isinstance(h, dict) else "")
+        mapped_role = "model" if role == "assistant" else "user"
+        turns.append({"role": mapped_role, "parts": [{"text": str(content)}]})
     turns.append({"role": "user", "parts": [{"text": message}]})
     return turns
