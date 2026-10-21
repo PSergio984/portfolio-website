@@ -64,7 +64,12 @@ describe('Credentials Component', () => {
       showMoreBtn = screen.queryByRole('button', { name: /show \d+ more/i });
     }
 
-    expect(screen.getByText('Introduction to Model Context Protocol (MCP)')).toBeInTheDocument();
+    expect(
+      screen.getAllByText('Introduction to Model Context Protocol (MCP)')[0],
+    ).toBeInTheDocument();
+    expect(screen.getByText('Associate AI Engineer for Developers')).toBeInTheDocument();
+    expect(screen.getByText('Developing LLM Applications with LangChain')).toBeInTheDocument();
+    expect(screen.getByText('Building AI Applications with Pinecone')).toBeInTheDocument();
     expect(screen.getByText('Claude Code 101')).toBeInTheDocument();
     expect(screen.getByText('Learn Logging and Observability in Go')).toBeInTheDocument();
     expect(screen.getByText('GCI 2026 Data Science Cohort')).toBeInTheDocument();
