@@ -41,3 +41,12 @@ __pycache__/
 *.pyc
 .pytest_cache/
 *.egg-info/
+
+# Teaching workspace
+/MISSION.md
+/RESOURCES.md
+/NOTES.md
+/lessons/
+/reference/
+/learning-records/
+/assets/
