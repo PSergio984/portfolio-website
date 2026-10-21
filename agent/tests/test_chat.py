@@ -129,7 +129,8 @@ def test_sse_headers_disable_proxy_buffering():
             assert "no-transform" in resp.headers.get("cache-control", "")
 
 
-def test_cf_connecting_ip_used_for_rate_limiting():
+def test_cf_connecting_ip_used_for_rate_limiting(monkeypatch):
+    monkeypatch.setenv("TRUST_PROXY_HEADERS", "true")
     with client(provider=FakeProvider(), max_requests=1) as c:
         # First request from IP A succeeds
         resp1 = c.post("/chat", json={"message": "hi"}, headers={"cf-connecting-ip": "198.51.100.1"})
@@ -141,6 +142,39 @@ def test_cf_connecting_ip_used_for_rate_limiting():
         # Request from IP B succeeds despite same host
         resp3 = c.post("/chat", json={"message": "new visitor"}, headers={"cf-connecting-ip": "198.51.100.2"})
         assert resp3.status_code == 200
+
+
+def test_untrusted_proxy_headers_ignored_by_default(monkeypatch):
+    monkeypatch.delenv("TRUST_PROXY_HEADERS", raising=False)
+    monkeypatch.delenv("TRUSTED_PROXIES", raising=False)
+    with client(provider=FakeProvider(), max_requests=1) as c:
+        resp1 = c.post("/chat", json={"message": "hi"}, headers={"cf-connecting-ip": "198.51.100.1"})
+        assert resp1.status_code == 200
+        # Second request with a different spoofed cf-connecting-ip is still rate-limited to direct peer
+        with c.stream("POST", "/chat", json={"message": "hi again"}, headers={"cf-connecting-ip": "198.51.100.2"}) as resp2:
+            body = "".join(chunk for chunk in resp2.iter_text())
+        assert "limit" in parse_sse(body)[0]["token"].lower()
+
+
+def test_user_history_turn_exceeding_max_chars_rejected():
+    with client(provider=FakeProvider()) as c:
+        resp = c.post(
+            "/chat",
+            json={
+                "message": "hello",
+                "history": [{"role": "user", "content": "x" * 501}],
+            },
+        )
+        assert resp.status_code == 422
+
+
+def test_history_list_length_capped_at_history_cap():
+    from agent.app.prompt import HISTORY_CAP
+    with client(provider=FakeProvider()) as c:
+        too_many_turns = [{"role": "user", "content": f"q{i}"} for i in range(HISTORY_CAP + 1)]
+        resp = c.post("/chat", json={"message": "hello", "history": too_many_turns})
+        assert resp.status_code == 422
+
 
 
 def test_strict_cors_in_production(monkeypatch):

@@ -9,10 +9,10 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from fastapi.sse import EventSourceResponse
-from pydantic import BaseModel, Field, StringConstraints
+from pydantic import BaseModel, Field, StringConstraints, model_validator
 
 from .notify import notify_conversation
-from .prompt import build_contents, build_system_prompt
+from .prompt import HISTORY_CAP, build_contents, build_system_prompt
 from .providers import GEMINI_MODEL, GROQ_MODEL, ProviderChain, sse_format
 from .ratelimit import SlidingWindowLimiter
 
@@ -30,7 +30,13 @@ SSE_HEADERS = {
 
 class ChatTurn(BaseModel):
     role: Literal["user", "assistant"]
-    content: str = Field(min_length=1, max_length=10_000)
+    content: str = Field(min_length=1, max_length=4_000)
+
+    @model_validator(mode="after")
+    def _validate_turn(self) -> "ChatTurn":
+        if self.role == "user" and len(self.content) > MAX_QUESTION_CHARS:
+            raise ValueError(f"User turn exceeds {MAX_QUESTION_CHARS} characters")
+        return self
 
 
 class ChatRequest(BaseModel):
@@ -38,17 +44,22 @@ class ChatRequest(BaseModel):
         str,
         StringConstraints(strip_whitespace=True, min_length=1, max_length=MAX_QUESTION_CHARS),
     ]
-    history: list[ChatTurn] = Field(default_factory=list)
+    history: list[ChatTurn] = Field(default_factory=list, max_length=HISTORY_CAP)
 
 
 def _get_client_ip(request: Request) -> str:
-    cf_ip = request.headers.get("cf-connecting-ip")
-    if cf_ip:
-        return cf_ip.strip()
-    real_ip = request.headers.get("x-real-ip")
-    if real_ip:
-        return real_ip.strip()
-    return request.client.host if request.client else "unknown"
+    peer = request.client.host if request.client else "unknown"
+    trusted_proxies = {
+        p.strip() for p in os.environ.get("TRUSTED_PROXIES", "").split(",") if p.strip()
+    }
+    trust_all = os.environ.get("TRUST_PROXY_HEADERS", "").lower() in ("true", "1", "yes")
+    if trust_all or (trusted_proxies and peer in trusted_proxies):
+        for h in ("cf-connecting-ip", "x-real-ip"):
+            v = request.headers.get(h)
+            if v:
+                return v.strip()
+    return peer
+
 
 
 def _allowed_origins() -> list[str]:
