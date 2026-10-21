@@ -26,6 +26,8 @@ describe('Skills', () => {
     expect(screen.getByText('Filament 4')).toBeInTheDocument();
     expect(screen.getByText('Docker')).toBeInTheDocument();
     expect(screen.getByText('PostgreSQL')).toBeInTheDocument();
+    expect(screen.getByText('Prisma ORM')).toBeInTheDocument();
+    expect(screen.getByText('Drizzle ORM')).toBeInTheDocument();
     expect(screen.getByText('Burp Suite')).toBeInTheDocument();
   });
 
@@ -46,6 +48,8 @@ describe('Skills', () => {
     expect(screen.getByText('pgvector Embeddings')).toBeInTheDocument();
     expect(screen.getByText('Hybrid RRF Search')).toBeInTheDocument();
     expect(screen.getByText('FastAPI AI Sidecars')).toBeInTheDocument();
+    expect(screen.getByText('Pinecone & ChromaDB')).toBeInTheDocument();
+    expect(screen.getByText('LangChain / LangGraph')).toBeInTheDocument();
   });
 
   it('renders custom icon elements without error', () => {
