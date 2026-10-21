@@ -31,9 +31,16 @@ def _is_safety_exception(exc: Exception) -> bool:
     msg = str(exc).lower()
     return any(
         k in msg
-        for k in ("safety", "blocked", "harm_category", "content_filter", "moderation", "policy")
+        for k in (
+            "safety",
+            "harm_category",
+            "content_filter",
+            "hate_speech",
+            "harassment",
+            "sexually_explicit",
+            "dangerous_content",
+        )
     )
-
 
 
 async def stream_gemini(
@@ -77,12 +84,13 @@ async def stream_groq(
         async with http.stream("POST", GROQ_URL, json=payload, headers=headers) as resp:
             if resp.status_code >= 400:
                 err_body = await resp.aread()
+                err_text = err_body.decode("utf-8", errors="replace")
                 logger.error(
                     "Groq API error (%s): %s",
                     resp.status_code,
-                    err_body.decode("utf-8", errors="replace"),
+                    err_text,
                 )
-                resp.raise_for_status()
+                raise RuntimeError(f"Groq API error ({resp.status_code}): {err_text}")
             async for line in resp.aiter_lines():
                 if not line.startswith("data: "):
                     continue

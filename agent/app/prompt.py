@@ -5,6 +5,7 @@ The Knowledge File is baked into the service image at deploy time
 """
 
 import os
+from typing import Any
 from pathlib import Path
 
 _KNOWLEDGE_CANDIDATES = [
@@ -57,7 +58,7 @@ def build_system_prompt(knowledge: str | None = None) -> str:
     return _PERSONA_FRAMING + _KNOWLEDGE_HEADER + knowledge
 
 
-def build_contents(history: list, message: str) -> list[dict[str, str]]:
+def build_contents(history: list[Any], message: str) -> list[dict[str, Any]]:
     """Gemini-style contents list: last HISTORY_CAP turns then the new question."""
     turns = []
     for h in history[-HISTORY_CAP:]:

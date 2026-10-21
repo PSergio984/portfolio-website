@@ -152,6 +152,28 @@ def test_strict_cors_in_production(monkeypatch):
     with pytest.raises(RuntimeError, match="ALLOWED_ORIGINS environment variable must be set in production"):
         create_app()
 
+    monkeypatch.setenv("ALLOWED_ORIGINS", "   ")
+    with pytest.raises(RuntimeError, match="ALLOWED_ORIGINS environment variable must be set in production"):
+        create_app()
+
+
+def test_valid_multiturn_chat_and_long_assistant_history():
+    with client(provider=FakeProvider(["Great", " response"])) as c:
+        resp = c.post(
+            "/chat",
+            json={
+                "message": "follow-up question",
+                "history": [
+                    {"role": "user", "content": "initial question"},
+                    {"role": "assistant", "content": "x" * 3500},
+                ],
+            },
+        )
+        assert resp.status_code == 200
+        events = parse_sse(resp.text)
+        assert [e["token"] for e in events[:2]] == ["Great", " response"]
+
+
 
 def test_safety_filter_returns_in_character_refusal():
     from agent.app.providers import SAFETY_REFUSAL, ProviderChain

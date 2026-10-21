@@ -30,7 +30,7 @@ SSE_HEADERS = {
 
 class ChatTurn(BaseModel):
     role: Literal["user", "assistant"]
-    content: str = Field(min_length=1, max_length=2000)
+    content: str = Field(min_length=1, max_length=10_000)
 
 
 class ChatRequest(BaseModel):
@@ -54,14 +54,13 @@ def _get_client_ip(request: Request) -> str:
 def _allowed_origins() -> list[str]:
     is_prod = os.environ.get("ENVIRONMENT", "").lower() in ("production", "prod")
     raw = os.environ.get("ALLOWED_ORIGINS")
-    if not raw:
+    if not raw or not raw.strip():
         if is_prod:
             raise RuntimeError(
                 "ALLOWED_ORIGINS environment variable must be set in production"
             )
         raw = "http://localhost:5173"
     return [o.strip().rstrip("/") for o in raw.split(",") if o.strip()]
-
 
 
 def create_app(
