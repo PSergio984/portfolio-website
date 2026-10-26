@@ -26,6 +26,7 @@ describe('Skills', () => {
     expect(screen.getByText('Filament 4')).toBeInTheDocument();
     expect(screen.getByText('Docker')).toBeInTheDocument();
     expect(screen.getByText('PostgreSQL')).toBeInTheDocument();
+    expect(screen.getByText('NestJS')).toBeInTheDocument();
     expect(screen.getByText('Prisma ORM')).toBeInTheDocument();
     expect(screen.getByText('Drizzle ORM')).toBeInTheDocument();
     expect(screen.getByText('Burp Suite')).toBeInTheDocument();

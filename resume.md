@@ -55,7 +55,7 @@ _Full Stack Engineer (Lead Intern)_ | Jul 2026 - Sep 2026
 
 - **AI & Machine Learning:** Function Calling & Tool Use, RAG Pipelines, LangChain / LangGraph, Vector Search (pgvector, Pinecone, ChromaDB, SQLite FTS5 (BM25), Hybrid RRF), Embeddings, YOLOv8, Groq, OpenCV, LLM-as-Judge Evaluation, Prompt Engineering, SSE Streaming, Prometheus & Grafana Observability
 - **Languages:** Python, TypeScript, JavaScript, SQL, PHP, C# / .NET, Java
-- **Frameworks & Full-Stack:** FastAPI, Next.js, React 19, Node.js, Laravel 11/12, Tailwind CSS v4, Livewire 3
+- **Frameworks & Full-Stack:** FastAPI, Next.js, NestJS, React 19, Node.js, Laravel 11/12, Tailwind CSS v4, Livewire 3
 - **Databases & Cloud:** PostgreSQL, Supabase, Prisma ORM, Drizzle ORM, Redis, Docker, AWS, Google Cloud (GCP), GitHub Actions, Jenkins
 - **Cybersecurity & Tools:** Burp Suite, Wireshark, Kali Linux, Role-Based Access Control (RBAC), Row-Level Security (RLS)
 
