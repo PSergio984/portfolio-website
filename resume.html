@@ -16,8 +16,8 @@
       }
       body {
         font-family: 'Times New Roman', Times, Georgia, serif;
-        font-size: 9.1pt;
-        line-height: 1.22;
+        font-size: 8.8pt;
+        line-height: 1.27;
         color: #000000;
         background: #ffffff;
         -webkit-font-smoothing: antialiased;
@@ -29,8 +29,8 @@
       }
       @media print {
         body {
-          font-size: 9.1pt;
-          line-height: 1.22;
+          font-size: 8.8pt;
+          line-height: 1.27;
           color: #000000;
         }
         .page {
@@ -46,7 +46,7 @@
       /* Header */
       header {
         text-align: center;
-        margin-bottom: 4px;
+        margin-bottom: 5.5px;
       }
       h1 {
         font-size: 19pt;
@@ -86,7 +86,7 @@
 
       /* Section Styling */
       section {
-        margin-bottom: 6px;
+        margin-bottom: 8px;
       }
       section:last-child {
         margin-bottom: 0;
@@ -104,7 +104,7 @@
 
       /* Item Blocks */
       .item {
-        margin-bottom: 3.5px;
+        margin-bottom: 4.5px;
       }
       .item:last-child {
         margin-bottom: 0;
@@ -143,7 +143,7 @@
         margin-top: 1px;
       }
       ul.bullets li {
-        margin-bottom: 1.2px;
+        margin-bottom: 1.8px;
         color: #000000;
         text-align: justify;
       }
@@ -159,10 +159,10 @@
       .skills-grid {
         display: flex;
         flex-direction: column;
-        gap: 1.5px;
+        gap: 2.2px;
       }
       .skill-row {
-        font-size: 9.1pt;
+        font-size: 8.8pt;
         color: #000000;
         line-height: 1.24;
       }
@@ -229,6 +229,41 @@
       <section>
         <div class="section-title">Professional Experience</div>
 
+        <!-- Nexvision Innovations -->
+        <div class="item">
+          <div class="item-header">
+            <div class="item-title">
+              <span class="company">Nexvision Innovations Inc.</span>
+              <span class="sep">|</span>
+              <span class="role">Full Stack Engineer (Lead Intern)</span>
+            </div>
+            <div class="item-date">Jul 2026 - Sep 2026 | Marikina (Hybrid)</div>
+          </div>
+          <ul class="bullets">
+            <li>
+              Architected <strong>DOLE-compliant payroll &amp; timekeeping engines</strong> across 4
+              enterprise HRIS platforms, automating complex overtime, holiday, and night
+              differential calculations.
+            </li>
+            <li>
+              Built modular TypeScript/Next.js HRIS payroll engines automating statutory deductions
+              (SSS, PhilHealth, Pag-IBIG) and 13th-month proration across
+              <strong>500+ employee records</strong> with immutable audit logs.
+            </li>
+            <li>
+              Secured multi-tenant HRIS data layers across branch offices using
+              <strong>PostgreSQL/Supabase Row-Level Security (RLS)</strong>, cutting monthly DOLE
+              audit prep from <strong>3 days to under 5 minutes</strong> via high-throughput export
+              pipelines.
+            </li>
+            <li>
+              Led sprint execution across <strong>180+ Jira/GitHub issues</strong> as Intern Team
+              Lead, and accelerated CI/CD test runs by <strong>40% (~12m to ~7m)</strong> with an
+              offline mock testing daemon in GitHub Actions and Jenkins.
+            </li>
+          </ul>
+        </div>
+
         <!-- FlyRank AI -->
         <div class="item">
           <div class="item-header">
@@ -264,40 +299,6 @@
               <strong>78 pytest integration tests</strong> and a
               <strong>27-case golden-set evaluation suite</strong>, eliminating regression failures
               across synthetic edge cases.
-            </li>
-          </ul>
-        </div>
-
-        <!-- Nexvision Innovations -->
-        <div class="item">
-          <div class="item-header">
-            <div class="item-title">
-              <span class="company">Nexvision Innovations Inc.</span>
-              <span class="sep">|</span>
-              <span class="role">Full Stack Engineer (Lead Intern)</span>
-            </div>
-            <div class="item-date">Jul 2026 - Sep 2026 | Marikina (Hybrid)</div>
-          </div>
-          <ul class="bullets">
-            <li>
-              Engineered DOLE statutory compliance algorithms across 4 enterprise applications by
-              designing interval-partitioned time calculations to isolate 10 PM - 6 AM night
-              differentials from standard overtime multipliers.
-            </li>
-            <li>
-              Automated statutory deduction and 13th-month proration calculations across
-              <strong>500+ employee records</strong> by developing modular TypeScript/Next.js
-              computation engines with immutable audit logging.
-            </li>
-            <li>
-              Hardened multi-tenant PostgreSQL/Supabase data layers against cross-branch data leaks
-              via row-level security (RLS), and cut monthly audit prep time from
-              <strong>3 days to under 5 minutes</strong> via high-throughput Excel export engines.
-            </li>
-            <li>
-              Accelerated CI/CD test execution by <strong>40% (~12m to ~7m)</strong> via an offline
-              mock testing daemon in GitHub Actions and Jenkins, and led sprint execution across
-              180+ Jira/GitHub issues as Intern Team Lead.
             </li>
           </ul>
         </div>

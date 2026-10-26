@@ -27,12 +27,12 @@ describe('Experience', () => {
 
   it('renders accomplishment bullets from reports including DOLE labor audit and Google XYZ metrics', () => {
     expect(
-      screen.getByText(/Department of Labor and Employment \(DOLE\) statutory standards/i),
+      screen.getByText(/Architected DOLE-compliant payroll & timekeeping engines/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/progressive SSS\/WISP, PhilHealth, and Pag-IBIG/i),
+      screen.getByText(/statutory deductions \(SSS, PhilHealth, Pag-IBIG\)/i),
     ).toBeInTheDocument();
-    expect(screen.getByText(/10 PM – 6 AM night differentials/i)).toBeInTheDocument();
+    expect(screen.getByText(/night differential calculations/i)).toBeInTheDocument();
     expect(screen.getByText(/FastAPI AI sidecar microservice/i)).toBeInTheDocument();
     expect(
       screen.getByText(/increasing retrieval accuracy from 81\.8% to 86\.4% Top-1/i),
