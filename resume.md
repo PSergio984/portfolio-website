@@ -16,6 +16,14 @@ Honors: Consistent Dean's Lister (1.03 Running GWA)
 
 ## PROFESSIONAL EXPERIENCE
 
+**Nexvision Innovations Inc.** | Marikina, Philippines (Hybrid)  
+_Full Stack Engineer (Lead Intern)_ | Jul 2026 - Sep 2026
+
+- Architected **DOLE-compliant payroll & timekeeping engines** across 4 enterprise HRIS platforms, automating complex overtime, holiday, and night differential calculations.
+- Built modular TypeScript/Next.js HRIS payroll engines automating statutory deductions (SSS, PhilHealth, Pag-IBIG) and 13th-month proration across **500+ employee records** with immutable audit logs.
+- Secured multi-tenant HRIS data layers across branch offices using **PostgreSQL/Supabase Row-Level Security (RLS)**, cutting monthly DOLE audit prep from **3 days to under 5 minutes** via high-throughput export pipelines.
+- Led sprint execution across **180+ Jira/GitHub issues** as Intern Team Lead, and accelerated CI/CD test runs by **40% (~12m to ~7m)** with an offline mock testing daemon in GitHub Actions and Jenkins.
+
 **FlyRank AI** | Remote  
 _Full-Stack AI Engineer Intern_ | Jul 2026 - Sep 2026
 
@@ -23,14 +31,6 @@ _Full-Stack AI Engineer Intern_ | Jul 2026 - Sep 2026
 - Eliminated out-of-domain hallucinations to achieve a **100% negative query pass rate** and **90% LLM-as-judge relevance score** by designing a bounded 3-step agentic query loop with function calling and tool use, cosine similarity gating (<0.50 threshold), and inline citation grounding.
 - Reduced time-to-first-token (TTFT) by **~65%** and established real-time operational observability by implementing asynchronous Server-Sent Events (SSE) token streaming APIs, Prometheus /metrics latency histograms, and Grafana telemetry dashboards.
 - Delivered full-stack streaming chat interfaces validated across **78 pytest integration tests** and a **27-case golden-set evaluation suite**, eliminating regression failures across synthetic edge cases.
-
-**Nexvision Innovations Inc.** | Marikina, Philippines (Hybrid)  
-_Full Stack Engineer (Lead Intern)_ | Jul 2026 - Sep 2026
-
-- Engineered DOLE statutory compliance algorithms across 4 enterprise applications by designing interval-partitioned time calculations to isolate 10 PM - 6 AM night differentials from standard overtime multipliers.
-- Automated statutory deduction and 13th-month proration calculations across **500+ employee records** by developing modular TypeScript/Next.js computation engines with immutable audit logging.
-- Hardened multi-tenant PostgreSQL/Supabase data layers against cross-branch data leaks via row-level security (RLS), and cut monthly audit prep time from **3 days to under 5 minutes** via high-throughput Excel export engines.
-- Accelerated CI/CD test execution by **40% (~12m to ~7m)** via an offline mock testing daemon in GitHub Actions and Jenkins, and led sprint execution across 180+ Jira/GitHub issues as Intern Team Lead.
 
 ---
 
