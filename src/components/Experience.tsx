@@ -44,7 +44,7 @@ const experienceData: ExperienceEntry[] = [
     bullets: [
       'Architected DOLE-compliant payroll & timekeeping engines across 4 enterprise HRIS platforms, automating complex overtime, holiday, and night differential calculations.',
       'Built modular TypeScript/Next.js HRIS payroll engines automating statutory deductions (SSS, PhilHealth, Pag-IBIG) and 13th-month proration across 500+ employee records with immutable audit logs.',
-      'Secured multi-tenant HRIS data layers across branch offices using PostgreSQL/Supabase Row-Level Security (RLS), cutting monthly DOLE audit prep from 3 days to under 5 minutes via high-throughput export pipelines.',
+      'Secured multi-tenant HRIS data layers across branch offices using PostgreSQL/Supabase Row-Level Security (RLS), eliminating cross-branch data leaks.',
       'Accelerated CI/CD build and test execution cycles by 40% (cutting runner execution times from ~12m to ~7m) with an offline mock testing daemon in GitHub Actions and Jenkins to eliminate flaky external DNS timeouts.',
       'Reduced monthly branch audit preparation time from 3 days to under 5 minutes by building interactive DTR attendance heatmaps with Zustand state persistence and high-throughput multi-sheet Excel/CSV compliance export engines.',
       'Led sprint execution across 180+ Jira/GitHub issues as Intern Team Lead, delegating frontend/backend tasks, conducting code reviews for TypeScript type safety, and enforcing clean architectural standards.',
