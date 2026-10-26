@@ -47,6 +47,7 @@ import {
   SiLangchain,
   SiPrisma,
   SiDrizzle,
+  SiNestjs,
   SiNodedotjs,
   SiGooglecloud,
   SiAnthropic,
@@ -148,6 +149,7 @@ const skillGroups: SkillGroup[] = [
     icon: <Database className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />,
     skills: [
       { name: 'FastAPI', icon: SiFastapi, color: 'text-teal-600 dark:text-teal-400' },
+      { name: 'NestJS', icon: SiNestjs, color: 'text-rose-600 dark:text-rose-500' },
       { name: 'Laravel 11 / 12', icon: SiLaravel, color: 'text-red-600 dark:text-red-500' },
       { name: 'Node.js', icon: SiNodedotjs, color: 'text-emerald-600 dark:text-emerald-400' },
       { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-indigo-600 dark:text-indigo-400' },

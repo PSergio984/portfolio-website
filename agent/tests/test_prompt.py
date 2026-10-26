@@ -26,6 +26,7 @@ def test_system_prompt_loads_real_knowledge_file():
     assert "SQLite FTS5" in knowledge
     assert "Pinecone" in knowledge
     assert "Prisma ORM" in knowledge
+    assert "NestJS" in knowledge
     assert "## Boundaries" in knowledge
 
 
