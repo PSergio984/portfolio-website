@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { X, Download, ExternalLink } from 'lucide-react';
+import { useModalFocus } from '../hooks/useModalFocus';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -7,6 +8,7 @@ interface ResumeModalProps {
 }
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+  const dialogRef = useModalFocus<HTMLDivElement>(isOpen);
   // Prevent background scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -38,11 +40,13 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in focus:outline-none"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="Resume PDF Viewer"
+      ref={dialogRef}
+      tabIndex={-1}
     >
       <div
         className="bg-[var(--bg)] border border-[var(--border)] w-full max-w-4xl h-[85vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden relative z-10 transition-transform duration-300 scale-100"

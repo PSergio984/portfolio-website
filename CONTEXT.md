@@ -27,3 +27,15 @@ _Avoid_: wontfix, known issue
 **Hardening Review**:
 Checkpoint 2 peer review that judges the Where-it-breaks list plus fix-now evidence, SEO/share preview, and speed artefacts; pass means zero open fix-nows and reviewer sign-off.
 _Avoid_: code review, QA sign-off
+
+**OJT Experience**:
+The site section (renamed from Experience) holding Eric's three internship entries — Nexvision, FlyRank, Mashup Garage — plus the Sample Works and Reflections subsections; mirrors the rubric line item for grader scanability.
+_Avoid_: work history, employment section, jobs
+
+**Sample Works**:
+The NDA-safe artifact block inside OJT Experience — three written mini-artifacts plus at most one redacted client-branded login screenshot (tenant name always redacted, landing page only, Eric-approved before publish).
+_Avoid_: portfolio pieces, demos, screenshots
+
+**Reflections**:
+The first-person OJT learning block inside OJT Experience — ~3 short paragraphs (learned / contributed vs team / would-do-differently) drafted from DSU and weekly-report sources, voice-passed by Eric.
+_Avoid_: journal, blog post, testimonial

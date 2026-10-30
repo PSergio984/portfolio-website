@@ -63,6 +63,12 @@ Short term: finish my BS Information Technology degree (2026, consistent Dean's 
 - **Accomplished** elimination of out-of-domain hallucinations, **as measured by** a 100% negative query pass rate and 90% LLM-as-judge relevance score, **by** designing a bounded 3-step agentic query loop with cosine similarity gating (<0.50 threshold) and inline numbered citations.
 - **Accomplished** ~65% reduction in time-to-first-token (TTFT) and real-time observability across production deployments, **by** implementing asynchronous Server-Sent Events (SSE) streaming APIs, Prometheus `/metrics` latency histograms, and Grafana telemetry dashboards.
 
+### 3. Mashup Garage — Software Engineering Intern [OCT 2026 – PRESENT]
+
+- **Accomplished** day-one environment provisioning for a full-stack project-management platform, **by** migrating the database, object storage, and local email tooling onto the team's Supabase-based stack.
+- **Accomplished** a production-readiness audit across the codebase, **as measured by** ~20 triaged findings carded to the team backlog, **by** reconciling each finding with reviewers before implementation.
+- **Accomplished** delivery of a multi-branch implementation loop across audit tickets, **by** driving fixes from backlog to code review under the team's PR review conventions.
+
 ## Skills & Tools
 
 - **Languages:** TypeScript, JavaScript, Python, PHP, Java, C# / .NET

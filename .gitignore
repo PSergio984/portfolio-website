@@ -35,6 +35,10 @@ handoff-redesign.md
 REHAUL-SPEC.md
 graphify-out/
 
+# Testing output
+test-results/
+playwright-report/
+
 # Python agent
 agent/.venv/
 __pycache__/

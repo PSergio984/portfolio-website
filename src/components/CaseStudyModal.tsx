@@ -14,6 +14,7 @@ import {
   LayoutList,
 } from 'lucide-react';
 import type { CaseStudy } from '../data/caseStudies';
+import { useModalFocus } from '../hooks/useModalFocus';
 
 interface CaseStudyModalProps {
   study: CaseStudy | null;
@@ -32,6 +33,7 @@ const tabs = [
 export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]['id']>('all');
   const [showAscii, setShowAscii] = useState(false);
+  const dialogRef = useModalFocus<HTMLDivElement>(Boolean(study));
 
   useEffect(() => {
     if (!study) return;
@@ -72,7 +74,9 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="case-study-title"
-        className="relative w-full max-w-6xl h-[92vh] bg-white dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row cursor-default text-slate-800 dark:text-slate-200"
+        ref={dialogRef}
+        tabIndex={-1}
+        className="relative w-full max-w-6xl h-[92vh] bg-white dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row cursor-default focus:outline-none text-slate-800 dark:text-slate-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Sticky Top Close Button */}

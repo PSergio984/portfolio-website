@@ -6,17 +6,39 @@ describe('Experience', () => {
     render(<Experience />);
   });
 
-  it('renders the experience section', () => {
+  it('renders the OJT experience section', () => {
     expect(document.querySelector('#experience')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'OJT Experience' })).toBeInTheDocument();
   });
 
-  it('renders both roles with companies and timestamps', () => {
+  it('renders all three internships with companies and timestamps', () => {
     expect(screen.getByText('Full-Stack AI Engineer Intern')).toBeInTheDocument();
     expect(screen.getByText('FlyRank AI')).toBeInTheDocument();
     expect(screen.getAllByText('[JUL – SEPT 2026]')[0]).toBeInTheDocument();
 
     expect(screen.getByText('Full Stack Engineer (Lead Intern)')).toBeInTheDocument();
     expect(screen.getByText('Nexvision Innovations Inc.')).toBeInTheDocument();
+
+    expect(screen.getByText('Software Engineering Intern')).toBeInTheDocument();
+    expect(screen.getByText('Mashup Garage')).toBeInTheDocument();
+    expect(screen.getByText('[OCT 2026 – PRESENT]')).toBeInTheDocument();
+  });
+
+  it('renders OJT department, skills developed, sample works, and reflections', () => {
+    expect(screen.getByText('Software Development Dept.')).toBeInTheDocument();
+    expect(screen.getAllByText('Skills & Competencies Developed')).toHaveLength(3);
+    expect(screen.getByText('Technical Leadership')).toBeInTheDocument();
+    expect(screen.getByText('Backend AI Engineering Program Dept.')).toBeInTheDocument();
+    expect(screen.getByText('Software Engineering Dept.')).toBeInTheDocument();
+
+    expect(screen.getByRole('heading', { name: 'Sample Works on OJT' })).toBeInTheDocument();
+    expect(screen.getByText('Statutory Payroll & Timekeeping Engines')).toBeInTheDocument();
+    expect(
+      screen.getByAltText('Client-branded multi-tenant HRIS login page with tenant name redacted'),
+    ).toHaveAttribute('src', '/assets/ojt/hris-login-redacted.webp');
+
+    expect(screen.getByRole('heading', { name: 'Reflections' })).toBeInTheDocument();
+    expect(screen.getByText(/Twelve weeks at Nexvision closed the gap/i)).toBeInTheDocument();
   });
 
   it('summarizes the work and NDA context accurately', () => {

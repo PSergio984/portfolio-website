@@ -48,7 +48,7 @@ describe('Header', () => {
     render(<Header />);
     expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Projects' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Experience' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'OJT Experience' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Skills' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Credentials' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Contact' })).toBeInTheDocument();
@@ -70,7 +70,7 @@ describe('Header', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByRole('link', { name: 'Experience' })).toHaveAttribute(
+      expect(screen.getByRole('link', { name: 'OJT Experience' })).toHaveAttribute(
         'aria-current',
         'page',
       );

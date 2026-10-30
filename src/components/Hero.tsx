@@ -1,9 +1,10 @@
-import heroImg from '../assets/profile.png';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { SiTryhackme, SiHackthebox } from 'react-icons/si';
 import { FaGithub, FaLinkedin, FaHackerrank } from 'react-icons/fa6';
 import { Cpu, ShieldCheck, Flag, ArrowRight, Sparkles } from 'lucide-react';
 import { BootDevIcon } from './icons';
+
+const heroImg = '/profile.webp';
 
 const platformLinks = [
   {
@@ -108,11 +109,20 @@ export function Hero() {
         </div>
 
         {/* ── Stand-out Tagline / Summary ── */}
-        <p className="text-[var(--text)] text-sm sm:text-base md:text-lg font-normal leading-relaxed mb-8 max-w-3xl">
+        <p className="text-[var(--text)] text-sm sm:text-base md:text-lg font-normal leading-relaxed mb-3 max-w-3xl">
           I design, build, and deploy production-ready AI-powered full-stack applications with
           grounded RAG pipelines, scalable backends, and security-first engineering. By combining
           modern AI architecture with competitive cybersecurity principles, I engineer software that
           is robust, test-verified, and secure by design.
+        </p>
+
+        {/* ── Career Objective ── */}
+        <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed mb-8 max-w-3xl">
+          <span className="font-mono font-semibold text-[var(--accent-text)] uppercase tracking-wider">
+            Career Objective —
+          </span>{' '}
+          full-stack AI engineering roles where I design, ship, and own production systems
+          end-to-end.
         </p>
 
         {/* ── What I Do Cards ── */}

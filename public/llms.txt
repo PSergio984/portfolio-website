@@ -55,7 +55,8 @@
 
 ## Experience Highlights
 - **Nexvision Innovations Inc.** — Full Stack Engineer (Lead Intern) (Jul 2026 – Sep 2026): Architected DOLE-compliant enterprise HRIS payroll and timekeeping engines, automated statutory deductions across 500+ records, hardened multi-tenant Supabase/PostgreSQL RLS, and led sprint execution across 180+ issues.
-- **FlyRank AI** — Full-Stack AI Engineer Intern (Jul 2026 – Sep 2026): Graduated with verified distinction from the Backend AI Engineering and AI Fluency programs; engineered hybrid RAG pipelines, FastAPI AI microservices, SSE token streaming, and Prometheus/Grafana observability.
+- **FlyRank AI** — Full-Stack AI Engineer Intern (Jul 2026 – Sep 2026): Graduated with verified distinction from the Backend AI Engineering and AI Fluency programs; engineered hybrid RAG pipelines, FastAPI AI microservices, SSE token streaming, and Prometheus/Grafana observability.
+- **Mashup Garage** — Software Engineering Intern (Oct 2026 – Present): Running production-readiness audits and multi-branch implementation loops on a full-stack project-management platform; migrated database, storage, and local email tooling onto the team's Supabase-based stack during onboarding.
 
 ## Technical Skills Summary
 - **AI Engineering**: Retrieval-Augmented Generation (RAG), Bounded Agentic Loops, Function Calling & Tool Use, Hybrid Search (SQLite FTS5 BM25 + Dense Vectors), Reciprocal Rank Fusion (RRF), Reranking, Vector Databases (pgvector), LLM-as-Judge Evals, YOLOv8, OpenCV, Gemini API, Groq.

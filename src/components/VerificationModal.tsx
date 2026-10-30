@@ -1,5 +1,6 @@
 import { X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useModalFocus } from '../hooks/useModalFocus';
 
 export interface VerificationItem {
   title: string;
@@ -17,6 +18,7 @@ export function VerificationModal({ item, selectedCred, onClose }: VerificationM
   const activeItem = item ?? selectedCred ?? null;
   const [failedImageUrl, setFailedImageUrl] = useState<string | null>(null);
   const hasImageError = Boolean(activeItem?.imageUrl && failedImageUrl === activeItem.imageUrl);
+  const dialogRef = useModalFocus<HTMLDivElement>(Boolean(activeItem));
 
   useEffect(() => {
     if (!activeItem) return;
@@ -48,6 +50,8 @@ export function VerificationModal({ item, selectedCred, onClose }: VerificationM
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-cred-title"
+        ref={dialogRef}
+        tabIndex={-1}
         className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center cursor-default bg-[var(--card-bg)] p-4 rounded-2xl border border-[var(--border)] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
