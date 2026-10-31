@@ -5,7 +5,7 @@ import os
 from collections.abc import AsyncIterator
 from typing import Annotated, Literal
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from fastapi.sse import EventSourceResponse
@@ -101,6 +101,10 @@ def create_app(
     @app.get("/health")
     async def health() -> dict[str, str]:
         return {"status": "ok"}
+
+    @app.get("/favicon.ico")
+    async def favicon() -> Response:
+        return Response(status_code=204)
 
     @app.post("/chat")
     async def chat(req: ChatRequest, request: Request) -> StreamingResponse:

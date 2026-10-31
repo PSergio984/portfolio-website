@@ -104,7 +104,7 @@ def test_provider_model_defaults():
     if "GEMINI_MODEL" not in os.environ:
         assert GEMINI_MODEL == "gemini-3.8-flash"
     if "GROQ_MODEL" not in os.environ:
-        assert GROQ_MODEL == "llama-3.3-70b-versatile"
+        assert GROQ_MODEL == "openai/gpt-oss-120b"
 
 
 def test_malformed_history_returns_422_not_500():

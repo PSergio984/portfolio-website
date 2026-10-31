@@ -55,4 +55,18 @@ describe('DigitalEricChat', () => {
     await waitFor(() => expect(screen.getByText('I built AGOS.').closest('div')).toBeTruthy());
     vi.unstubAllGlobals();
   });
+
+  it('shows a thinking indicator while waiting for the first token', async () => {
+    import.meta.env.VITE_CHAT_API_URL = 'https://eric-agent.example';
+    vi.stubGlobal('fetch', vi.fn().mockReturnValue(new Promise(() => {})));
+
+    render(<DigitalEricChat />);
+    fireEvent.click(screen.getByRole('button', { name: /chat with digital eric/i }));
+    const input = screen.getByLabelText(/message digital eric/i);
+    fireEvent.change(input, { target: { value: 'hi' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
+
+    expect(await screen.findByTestId('thinking')).toBeInTheDocument();
+    vi.unstubAllGlobals();
+  });
 });

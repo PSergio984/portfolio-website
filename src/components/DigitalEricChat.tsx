@@ -189,7 +189,19 @@ export function DigitalEricChat() {
                       : 'bg-[var(--code-bg)] text-[var(--text-h)] border border-[var(--border)]'
                   }`}
                 >
-                  {m.content}
+                  {m.content === '' ? (
+                    <span
+                      className="inline-flex items-center gap-1"
+                      aria-label="Digital Eric is thinking"
+                      data-testid="thinking"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce [animation-delay:120ms]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce [animation-delay:240ms]" />
+                    </span>
+                  ) : (
+                    m.content
+                  )}
                 </div>
               </div>
             ))}
